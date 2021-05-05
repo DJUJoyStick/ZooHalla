@@ -50,6 +50,10 @@ public class Bullet : MonoBehaviour
             HitMonsterSc.fMonsterHp -= fBulletDmg;
             Destroy(gameObject);
         }
+        if (col.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

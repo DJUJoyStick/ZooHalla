@@ -7,6 +7,11 @@ public class Player : MonoBehaviour
 {
     public GameObject BulletPre;
 
+    public Transform GunParentTr;
+    public Transform GunTr;
+
+    SpriteRenderer PlayerSr;
+
     Rigidbody2D PlayerRig;
 
     Vector2 _PlayerMoveVec;
@@ -28,6 +33,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         direction = PLAYERDIRECT.DONTMOVE;
+        PlayerSr = GetComponent<SpriteRenderer>();
         PlayerRig = GetComponent<Rigidbody2D>();
         fMoveSpeed = 5.0f;
         bMoveAccess = true;
@@ -60,11 +66,13 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 direction = PLAYERDIRECT.LEFT;
+                PlayerSr.flipX = false;
                 _PlayerMoveVec.x -= fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 direction = PLAYERDIRECT.RIGHT;
+                PlayerSr.flipX = true;
                 _PlayerMoveVec.x += fMoveSpeed;
             }
             PlayerRig.velocity = _PlayerMoveVec;
@@ -88,10 +96,12 @@ public class Player : MonoBehaviour
         float dx = target.x - oPosition.x;
         _fRotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
 
-        if (!bBulletDirect)
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, _fRotateDegree);
-        }
+        GunParentTr.rotation = Quaternion.Euler(0f, 0f, _fRotateDegree - 180f);                                     // 총 위치 회전(마우스 방향) 추후에 고정 몬스터 방향으로 변환
+
+        //if (!bBulletDirect)
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, 0f, _fRotateDegree);
+        //}
     }
     void PlayerSkill()
     {
@@ -114,11 +124,11 @@ public class Player : MonoBehaviour
             fBulletDelay = Time.time;
             if (SGameMng.I.NearEnemyTr.Equals(null))
             {
-                Instantiate(BulletPre, transform.localPosition, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
+                Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
             }
             else
             {
-                Instantiate(BulletPre, transform.localPosition, Quaternion.identity);
+                Instantiate(BulletPre, GunTr.position, Quaternion.identity);
             }
             bBulletShooting = true;
         }
@@ -134,10 +144,12 @@ public class Player : MonoBehaviour
         bMoveAccess = false;
         PlayerRig.velocity = Vector2.zero;
         bRollin = true;
+        fMoveSpeed = 0.0f;
 
         yield return new WaitForSeconds(1.0f);
         bMoveAccess = true;
         bRollin = false;
+        fMoveSpeed = 5.0f;
     }
 
     void RollinDirect()
@@ -150,31 +162,38 @@ public class Player : MonoBehaviour
                 break;
 
             case PLAYERDIRECT.LEFT:
-                //transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x - 1.0f, transform.localPosition.y), 2.0f * Time.deltaTime);
+                transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x - 1.0f, transform.localPosition.y), 5.0f * Time.deltaTime);
                 //transform.localPosition = new Vector2(transform.localPosition.x - 0.005f, transform.localPosition.y);
-                _PlayerMoveVec.x -= fMoveSpeed * 2.0f * Time.deltaTime;
+                //_PlayerMoveVec.x -= fMoveSpeed * 2.0f * Time.deltaTime;
                 break;
 
             case PLAYERDIRECT.RIGHT:
-                //transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x + 1.0f, transform.localPosition.y), 2.0f * Time.deltaTime);
+                transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x + 1.0f, transform.localPosition.y), 5.0f * Time.deltaTime);
                 //transform.localPosition = new Vector2(transform.localPosition.x + 0.005f, transform.localPosition.y);
-                _PlayerMoveVec.x += fMoveSpeed * 2.0f * Time.deltaTime;
+                //_PlayerMoveVec.x += fMoveSpeed * 2.0f * Time.deltaTime;
                 break;
 
             case PLAYERDIRECT.DOWN:
-                //transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x, transform.localPosition.y - 1.0f), 2.0f * Time.deltaTime);
+                transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x, transform.localPosition.y - 1.0f), 3.5f * Time.deltaTime);
                 //transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y - 0.005f);
-                _PlayerMoveVec.y -= fMoveSpeed * 2.0f * Time.deltaTime;
+                //_PlayerMoveVec.y -= fMoveSpeed * 2.0f * Time.deltaTime;
                 break;
 
             case PLAYERDIRECT.UP:
-                //transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x, transform.localPosition.y + 1.0f), 2.0f * Time.deltaTime);
+                transform.localPosition = Vector2.Lerp(transform.localPosition, new Vector2(transform.localPosition.x, transform.localPosition.y + 1.0f), 3.5f * Time.deltaTime);
                 //transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y + 0.005f);
-                _PlayerMoveVec.y += fMoveSpeed * 2.0f * Time.deltaTime;
+                //_PlayerMoveVec.y += fMoveSpeed * 2.0f * Time.deltaTime;
                 break;
         }
-        PlayerRig.velocity = _PlayerMoveVec;
+        //PlayerRig.velocity = _PlayerMoveVec;
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.transform.CompareTag("Monster"))
+        {
+            Debug.Log("AASDFADSFADFADFSA");
+        }
+    }
 
 }
