@@ -21,12 +21,17 @@ public class Player : MonoBehaviour
     float _fRotateDegree;
     float fBulletDelay;
 
+    public int nPlayerHp;
+
     PLAYERDIRECT direction;
 
+    public bool bDmgAccess = false;
     public bool bBulletDirect = false;
+    public bool bPlayerDie = false;
     bool bMoveAccess = false;
     bool bRollin = false;
     bool bBulletShooting = false;
+
 
 
     // Start is called before the first frame update
@@ -36,16 +41,36 @@ public class Player : MonoBehaviour
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerRig = GetComponent<Rigidbody2D>();
         fMoveSpeed = 5.0f;
+        nPlayerHp = 100;
         bMoveAccess = true;
+        bDmgAccess = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerState();
         Move();
         PlayerSkill();
-        //Attack();
-        PlayerRotate();
+    }
+
+    void PlayerState()
+    {
+        if (nPlayerHp > 0)
+        {
+            WeaponRot();
+        }
+        else
+        {
+            bPlayerDie = true;
+            Debug.Log("플레이어 사망");
+        }
+
+        if (bPlayerDie)
+        {
+            bMoveAccess = false;
+            bDmgAccess = false;
+        }
     }
 
     void Move()
@@ -77,13 +102,13 @@ public class Player : MonoBehaviour
             }
             PlayerRig.velocity = _PlayerMoveVec;
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !bPlayerDie)
         {
             //Instantiate(BulletPre, transform.localPosition, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
             Attack();
         }
     }
-    void PlayerRotate()
+    void WeaponRot()
     {
         Vector3 mPosition = Input.mousePosition;
         Vector3 oPosition = transform.position;
@@ -188,12 +213,24 @@ public class Player : MonoBehaviour
         //PlayerRig.velocity = _PlayerMoveVec;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    IEnumerator DamageCtrl()
+    {
+        PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 125 / 255f);                 // 피격시 플레이어의 스프라이트 알파값 조정(잠시 무적이라는 의미 *임시임)
+        bDmgAccess = false;
+        yield return new WaitForSeconds(1.5f);
+        PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+        bDmgAccess = true;
+    }
+
+    private void OnCollisionStay2D(Collision2D col)
     {
         if (col.transform.CompareTag("Monster"))
         {
-            Debug.Log("AASDFADSFADFADFSA");
+            if (bDmgAccess)
+            {
+                StartCoroutine(DamageCtrl());
+                nPlayerHp -= 10;
+            }
         }
     }
-
 }

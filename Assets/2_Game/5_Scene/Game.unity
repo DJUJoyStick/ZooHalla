@@ -580,7 +580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -379.2, y: 170.8}
+  m_AnchoredPosition: {x: 515, y: 160}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789927595
@@ -1133,7 +1133,10 @@ MonoBehaviour:
   GunParentTr: {fileID: 520753716}
   GunTr: {fileID: 72866533}
   fBulletDirect: 0
+  nPlayerHp: 0
+  bDmgAccess: 0
   bBulletDirect: 0
+  bPlayerDie: 0
 --- !u!61 &1850588437
 BoxCollider2D:
   m_ObjectHideFlags: 0
