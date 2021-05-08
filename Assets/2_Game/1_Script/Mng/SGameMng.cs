@@ -26,4 +26,5 @@ public class SGameMng : MonoBehaviour
     public List<Monster> FindMobList = new List<Monster>();
     public Transform NearEnemyTr;
     public float fNearDis;
+
 }
