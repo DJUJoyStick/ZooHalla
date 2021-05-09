@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MapState
+{
+	Normal = 0,
+	Start,
+	Boss
+}
+
 public class LevelGeneration : MonoBehaviour {
-	Vector2 worldSize = new Vector2(4,4);
+	Vector2 worldSize = new Vector2(3,3);
     Room[,] rooms;
     [SerializeField]
 	List<Vector2> takenPositions = new List<Vector2>();
-	int gridSizeX, gridSizeY, numberOfRooms = 15;//
+	int gridSizeX, gridSizeY, numberOfRooms = 8;//방갯수조정은 이 변수로 조정할 것
 	public GameObject roomWhiteObj;//미니맵 스프라이트
 	public Transform mapRoot;//처음 시작맵 위치
 	void Start () {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
@@ -24,13 +31,14 @@ public class LevelGeneration : MonoBehaviour {
 	void CreateRooms(){
 		//setup
 		rooms = new Room[gridSizeX * 2,gridSizeY * 2];
-		rooms[gridSizeX,gridSizeY] = new Room(Vector2.zero, 1);
+		rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, (int)MapState.Start);
 		takenPositions.Insert(0,Vector2.zero);
 		Vector2 checkPos = Vector2.zero;
 		//magic numbers
 		float randomCompare, randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
 		//add rooms
-		for (int i =0; i < numberOfRooms -1; i++){
+		for (int i = 1; i < numberOfRooms; i++)
+		{
 			float randomPerc = ((float) i) / (((float)numberOfRooms - 1));
 			randomCompare = Mathf.Lerp(randomCompareStart, randomCompareEnd, randomPerc);
 			//grab new position
@@ -45,10 +53,19 @@ public class LevelGeneration : MonoBehaviour {
 				if (iterations >= 50)
 					print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, takenPositions));
 			}
-            //위치를 확정하다
-            rooms[(int) checkPos.x + gridSizeX, (int) checkPos.y + gridSizeY] = new Room(checkPos, 0);
-			takenPositions.Insert(0,checkPos);
-		}	
+			//방의 정보를 생성자를 통하여 기입
+			if (i == numberOfRooms - 1)//마지막 방 보스로 지정
+			{
+				rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, (int)MapState.Boss);
+			}
+			else
+			{
+				rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, (int)MapState.Normal);
+			}
+
+			takenPositions.Add(checkPos);//기존엔 insert(0,checkPos) 이었다. 그렇게 하면 계속 0번에 값이 들어가므로 첫번째 0,0은 마지막으로 가게된다
+										 //rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY].pos_x = 
+		}
 	}
 	Vector2 NewPosition(){
 		int x = 0, y = 0;

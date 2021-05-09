@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RoomInstance : MonoBehaviour
 {
-    public Texture2D tex;
     [HideInInspector]
     public Vector2 gridPos;
-    public int type; // 0: normal, 1: enter
+    public int type; // 0: 보통맵, 1: 시작맵, 2:보스맵
+    public int room_number;
+    private static int height = 9;
+    private static int width = 17;
     [HideInInspector]
     public bool doorTop, doorBot, doorLeft, doorRight;
     [SerializeField]
@@ -16,17 +18,17 @@ public class RoomInstance : MonoBehaviour
     ColorToGameObject[] mappings;
     private const float tileSize = 1;//타일 크기 건들지 말것
     static int mapsize = 2;
-    Vector2 roomSizeInTiles = new Vector2(9 * mapsize, 17 * mapsize);//9,17 가로세로 길이
+    Vector2 roomSizeInTiles = new Vector2(height * mapsize, width * mapsize);//9,17 가로세로 길이
 
-    public void Setup(Texture2D _tex, Vector2 _gridPos, int _type, bool _doorTop, bool _doorBot, bool _doorLeft, bool _doorRight)
+    public void Setup(Vector2 _gridPos, int _type, bool _doorTop, bool _doorBot, bool _doorLeft, bool _doorRight, int roomnum/*, int x, int y*/)
     {
-        tex = _tex;
         gridPos = _gridPos;
         type = _type;
         doorTop = _doorTop;
         doorBot = _doorBot;
         doorLeft = _doorLeft;
         doorRight = _doorRight;
+        room_number = roomnum;
         //MakeDoors();
         GenerateRoomTiles();
     }
@@ -64,10 +66,10 @@ public class RoomInstance : MonoBehaviour
     {
         Vector3 spawnPos;
         //loop through every pixel of the texture
-        for (int x = 0; x < tex.width * mapsize; x++)
+        for (int x = 0; x < width * mapsize; x++)
         {
             spawnPos = positionFromTileGrid(x, 0);
-            if (x == tex.width * mapsize / 2)
+            if (x == width * mapsize / 2)
             {
                 PlaceDoor(spawnPos, doorTop, doorU);
             }
@@ -77,7 +79,7 @@ public class RoomInstance : MonoBehaviour
             }  
 
             spawnPos = positionFromTileGrid(x, 17);
-            if (x == tex.width * mapsize / 2)
+            if (x == width * mapsize / 2)
             {
                 PlaceDoor(spawnPos, doorBot, doorD);
             }
@@ -87,10 +89,10 @@ public class RoomInstance : MonoBehaviour
             }
 
         }
-        for (int y = 0; y < tex.height * mapsize; y++)
+        for (int y = 0; y < height * mapsize; y++)
         {
             spawnPos = positionFromTileGrid(0, y);
-            if(y == tex.height * mapsize / 2)
+            if (y == height * mapsize / 2)
             {
                 PlaceDoor(spawnPos, doorLeft, doorL);
             }
@@ -100,7 +102,7 @@ public class RoomInstance : MonoBehaviour
             }
 
             spawnPos = positionFromTileGrid(33, y);
-            if (y == tex.height * mapsize / 2)
+            if (y == height * mapsize / 2)
             {
                 PlaceDoor(spawnPos, doorRight, doorR);
             }

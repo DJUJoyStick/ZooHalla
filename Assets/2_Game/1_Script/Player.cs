@@ -15,11 +15,16 @@ public class Player : MonoBehaviour
     Rigidbody2D PlayerRig;
 
     Vector2 _PlayerMoveVec;
+    Vector3 SaveMoveVec;
+    public Vector3 _MoveVec;                               // 모바일
+    Vector3 _RotVec;                                // 모바일
 
+    const float correction = 90f * Mathf.Deg2Rad;   // 모바일
     public float fBulletDirect;
     float fMoveSpeed;
     float _fRotateDegree;
     float fBulletDelay;
+    float fGunRot;
 
     public int nPlayerHp;
 
@@ -29,8 +34,9 @@ public class Player : MonoBehaviour
     public bool bBulletDirect = false;
     public bool bPlayerDie = false;
     bool bMoveAccess = false;
-    bool bRollin = false;
+    public bool bRollin = false;
     bool bBulletShooting = false;
+    public bool bAttackAccess = false;
 
 
 
@@ -50,15 +56,30 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerState();
-        Move();
-        PlayerSkill();
+        if (!SGameMng.I.bMobileOn)
+        {
+            Move();
+            PlayerSkill();
+        }
+        else
+        {
+            getKey();
+            movement();
+            rotation();
+            PlayerSkill();
+            if (bRollin)
+                MobileRollinSkill();
+            if (bAttackAccess)
+                Attack();
+        }
     }
 
     void PlayerState()
     {
         if (nPlayerHp > 0)
         {
-            WeaponRot();
+            if (!SGameMng.I.bMobileOn)
+                WeaponRot();
         }
         else
         {
@@ -71,6 +92,28 @@ public class Player : MonoBehaviour
             bMoveAccess = false;
             bDmgAccess = false;
         }
+    }
+
+    void getKey()
+    {
+        _MoveVec = new Vector3(CnControls.CnInputManager.GetAxis("Horizontal"), CnControls.CnInputManager.GetAxis("Vertical"));
+        _RotVec = new Vector3(CnControls.CnInputManager.GetAxis("RotateX"), CnControls.CnInputManager.GetAxis("RotateY"));
+    }
+
+    void movement()
+    {
+        if (bMoveAccess)
+            PlayerRig.velocity = _MoveVec * fMoveSpeed;
+    }
+
+    void rotation()
+    {
+        if (_MoveVec.Equals(Vector3.zero))
+            return;
+
+        fGunRot = (Mathf.Atan2(_MoveVec.y, _MoveVec.x) - correction) * Mathf.Rad2Deg;
+        if (bMoveAccess)
+            GunParentTr.rotation = Quaternion.Euler(0f, 0f, fGunRot - 90f);
     }
 
     void Move()
@@ -130,15 +173,25 @@ public class Player : MonoBehaviour
     }
     void PlayerSkill()
     {
-        if (bMoveAccess && !bRollin)
+        if (!SGameMng.I.bMobileOn)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (bMoveAccess && !bRollin)
             {
-                StartCoroutine(Rollin());
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    StartCoroutine(Rollin());
+                }
             }
+            if (bRollin)
+                RollinDirect();
         }
-        if (bRollin)
-            RollinDirect();
+        //else
+        //{
+        //    if (bMoveAccess && bRollin)
+        //    {
+
+        //    }
+        //}
 
     }
 
@@ -149,7 +202,10 @@ public class Player : MonoBehaviour
             fBulletDelay = Time.time;
             if (SGameMng.I.NearEnemyTr.Equals(null))
             {
-                Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
+                if (!SGameMng.I.bMobileOn)
+                    Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
+                else
+                    Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, fGunRot));
             }
             else
             {
@@ -164,6 +220,19 @@ public class Player : MonoBehaviour
 
     }
 
+    IEnumerator MobileRollin()
+    {
+        SaveMoveVec = _MoveVec;
+        bMoveAccess = false;
+        PlayerRig.velocity = Vector2.zero;
+        bRollin = true;
+        fMoveSpeed = 0.0f;
+        yield return new WaitForSeconds(1.0f);
+        bMoveAccess = true;
+        bRollin = false;
+        fMoveSpeed = 5.0f;
+    }
+
     IEnumerator Rollin()
     {
         bMoveAccess = false;
@@ -175,6 +244,12 @@ public class Player : MonoBehaviour
         bMoveAccess = true;
         bRollin = false;
         fMoveSpeed = 5.0f;
+    }
+
+    void MobileRollinSkill()
+    {
+        _PlayerMoveVec.x += SaveMoveVec.x * 2.0f * Time.deltaTime;
+        _PlayerMoveVec.y += SaveMoveVec.y * 2.0f * Time.deltaTime;
     }
 
     void RollinDirect()
@@ -231,6 +306,10 @@ public class Player : MonoBehaviour
                 StartCoroutine(DamageCtrl());
                 nPlayerHp -= 10;
             }
+        }
+        else if (col.transform.CompareTag("Door"))
+        {
+
         }
     }
 }
