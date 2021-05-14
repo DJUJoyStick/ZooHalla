@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Player : MonoBehaviour
 {
     public GameObject BulletPre;
@@ -35,9 +34,11 @@ public class Player : MonoBehaviour
     public bool bPlayerDie = false;
     bool bMoveAccess = false;
     public bool bRollin = false;
+    [SerializeField]
     bool bBulletShooting = false;
     public bool bAttackAccess = false;
 
+    //public UnityEngine.UI.Text test;
 
 
     // Start is called before the first frame update
@@ -55,6 +56,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //test.text = SGameMng.I.FindMobList[0].ToString();
+        //test1.text = SGameMng.I.FindMobList[1].ToString();
         PlayerState();
         if (!SGameMng.I.bMobileOn)
         {
@@ -67,12 +70,19 @@ public class Player : MonoBehaviour
             movement();
             rotation();
             PlayerSkill();
-            if (bRollin)
-                MobileRollinSkill();
+            MobileRollinSkill();
+
             if (bAttackAccess)
+            {
                 Attack();
+            }
+        }
+        if (Time.time > fBulletDelay + 0.1f)                                                                                // 0.1f부분을 변수화해서 총알 딜레이 설정
+        {
+            bBulletShooting = false;
         }
     }
+
 
     void PlayerState()
     {
@@ -147,7 +157,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetMouseButton(0) && !bPlayerDie)
         {
-            //Instantiate(BulletPre, transform.localPosition, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
             Attack();
         }
     }
@@ -185,13 +194,6 @@ public class Player : MonoBehaviour
             if (bRollin)
                 RollinDirect();
         }
-        //else
-        //{
-        //    if (bMoveAccess && bRollin)
-        //    {
-
-        //    }
-        //}
 
     }
 
@@ -200,23 +202,14 @@ public class Player : MonoBehaviour
         if (!bBulletShooting)
         {
             fBulletDelay = Time.time;
-            if (SGameMng.I.NearEnemyTr.Equals(null))
-            {
-                if (!SGameMng.I.bMobileOn)
-                    Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
-                else
-                    Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, fGunRot));
-            }
+
+            if (!SGameMng.I.bMobileOn)
+                Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, _fRotateDegree - 90f));
             else
-            {
-                Instantiate(BulletPre, GunTr.position, Quaternion.identity);
-            }
+                Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, fGunRot));
             bBulletShooting = true;
         }
-        if (Time.time > fBulletDelay + 0.1f)                                                                                // 0.1f부분을 변수화해서 총알 딜레이 설정
-        {
-            bBulletShooting = false;
-        }
+
 
     }
 
@@ -248,8 +241,11 @@ public class Player : MonoBehaviour
 
     void MobileRollinSkill()
     {
-        _PlayerMoveVec.x += SaveMoveVec.x * 2.0f * Time.deltaTime;
-        _PlayerMoveVec.y += SaveMoveVec.y * 2.0f * Time.deltaTime;
+        if (bRollin)
+        {
+            _PlayerMoveVec.x += SaveMoveVec.x * 2.0f * Time.deltaTime;
+            _PlayerMoveVec.y += SaveMoveVec.y * 2.0f * Time.deltaTime;
+        }
     }
 
     void RollinDirect()

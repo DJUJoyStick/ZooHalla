@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - FindEnemy
   - Wall
+  - Door
   layers:
   - Default
   - TransparentFX
