@@ -20,13 +20,20 @@ public class SGameMng : MonoBehaviour
 
     private void Awake()
     {
-        Screen.SetResolution(1280, 720, true);
         _Instance = this;
+        Screen.SetResolution(1280, 720, true);
     }
 
     public List<Monster> FindMobList = new List<Monster>();
-    public Transform NearEnemyTr;
-    public float fNearDis;
+    public Player PlayerSc;
+    public FindEnemy FindEnemySc;
+    public Transform TargetEnemyTr;
+    public float fTargetDis;
     public bool bMobileOn = false;
+    public UnityEngine.UI.Text testLog;
 
+    public void log(string msg)
+    {
+        testLog.text += msg + "\n";
+    }
 }

@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+
 public class Monster : MonoBehaviour
 {
-
-    FindEnemy FindEnemySc;
-
     public float fMonsterHp;
 
+    public float fPlayerDis;
     public bool bThisTarget = false;
     public bool bFindMobOn = false;
 
     public bool bAlreadyList = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        FindEnemySc = GameObject.Find("Find_Enemy").GetComponent<FindEnemy>();
+        SGameMng.I.FindMobList.Add(this);
         fMonsterHp = 100.0f;
     }
 
@@ -30,6 +29,7 @@ public class Monster : MonoBehaviour
 
     void MonsterState()
     {
+        fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.PlayerSc.transform.position);
         if (fMonsterHp <= 0.0f)
         {
             Destroy(gameObject);
@@ -38,32 +38,12 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("FindEnemy"))
-        {
-            if (!bAlreadyList)
-            {
-                SGameMng.I.FindMobList.Add(this);
-                bAlreadyList = true;
-                bFindMobOn = true;
-            }
-            else
-                bFindMobOn = true;
-        }
+
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("FindEnemy"))
-        {
-            if (bFindMobOn)
-                bFindMobOn = false;
-            if (bThisTarget)
-            {
-                FindEnemySc.FindNearEnemy();
-                bFindMobOn = false;
-                bThisTarget = false;
-            }
-        }
+
     }
 
 }
