@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class MonsterMng : MonoBehaviour
 {
-    // Update is called once per frame
+    public bool bAreaSkillOn = false;                                   // 광역스킬 여부(플레이어)
+
     void Update()
     {
         CheckPlayerDis();
+        if (bAreaSkillOn)
+        {
+            PlayerAreaSkill();
+            bAreaSkillOn = false;
+        }
     }
 
     void CheckPlayerDis()
@@ -20,7 +26,19 @@ public class MonsterMng : MonoBehaviour
                 {
                     SGameMng.I.TargetEnemyTr = SGameMng.I.FindMobList[j].transform;
                     SGameMng.I.fTargetDis = SGameMng.I.FindMobList[j].fPlayerDis;
+                    SGameMng.I.TargetEneymSc = SGameMng.I.FindMobList[j].SelfMonsterSc;
                 }
+            }
+        }
+    }
+
+    void PlayerAreaSkill()
+    {
+        for (int i = 0; i < SGameMng.I.FindMobList.Count; i++)
+        {
+            if (!SGameMng.I.FindMobList.Equals(null))
+            {
+                SGameMng.I.FindMobList[i].Debuffs(SGameMng.I.PlayerSc.Playertype);
             }
         }
     }

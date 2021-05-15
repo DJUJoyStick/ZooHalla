@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float fBulletDmg;
 
     float fBulletSpeed;
     float fBulletDegree;
 
+    public int nBulletDmg;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +19,12 @@ public class Bullet : MonoBehaviour
             float dx = SGameMng.I.TargetEnemyTr.position.x - transform.position.x;
             fBulletDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
 
-            transform.rotation = Quaternion.AngleAxis(fBulletDegree - 90f, Vector3.forward);
+            if (SGameMng.I.TargetEneymSc.bFindMobOn)
+            {
+                transform.rotation = Quaternion.AngleAxis(fBulletDegree - 90f, Vector3.forward);
+            }
         }
-        fBulletDmg = 5.0f;
+        nBulletDmg = 5;
         fBulletSpeed = 15.0f;
         StartCoroutine(DestroyBullet());
     }
@@ -48,7 +51,7 @@ public class Bullet : MonoBehaviour
         if (col.CompareTag("Monster"))
         {
             Monster HitMonsterSc = col.GetComponent<Monster>();
-            HitMonsterSc.fMonsterHp -= fBulletDmg;
+            HitMonsterSc.nMonsterHp -= nBulletDmg;
             Destroy(gameObject);
         }
         if (col.CompareTag("Wall"))

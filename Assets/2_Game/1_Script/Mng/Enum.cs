@@ -10,3 +10,15 @@ public enum PLAYERDIRECT
     UP,
     DOWN
 }
+
+public enum PLAYERTYPE
+{
+    RAT,
+    TURTLE,
+    WOLF
+}
+
+public enum GUNTYPE
+{
+    TESTGUN
+}
