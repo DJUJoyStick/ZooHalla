@@ -14,39 +14,39 @@ public class FindEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindNearEnemy();
+        //FindNearEnemy();
     }
 
-    public void FindNearEnemy()
-    {
-        for (int i = 0; i < SGameMng.I.FindMobList.Count; i++)
-        {
-            if (SGameMng.I.FindMobList[i].bFindMobOn)
-            {
-                float fDistance = Vector2.Distance(SGameMng.I.FindMobList[i].transform.position, gameObject.transform.parent.position);
-                if (SGameMng.I.NearEnemyTr.Equals(null))
-                {
-                    NearMobCheck(i);
-                }
-                else
-                    SGameMng.I.fNearDis = Vector2.Distance(SGameMng.I.NearEnemyTr.position, gameObject.transform.parent.position);
+    //public void FindNearEnemy()
+    //{
+    //    for (int i = 0; i < SGameMng.I.FindMobList.Count; i++)
+    //    {
+    //        if (SGameMng.I.FindMobList[i].bFindMobOn)
+    //        {
+    //            float fDistance = Vector2.Distance(SGameMng.I.FindMobList[i].transform.position, gameObject.transform.parent.position);
+    //            if (SGameMng.I.NearEnemyTr.Equals(null))
+    //            {
+    //                NearMobCheck(i);
+    //            }
+    //            else
+    //                SGameMng.I.fNearDis = Vector2.Distance(SGameMng.I.NearEnemyTr.position, gameObject.transform.parent.position);
 
-                if (SGameMng.I.fNearDis >= fDistance)
-                {
-                    NearMobCheck(i);
-                }
-                //else if(SGameMng.I.fNearDis >= 4.0f)                                          // 자동공격 범위 벗어날 시
-                //{
-                //    SGameMng.I.NearEnemyTr = null;
-                //    SGameMng.I.fNearDis = 0.0f;
-                //}
-            }
-        }
-    }
+    //            if (SGameMng.I.fNearDis >= fDistance)
+    //            {
+    //                NearMobCheck(i);
+    //            }
+    //            //else if(SGameMng.I.fNearDis >= 4.0f)                                          // 자동공격 범위 벗어날 시
+    //            //{
+    //            //    SGameMng.I.NearEnemyTr = null;
+    //            //    SGameMng.I.fNearDis = 0.0f;
+    //            //}
+    //        }
+    //    }
+    //}
 
-    public void NearMobCheck(int nIndex)
-    {
-        SGameMng.I.NearEnemyTr = SGameMng.I.FindMobList[nIndex].transform;
-        SGameMng.I.FindMobList[nIndex].bThisTarget = true;
-    }
+    //public void NearMobCheck(int nIndex)
+    //{
+    //    SGameMng.I.NearEnemyTr = SGameMng.I.FindMobList[nIndex].transform;
+    //    SGameMng.I.FindMobList[nIndex].bThisTarget = true;
+    //}
 }

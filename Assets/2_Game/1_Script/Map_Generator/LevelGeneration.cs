@@ -13,11 +13,11 @@ public class LevelGeneration : MonoBehaviour {
 	Vector2 worldSize = new Vector2(3,3);
     Room[,] rooms;
     [SerializeField]
-	List<Vector2> takenPositions = new List<Vector2>();
+	public List<Vector2> takenPositions = new List<Vector2>();
 	int gridSizeX, gridSizeY, numberOfRooms = 8;//방갯수조정은 이 변수로 조정할 것
 	public GameObject roomWhiteObj;//미니맵 스프라이트
 	public Transform mapRoot;//처음 시작맵 위치
-	void Start () {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+	void Start () {//takenPositions의 순서가 내가 생각한 거랑 다르게 나올경우 다시 Start로 변경                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 		if (numberOfRooms >= (worldSize.x * 2) * (worldSize.y * 2)){ // 방의 갯수가 (x(4)*2) * (y(4)*2) = 64 64개를 초과한다면
 			numberOfRooms = Mathf.RoundToInt((worldSize.x * 2) * (worldSize.y * 2));//64개까지만 제한
 		}
@@ -34,8 +34,8 @@ public class LevelGeneration : MonoBehaviour {
 		rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, (int)MapState.Start);
 		takenPositions.Insert(0,Vector2.zero);
 		Vector2 checkPos = Vector2.zero;
-		//magic numbers
-		float randomCompare, randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
+        //magic numbers
+        float randomCompare, randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
 		//add rooms
 		for (int i = 1; i < numberOfRooms; i++)
 		{
@@ -64,7 +64,7 @@ public class LevelGeneration : MonoBehaviour {
 			}
 
 			takenPositions.Add(checkPos);//기존엔 insert(0,checkPos) 이었다. 그렇게 하면 계속 0번에 값이 들어가므로 첫번째 0,0은 마지막으로 가게된다
-										 //rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY].pos_x = 
+            
 		}
 	}
 	Vector2 NewPosition(){

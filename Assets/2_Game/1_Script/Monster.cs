@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+
 public class Monster : MonoBehaviour
 {
+    public Monster SelfMonsterSc;
 
-    FindEnemy FindEnemySc;
+    public int nMonsterHp;
 
-    public float fMonsterHp;
+    public int nDotCount;                                                       // 도트데미지 횟수 변수
 
+    public float fPlayerDis;
     public bool bThisTarget = false;
     public bool bFindMobOn = false;
-
-    public bool bAlreadyList = false;
-
+    public bool bDebuffOn = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        FindEnemySc = GameObject.Find("Find_Enemy").GetComponent<FindEnemy>();
-        fMonsterHp = 100.0f;
+        SelfMonsterSc = this;
+        SGameMng.I.FindMobList.Add(this);
+        nMonsterHp = 10;
+        nDotCount = 0;
     }
 
     // Update is called once per frame
@@ -30,40 +34,48 @@ public class Monster : MonoBehaviour
 
     void MonsterState()
     {
-        if (fMonsterHp <= 0.0f)
+        fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.PlayerSc.transform.position);
+        if (nMonsterHp <= 0)
         {
             Destroy(gameObject);
         }
+
+        if (bDebuffOn)
+        {
+
+        }
+    }
+
+    public void Debuffs(PLAYERTYPE Type)
+    {
+        switch (Type)
+        {
+            case PLAYERTYPE.RAT:
+                nDotCount = 10;
+                StartCoroutine(DotDmg());
+                break;
+        }
+    }
+
+    IEnumerator DotDmg()
+    {
+        nDotCount--;
+        nMonsterHp--;
+        yield return new WaitForSeconds(1.0f);
+        if (nDotCount > 0)
+            StartCoroutine(DotDmg());
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("FindEnemy"))
-        {
-            if (!bAlreadyList)
-            {
-                SGameMng.I.FindMobList.Add(this);
-                bAlreadyList = true;
-                bFindMobOn = true;
-            }
-            else
-                bFindMobOn = true;
-        }
+            bFindMobOn = true;
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.CompareTag("FindEnemy"))
-        {
-            if (bFindMobOn)
-                bFindMobOn = false;
-            if (bThisTarget)
-            {
-                FindEnemySc.FindNearEnemy();
-                bFindMobOn = false;
-                bThisTarget = false;
-            }
-        }
+            bFindMobOn = false;
     }
 
 }
