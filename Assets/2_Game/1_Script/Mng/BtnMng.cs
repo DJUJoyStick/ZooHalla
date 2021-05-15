@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BtnMng : MonoBehaviour
 {
-    public Player PlayerSc;
     public GameObject MobileUIGams;
     public GameObject AttackBtnGams;
     public GameObject RollinBtnGams;
@@ -23,18 +22,17 @@ public class BtnMng : MonoBehaviour
 
     public void AttackBtnDown()
     {
-        PlayerSc.bAttackAccess = true;
+        SGameMng.I.PlayerSc._bAttackAccess = true;
     }
 
     public void AttackBtnUp()
     {
-        PlayerSc.bAttackAccess = false;
+        SGameMng.I.PlayerSc._bAttackAccess = false;
     }
 
-    public void RollinBtn()
+    public void ActiveSkillBtn()
     {
-        //Debug.Log("ROLLIN");
-        PlayerSc.bRollin = true;
+        SGameMng.I.PlayerSc._bSkillOn = true;
     }
 
     public void PlatformSwitchBtn()

@@ -25,11 +25,17 @@ public class SGameMng : MonoBehaviour
     }
 
     public List<Monster> FindMobList = new List<Monster>();
-    public Player PlayerSc;
-    public FindEnemy FindEnemySc;
+
     public Transform TargetEnemyTr;
+
+    public Rat PlayerSc;
+    public MonsterMng MonsterMngSc;
+    public Monster TargetEneymSc;
+
     public float fTargetDis;
+
     public bool bMobileOn = false;
+
     public UnityEngine.UI.Text testLog;
 
     public void log(string msg)

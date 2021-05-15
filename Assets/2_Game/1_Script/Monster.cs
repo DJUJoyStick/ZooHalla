@@ -6,19 +6,24 @@ using System;
 
 public class Monster : MonoBehaviour
 {
-    public float fMonsterHp;
+    public Monster SelfMonsterSc;
+
+    public int nMonsterHp;
+
+    public int nDotCount;                                                       // 도트데미지 횟수 변수
 
     public float fPlayerDis;
     public bool bThisTarget = false;
     public bool bFindMobOn = false;
-
-    public bool bAlreadyList = false;
+    public bool bDebuffOn = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        SelfMonsterSc = this;
         SGameMng.I.FindMobList.Add(this);
-        fMonsterHp = 100.0f;
+        nMonsterHp = 10;
+        nDotCount = 0;
     }
 
     // Update is called once per frame
@@ -30,20 +35,47 @@ public class Monster : MonoBehaviour
     void MonsterState()
     {
         fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.PlayerSc.transform.position);
-        if (fMonsterHp <= 0.0f)
+        if (nMonsterHp <= 0)
         {
             Destroy(gameObject);
         }
+
+        if (bDebuffOn)
+        {
+
+        }
+    }
+
+    public void Debuffs(PLAYERTYPE Type)
+    {
+        switch (Type)
+        {
+            case PLAYERTYPE.RAT:
+                nDotCount = 10;
+                StartCoroutine(DotDmg());
+                break;
+        }
+    }
+
+    IEnumerator DotDmg()
+    {
+        nDotCount--;
+        nMonsterHp--;
+        yield return new WaitForSeconds(1.0f);
+        if (nDotCount > 0)
+            StartCoroutine(DotDmg());
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-
+        if (col.CompareTag("FindEnemy"))
+            bFindMobOn = true;
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-
+        if (col.CompareTag("FindEnemy"))
+            bFindMobOn = false;
     }
 
 }
