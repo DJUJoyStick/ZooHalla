@@ -15,7 +15,6 @@ public class PlayerMapPosition : MonoBehaviour
     [SerializeField]
     private int gutter = 12;
 
-    private int roomnum = 2;
     // Start is called before the first frame update
     void Start()
     {

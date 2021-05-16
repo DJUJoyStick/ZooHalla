@@ -2814,6 +2814,7 @@ MonoBehaviour:
   PlayerSc: {fileID: 1850588436}
   MonsterMngSc: {fileID: 1986939209}
   TargetEneymSc: {fileID: 0}
+  C_MapColor: {fileID: 789927595}
   fTargetDis: 0
   bMobileOn: 0
   testLog: {fileID: 0}

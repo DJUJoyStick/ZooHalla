@@ -251,7 +251,7 @@ public class Rat : PlayerMng
         
         
     }
-
+    //맵이동 충돌부
     private void OnTriggerEnter2D(Collider2D col)
     {
         //정의부에서 col.tag를 채킹한다
@@ -259,5 +259,7 @@ public class Rat : PlayerMng
         GetMapPlayer.GetMapPlayerMove(col);
         //플레이어 캐릭터 이동
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
+        //맵 알파값 조정
+        MoveMapAlphaCtrl();
     }
 }

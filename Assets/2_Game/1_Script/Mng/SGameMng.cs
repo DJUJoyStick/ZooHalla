@@ -31,6 +31,7 @@ public class SGameMng : MonoBehaviour
     public Rat PlayerSc;
     public MonsterMng MonsterMngSc;
     public Monster TargetEneymSc;
+    public UnityEngine.UI.Image C_MapColor;
 
     public float fTargetDis;
 
@@ -42,5 +43,7 @@ public class SGameMng : MonoBehaviour
     {
         testLog.text += msg + "\n";
     }
+
+
 }
 
