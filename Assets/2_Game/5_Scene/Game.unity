@@ -1937,7 +1937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1276465428
 Transform:
   m_ObjectHideFlags: 0
@@ -2538,6 +2538,7 @@ GameObject:
   - component: {fileID: 1721695990}
   - component: {fileID: 1721695989}
   - component: {fileID: 1721695988}
+  - component: {fileID: 1721695991}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -2597,6 +2598,23 @@ Transform:
   m_Father: {fileID: 2012081982}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721695991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721695987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22efcde1fa8a3154db1637700736d64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetMapPlayerSpr: {fileID: 7880226596514731585, guid: 465a221ff8657e940ad37ac71da0bd76, type: 3}
+  GetMiniMapRoot: {fileID: 347066014}
+  map_x: 16
+  map_y: 8
+  gutter: 12
 --- !u!1 &1850588434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +2679,7 @@ MonoBehaviour:
   BulletPre: {fileID: 50407560108891461, guid: 93c1c0f5df6dc924fb2108753e84efe0, type: 3}
   GunParentTr: {fileID: 520753716}
   GunTr: {fileID: 72866533}
+  GetMapPlayer: {fileID: 1721695991}
   MoveVec: {x: 0, y: 0, z: 0}
   Playertype: 0
 --- !u!61 &1850588437
@@ -2792,12 +2811,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FindMobList: []
   TargetEnemyTr: {fileID: 0}
+  testLog: {fileID: 0}
+  C_MapColor: {fileID: 0}
   PlayerSc: {fileID: 1850588436}
   MonsterMngSc: {fileID: 1986939209}
   TargetEneymSc: {fileID: 0}
   fTargetDis: 0
   bMobileOn: 0
-  testLog: {fileID: 0}
 --- !u!4 &1855808976
 Transform:
   m_ObjectHideFlags: 0

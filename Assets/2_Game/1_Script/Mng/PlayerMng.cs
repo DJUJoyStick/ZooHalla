@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMng : MonoBehaviour
 {
+    private Image C_GetMapColor;
+
     public GUNTYPE _PlayerGunType;
 
     public int _nPlayerHp;
@@ -30,6 +33,17 @@ public class PlayerMng : MonoBehaviour
                 _fReloadTime = 5.0f;
                 break;
         }
+    }
+
+    //맵 이동시 맵 스프라이트 알파값 조정
+    public void MoveMapAlphaCtrl()
+    {
+        C_GetMapColor = SGameMng.I.C_MapColor.GetComponent<Image>();
+        Debug.Log("s");
+        Color AlpahZeroColor = C_GetMapColor.color;
+        AlpahZeroColor.a = 0f;
+        Color.Lerp(C_GetMapColor.color, AlpahZeroColor, 1f);
+
     }
 
 }

@@ -19,8 +19,8 @@ public class RoomInstance : MonoBehaviour
     private const float tileSize = 1;//타일 크기 건들지 말것
     static int mapsize = 2;
     Vector2 roomSizeInTiles = new Vector2(height * mapsize, width * mapsize);//9,17 가로세로 길이
-
-    public void Setup(Vector2 _gridPos, int _type, bool _doorTop, bool _doorBot, bool _doorLeft, bool _doorRight, int roomnum/*, int x, int y*/)
+    private Transform DoorInfoTrans;
+    public void Setup(Vector2 _gridPos, int _type, bool _doorTop, bool _doorBot, bool _doorLeft, bool _doorRight, int roomnum)
     {
         gridPos = _gridPos;
         type = _type;
@@ -31,6 +31,8 @@ public class RoomInstance : MonoBehaviour
         room_number = roomnum;
         //MakeDoors();
         GenerateRoomTiles();
+
+
     }
     //void MakeDoors()
     //{
@@ -48,12 +50,29 @@ public class RoomInstance : MonoBehaviour
     //    spawnPos = transform.position + Vector3.left * (roomSizeInTiles.x * tileSize) - Vector3.left * (tileSize);
     //    PlaceDoor(spawnPos, doorLeft, doorL);
     //}
-    void PlaceDoor(Vector3 spawnPos, bool door, GameObject doorSpawn)
+    void PlaceDoor(Vector3 spawnPos, bool door, GameObject doorSpawn, int door_pos)
     {
         // check whether its a door or wall, then spawn
         if (door)
         {
-            Instantiate(doorSpawn, spawnPos, Quaternion.identity).transform.parent = transform;
+            DoorInfoTrans = Instantiate(doorSpawn, spawnPos, Quaternion.identity).transform;
+            DoorInfoTrans.transform.parent = transform;
+            if (door_pos == (int)DoorPos.Top)
+            {
+                DoorInfoTrans.tag = "UpDoor";
+            }
+            else if (door_pos == (int)DoorPos.Down)
+            {
+                DoorInfoTrans.tag = "DownDoor";
+            }
+            else if (door_pos == (int)DoorPos.Left)
+            {
+                DoorInfoTrans.tag = "LeftDoor";
+            }
+            else if (door_pos == (int)DoorPos.Right)
+            {
+                DoorInfoTrans.tag = "RightDoor";
+            }
         }
         else
         {
@@ -71,17 +90,17 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(x, 0);
             if (x == width * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorTop, doorU);
+                PlaceDoor(spawnPos, doorTop, doorU, (int)DoorPos.Top);
             }
             else
             {
                 Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = this.transform;
-            }  
+            }
 
             spawnPos = positionFromTileGrid(x, 17);
             if (x == width * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorBot, doorD);
+                PlaceDoor(spawnPos, doorBot, doorD, (int)DoorPos.Down);
             }
             else
             {
@@ -94,7 +113,7 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(0, y);
             if (y == height * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorLeft, doorL);
+                PlaceDoor(spawnPos, doorLeft, doorL, (int)DoorPos.Left);
             }
             else
             {
@@ -104,7 +123,7 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(33, y);
             if (y == height * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorRight, doorR);
+                PlaceDoor(spawnPos, doorRight, doorR, (int)DoorPos.Right);
             }
             else
             {
