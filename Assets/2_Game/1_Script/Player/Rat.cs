@@ -9,6 +9,8 @@ public class Rat : PlayerMng
     public Transform GunParentTr;
     public Transform GunTr;
 
+    public PlayerMapPosition GetMapPlayer;
+
     SpriteRenderer PlayerSr;
 
     Rigidbody2D PlayerRig;
@@ -247,9 +249,16 @@ public class Rat : PlayerMng
                 Debug.Log(nRand);
             }
         }
-        else if (col.transform.CompareTag("Door"))
-        {
+    }
 
-        }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        //정의부에서 col.tag를 채킹한다
+        //미니맵 캐릭터 이동
+        GetMapPlayer.GetMapPlayerMove(col);
+        //플레이어 캐릭터 이동
+        transform.Translate(GetMapPlayer.GetPlayerMove(col));
+        //맵 알파값 조정
+        //MoveMapAlphaCtrl();
     }
 }

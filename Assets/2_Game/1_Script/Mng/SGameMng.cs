@@ -28,6 +28,9 @@ public class SGameMng : MonoBehaviour
 
     public Transform TargetEnemyTr;
 
+    public UnityEngine.UI.Text testLog;
+    public UnityEngine.UI.Image C_MapColor;
+
     public Rat PlayerSc;
     public MonsterMng MonsterMngSc;
     public Monster TargetEneymSc;
@@ -36,7 +39,6 @@ public class SGameMng : MonoBehaviour
 
     public bool bMobileOn = false;
 
-    public UnityEngine.UI.Text testLog;
 
     public void log(string msg)
     {

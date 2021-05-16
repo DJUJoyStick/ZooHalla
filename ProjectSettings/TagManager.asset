@@ -9,6 +9,10 @@ TagManager:
   - FindEnemy
   - Wall
   - Door
+  - UpDoor
+  - DownDoor
+  - LeftDoor
+  - RightDoor
   layers:
   - Default
   - TransparentFX
