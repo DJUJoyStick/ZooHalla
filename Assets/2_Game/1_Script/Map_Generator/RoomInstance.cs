@@ -57,19 +57,19 @@ public class RoomInstance : MonoBehaviour
         {
             DoorInfoTrans = Instantiate(doorSpawn, spawnPos, Quaternion.identity).transform;
             DoorInfoTrans.transform.parent = transform;
-            if (door_pos == (int)DoorPos.Top)
+            if (door_pos == (int)DOORPOS.TOP)
             {
                 DoorInfoTrans.tag = "UpDoor";
             }
-            else if (door_pos == (int)DoorPos.Down)
+            else if (door_pos == (int)DOORPOS.DOWN)
             {
                 DoorInfoTrans.tag = "DownDoor";
             }
-            else if (door_pos == (int)DoorPos.Left)
+            else if (door_pos == (int)DOORPOS.LEFT)
             {
                 DoorInfoTrans.tag = "LeftDoor";
             }
-            else if (door_pos == (int)DoorPos.Right)
+            else if (door_pos == (int)DOORPOS.RIGHT)
             {
                 DoorInfoTrans.tag = "RightDoor";
             }
@@ -90,7 +90,7 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(x, 0);
             if (x == width * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorTop, doorU, (int)DoorPos.Top);
+                PlaceDoor(spawnPos, doorTop, doorU, (int)DOORPOS.TOP);
             }
             else
             {
@@ -100,7 +100,7 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(x, 17);
             if (x == width * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorBot, doorD, (int)DoorPos.Down);
+                PlaceDoor(spawnPos, doorBot, doorD, (int)DOORPOS.DOWN);
             }
             else
             {
@@ -113,7 +113,7 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(0, y);
             if (y == height * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorLeft, doorL, (int)DoorPos.Left);
+                PlaceDoor(spawnPos, doorLeft, doorL, (int)DOORPOS.LEFT);
             }
             else
             {
@@ -123,7 +123,7 @@ public class RoomInstance : MonoBehaviour
             spawnPos = positionFromTileGrid(33, y);
             if (y == height * mapsize / 2)
             {
-                PlaceDoor(spawnPos, doorRight, doorR, (int)DoorPos.Right);
+                PlaceDoor(spawnPos, doorRight, doorR, (int)DOORPOS.RIGHT);
             }
             else
             {

@@ -35,6 +35,8 @@ public class SGameMng : MonoBehaviour
     public MonsterMng MonsterMngSc;
     public Monster TargetEneymSc;
 
+    public int nFullHp;
+
     public float fTargetDis;
 
     public bool bMobileOn = false;

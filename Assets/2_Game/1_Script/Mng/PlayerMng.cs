@@ -7,7 +7,7 @@ public class PlayerMng : MonoBehaviour
 {
     private Image C_GetMapColor;
 
-    public GUNTYPE _PlayerGunType;
+    public RANGEDWEAPON _PlayerWeapon;
 
     public int _nPlayerHp;
     public int _nBulletAmount;
@@ -15,6 +15,9 @@ public class PlayerMng : MonoBehaviour
 
     public float _fMoveSpeed;
     public float _fReloadTime;
+    private float _fAlphaDuration = 0.5f;
+    private float _fDuration = 2f;
+    private float _fSmoothness = 0.02f;
 
     public bool _bDmgAccess = false;
     public bool _bMoveAccess = false;
@@ -26,9 +29,9 @@ public class PlayerMng : MonoBehaviour
 
     public void ChangeGunType()
     {
-        switch (_PlayerGunType)
+        switch (_PlayerWeapon)
         {
-            case GUNTYPE.TESTGUN:
+            case RANGEDWEAPON.TESTGUN :
                 _nBulletAmount = 30;
                 _fReloadTime = 5.0f;
                 break;
@@ -36,13 +39,29 @@ public class PlayerMng : MonoBehaviour
     }
 
     //맵 이동시 맵 스프라이트 알파값 조정
-    public void MoveMapAlphaCtrl()
+    //맵 이동시 맵 스프라이트 알파값 조정
+    public IEnumerator MoveMapAlphaCtrl()
     {
-        C_GetMapColor = SGameMng.I.C_MapColor.GetComponent<Image>();
-        Debug.Log("s");
-        Color AlpahZeroColor = C_GetMapColor.color;
-        AlpahZeroColor.a = 0f;
-        Color.Lerp(C_GetMapColor.color, AlpahZeroColor, 1f);
+
+        float progress = 0f;
+        float increment = _fSmoothness / _fAlphaDuration;
+
+        while (progress < 1)
+        {
+            SGameMng.I.C_MapColor.GetComponent<Image>().color = Color.Lerp(Color.clear, Color.white, progress);
+            progress += increment;
+            yield return new WaitForSeconds(_fSmoothness);
+        }
+
+        progress = 0f;
+        yield return new WaitForSeconds(_fDuration);
+
+        while (progress < 1)
+        {
+            SGameMng.I.C_MapColor.GetComponent<Image>().color = Color.Lerp(Color.white, Color.clear, progress);
+            progress += increment;
+            yield return new WaitForSeconds(_fSmoothness);
+        }
 
     }
 

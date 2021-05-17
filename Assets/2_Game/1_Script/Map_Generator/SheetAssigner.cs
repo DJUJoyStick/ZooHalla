@@ -14,7 +14,6 @@ public class SheetAssigner : MonoBehaviour {
 	public Vector2 roomDimensions = new Vector2(17,9);//272,144(16에서 4로 축소 밑에도)68,36
 	public Vector2 gutterSize = new Vector2(4, 4);//144,64 36,16
 	public void Assign(Room[,] rooms){
-		int count = 0;
 		foreach (Room room in rooms){
 			//skip point where there is no room
 			if (room == null){
@@ -28,9 +27,5 @@ public class SheetAssigner : MonoBehaviour {
 			myRoom.Setup(room.gridPos, room.type, room.doorTop, room.doorBot, room.doorLeft, room.doorRight, room_number++);
 			myRoom.transform.parent = RoomParent.transform;
         }
-	}
-	public void GetRoomPos(int x, int y, int i)
-	{
-		//Debug.Log(x + "와" + y + "의" + i + "번째");
 	}
 }

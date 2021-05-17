@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 72866533}
   - component: {fileID: 72866534}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ RectTransform:
   - {fileID: 849387470}
   - {fileID: 1175528471}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520753716}
   m_Layer: 0
-  m_Name: GunParent
+  m_Name: WeaponParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,7 +1052,7 @@ Transform:
   m_Children:
   - {fileID: 72866533}
   m_Father: {fileID: 1850588435}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &597958305
 GameObject:
@@ -1305,14 +1305,14 @@ RectTransform:
   m_GameObject: {fileID: 789927593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 89116914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 515, y: 160}
+  m_AnchoredPosition: {x: 480, y: 200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789927595
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: c957343f3dcc83043bb2f091879f6c0e, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1757,7 +1757,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5/ 5
+  m_Text: 5 / 5
 --- !u!222 &1212435138
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1920,66 +1920,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223284003}
   m_CullTransparentMesh: 1
---- !u!1 &1276465427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1276465428}
-  - component: {fileID: 1276465429}
-  - component: {fileID: 1276465430}
-  m_Layer: 0
-  m_Name: Find_Enemy
-  m_TagString: FindEnemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1276465428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276465427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1850588435}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1276465429
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276465427}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 7
---- !u!114 &1276465430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276465427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4429e07b2027733438def9c68c08475b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1287816019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2569,7 @@ GameObject:
   - component: {fileID: 1850588437}
   - component: {fileID: 1850588436}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Rat
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,7 +2586,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1276465428}
   - {fileID: 520753716}
   m_Father: {fileID: 1596151382}
   m_RootOrder: 1
@@ -2663,7 +2602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27495ceaf3bc2b45ab494213e8e35e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerGunType: 0
+  _PlayerWeapon: 0
   _nPlayerHp: 0
   _nBulletAmount: 0
   _nEvasion: 0
@@ -2677,6 +2616,7 @@ MonoBehaviour:
   _bBulletReloading: 0
   _bSkillOn: 0
   BulletPre: {fileID: 50407560108891461, guid: 93c1c0f5df6dc924fb2108753e84efe0, type: 3}
+  JoyStickTr: {fileID: 1221611190}
   GunParentTr: {fileID: 520753716}
   GunTr: {fileID: 72866533}
   GetMapPlayer: {fileID: 1721695991}
@@ -2812,10 +2752,11 @@ MonoBehaviour:
   FindMobList: []
   TargetEnemyTr: {fileID: 0}
   testLog: {fileID: 0}
-  C_MapColor: {fileID: 0}
+  C_MapColor: {fileID: 789927595}
   PlayerSc: {fileID: 1850588436}
   MonsterMngSc: {fileID: 1986939209}
   TargetEneymSc: {fileID: 0}
+  nFullHp: 0
   fTargetDis: 0
   bMobileOn: 0
 --- !u!4 &1855808976
@@ -2830,7 +2771,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1921327732
 GameObject:

@@ -6,6 +6,7 @@ public class Rat : PlayerMng
 {
     public GameObject BulletPre;
 
+    public Transform JoyStickTr;
     public Transform GunParentTr;
     public Transform GunTr;
 
@@ -15,6 +16,8 @@ public class Rat : PlayerMng
 
     Rigidbody2D PlayerRig;
 
+    Coroutine RatPassiveCor;
+
     Vector2 PlayerMoveVec;
     Vector3 SaveMoveVec;
     public Vector3 MoveVec;                        // 모바일
@@ -22,20 +25,21 @@ public class Rat : PlayerMng
 
     public PLAYERTYPE Playertype;
 
+    int nSaveHealth;
+
     const float correction = 90f * Mathf.Deg2Rad;   // 모바일
     //public float fBulletDirect;
     float fRotateDegree;
     float fBulletDelay;
     float fGunRot;
 
-    PLAYERDIRECT direction;
-
+    bool bRatPassive = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Playertype = PLAYERTYPE.RAT;
-        direction = PLAYERDIRECT.DONTMOVE;
+        //direction = PLAYERDIRECT.DONTMOVE;
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerRig = GetComponent<Rigidbody2D>();
         _fMoveSpeed = 10.0f;
@@ -44,6 +48,8 @@ public class Rat : PlayerMng
         _bMoveAccess = true;
         _bDmgAccess = true;
         ChangeGunType();
+        SGameMng.I.nFullHp = 5;
+        RatPassiveCor = StartCoroutine(AutoHealth());
     }
 
     // Update is called once per frame
@@ -92,6 +98,12 @@ public class Rat : PlayerMng
             _bMoveAccess = false;
             _bDmgAccess = false;
         }
+
+        if (!bRatPassive && _nPlayerHp <= 3)
+        {
+            RatPassiveCor = StartCoroutine(AutoHealth());
+            bRatPassive = true;
+        }
     }
 
     void getKey()
@@ -114,6 +126,14 @@ public class Rat : PlayerMng
         fGunRot = (Mathf.Atan2(MoveVec.y, MoveVec.x) - correction) * Mathf.Rad2Deg;
         if (_bMoveAccess)
             GunParentTr.rotation = Quaternion.Euler(0f, 0f, fGunRot - 90f);
+        if (JoyStickTr.localPosition.x < 0)
+        {
+            PlayerSr.flipX = false;
+        }
+        else if (JoyStickTr.localPosition.x > 0)
+        {
+            PlayerSr.flipX = true;
+        }
     }
 
     void Move()
@@ -123,23 +143,23 @@ public class Rat : PlayerMng
             PlayerMoveVec = Vector2.zero;
             if (Input.GetKey(KeyCode.W))
             {
-                direction = PLAYERDIRECT.UP;
+                //direction = PLAYERDIRECT.UP;
                 PlayerMoveVec.y += _fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                direction = PLAYERDIRECT.DOWN;
+                //direction = PLAYERDIRECT.DOWN;
                 PlayerMoveVec.y -= _fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                direction = PLAYERDIRECT.LEFT;
+                //direction = PLAYERDIRECT.LEFT;
                 PlayerSr.flipX = false;
                 PlayerMoveVec.x -= _fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                direction = PLAYERDIRECT.RIGHT;
+                //direction = PLAYERDIRECT.RIGHT;
                 PlayerSr.flipX = true;
                 PlayerMoveVec.x += _fMoveSpeed;
             }
@@ -150,6 +170,7 @@ public class Rat : PlayerMng
             Attack();
         }
     }
+
     void WeaponRot()
     {
         Vector3 mPosition = Input.mousePosition;
@@ -219,6 +240,20 @@ public class Rat : PlayerMng
         }
     }
 
+    IEnumerator AutoHealth()
+    {
+        yield return new WaitForSeconds(5.0f);
+        if (_nPlayerHp.Equals(nSaveHealth))
+        {
+            if (_nPlayerHp <= 3)
+            {
+                _nPlayerHp++;
+                nSaveHealth++;
+            }
+        }
+        bRatPassive = false;
+    }
+
     IEnumerator BulletReload()
     {
         _bBulletReloading = true;
@@ -245,9 +280,18 @@ public class Rat : PlayerMng
             {
                 StartCoroutine(DamageCtrl());
                 if (nRand > 30)
+                {
                     _nPlayerHp -= 1;
-                Debug.Log(nRand);
+                    nSaveHealth = _nPlayerHp;
+
+                    StopCoroutine(RatPassiveCor);
+                    if (bRatPassive)
+                    {
+                        bRatPassive = false;
+                    }
+                }
             }
+
         }
     }
 
@@ -259,6 +303,6 @@ public class Rat : PlayerMng
         //플레이어 캐릭터 이동
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
         //맵 알파값 조정
-        //MoveMapAlphaCtrl();
+        StartCoroutine(MoveMapAlphaCtrl());
     }
 }
