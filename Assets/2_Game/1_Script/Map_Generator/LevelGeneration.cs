@@ -95,7 +95,7 @@ public class LevelGeneration : MonoBehaviour {
 	}
 	Vector2 SelectiveNewPosition(){ // 방법은 두 가지 논평을 통해 위와 다르다.
 		int index = 0, inc = 0;
-		int x =0, y =0;
+		int x = 0, y = 0;
 		Vector2 checkingPos = Vector2.zero;
 		do{
 			inc = 0;

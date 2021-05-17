@@ -74,15 +74,15 @@ public class MapSpriteSelector : MonoBehaviour {
 
 	void PickColor()
 	{ //방 정보에 따른 색 변환
-		if (type == 0)
+		if (type.Equals(0))
 		{
 			mainColor = normalColor;
 		}
-		else if (type == 1)
+		else if (type.Equals(1))
 		{
 			mainColor = enterColor;
 		}
-		else if (type == 2)
+		else if (type.Equals(2))
 		{
 			mainColor = bossColor;
 		}

@@ -24,7 +24,6 @@ public class PlayerMapPosition : MonoBehaviour
 
     private void Initializing()
     {
-        var level = GetComponent<LevelGeneration>();
         MapPlayerTrans = Instantiate(GetMapPlayerSpr, Vector2.zero, Quaternion.identity).transform;
         MapPlayerTrans.parent = GetMiniMapRoot.transform;
     }

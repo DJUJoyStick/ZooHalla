@@ -40,10 +40,12 @@ public class Monster : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (bDebuffOn)
+        if (fPlayerDis <= 7.0f)
         {
-
+            bFindMobOn = true;
         }
+        else
+            bFindMobOn = false;
     }
 
     public void Debuffs(PLAYERTYPE Type)
@@ -65,17 +67,4 @@ public class Monster : MonoBehaviour
         if (nDotCount > 0)
             StartCoroutine(DotDmg());
     }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("FindEnemy"))
-            bFindMobOn = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.CompareTag("FindEnemy"))
-            bFindMobOn = false;
-    }
-
 }

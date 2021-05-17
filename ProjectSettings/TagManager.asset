@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Bullet
   - Monster
-  - FindEnemy
   - Wall
   - Door
   - UpDoor

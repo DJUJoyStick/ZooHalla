@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour
 
     void HealthState()
     {
-        HealthBarImg.fillAmount = (float)SGameMng.I.PlayerSc._nPlayerHp / 5f;
-        HealthBarText.text = SGameMng.I.PlayerSc._nPlayerHp + " / " + 5;
+        HealthBarImg.fillAmount = (float)SGameMng.I.PlayerSc._nPlayerHp / (float)SGameMng.I.nFullHp;
+        HealthBarText.text = SGameMng.I.PlayerSc._nPlayerHp + " / " + SGameMng.I.nFullHp;
     }
 }
