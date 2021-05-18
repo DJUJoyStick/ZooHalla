@@ -34,8 +34,7 @@ public class SGameMng : MonoBehaviour
     public Rat PlayerSc;
     public MonsterMng MonsterMngSc;
     public Monster TargetEneymSc;
-
-    public int nFullHp;
+    public TextMng TextMngSc;
 
     public float fTargetDis;
 

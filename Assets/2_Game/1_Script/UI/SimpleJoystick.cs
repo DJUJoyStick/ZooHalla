@@ -221,6 +221,7 @@ namespace CnControls
 			{
 				Hide(true);
 			}
+			Debug.Log("Up");
 		}
 
 		public void OnPointerDown(PointerEventData eventData)
@@ -240,6 +241,7 @@ namespace CnControls
 				_baseTransform.position = localBasePosition;
 				_stickTransform.position = localStickPosition;
 				_intermediateStickPosition = _stickTransform.anchoredPosition;
+				Debug.Log("Down");
 			}
 			else
 			{

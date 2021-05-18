@@ -14,7 +14,7 @@ public class Rat : PlayerMng
 
     SpriteRenderer PlayerSr;
 
-    Rigidbody2D PlayerRig;
+    public Rigidbody2D PlayerRig;
 
     Coroutine RatPassiveCor;
 
@@ -23,7 +23,6 @@ public class Rat : PlayerMng
     public Vector3 MoveVec;                        // 모바일
     Vector3 RotVec;                                // 모바일
 
-    public PLAYERTYPE Playertype;
 
     int nSaveHealth;
 
@@ -38,23 +37,28 @@ public class Rat : PlayerMng
     // Start is called before the first frame update
     void Start()
     {
-        Playertype = PLAYERTYPE.RAT;
+        _Playertype = PLAYERTYPE.RAT;
+        _PlayerWeaponType = WEAPONTYPE.RANGED_WEAPON;
         //direction = PLAYERDIRECT.DONTMOVE;
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerRig = GetComponent<Rigidbody2D>();
         _fMoveSpeed = 10.0f;
         _nPlayerHp = 5;
+        _nFullHp = 5;
         _nEvasion = 30;
         _bMoveAccess = true;
         _bDmgAccess = true;
-        ChangeGunType();
-        SGameMng.I.nFullHp = 5;
+        WeaponSetting(_PlayerWeaponType);
         RatPassiveCor = StartCoroutine(AutoHealth());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            WeaponSetting(_PlayerWeaponType);
+        }
         PlayerState();
         if (!SGameMng.I.bMobileOn)
         {
@@ -73,7 +77,7 @@ public class Rat : PlayerMng
                 Attack();
             }
         }
-        if (Time.time > fBulletDelay + 0.1f)                                                                                // 0.1f부분을 변수화해서 총알 딜레이 설정
+        if (Time.time > fBulletDelay + _fAttackSpeed)                                                                                // 0.1f부분을 변수화해서 총알 딜레이 설정
         {
             _bBulletShooting = false;
         }
@@ -218,7 +222,7 @@ public class Rat : PlayerMng
                 }
                 if (_nBulletAmount <= 0 && !_bBulletReloading)
                 {
-                    StartCoroutine(BulletReload());
+                    StartCoroutine(WeaponReload());
                 }
             }
             else
@@ -233,7 +237,7 @@ public class Rat : PlayerMng
                 }
                 if (_nBulletAmount <= 0 && !_bBulletReloading)
                 {
-                    StartCoroutine(BulletReload());
+                    StartCoroutine(WeaponReload());
                 }
             }
             _bBulletShooting = true;
@@ -254,11 +258,11 @@ public class Rat : PlayerMng
         bRatPassive = false;
     }
 
-    IEnumerator BulletReload()
+    IEnumerator WeaponReload()
     {
         _bBulletReloading = true;
         yield return new WaitForSeconds(_fReloadTime);
-        ChangeGunType();
+        WeaponSetting(_PlayerWeaponType);
         _bBulletReloading = false;
     }
 
@@ -291,7 +295,6 @@ public class Rat : PlayerMng
                     }
                 }
             }
-
         }
     }
 
