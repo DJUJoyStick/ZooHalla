@@ -55,18 +55,22 @@ public class PlayerMapPosition : MonoBehaviour
         if (GetTag.CompareTag("UpDoor"))
         {
             tempVec2.y = gutter;
+            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
         }
         else if (GetTag.CompareTag("DownDoor"))
         {
             tempVec2.y = -gutter;
+            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
         }
         else if (GetTag.CompareTag("LeftDoor"))
         {
             tempVec2.x = -gutter;
+            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
         }
         else if (GetTag.CompareTag("RightDoor"))
         {
             tempVec2.x = gutter;
+            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
         }
         //GetTrans.Translate(tempVec2);
         return tempVec2;

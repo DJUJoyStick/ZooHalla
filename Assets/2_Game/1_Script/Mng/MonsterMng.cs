@@ -38,7 +38,7 @@ public class MonsterMng : MonoBehaviour
         {
             if (!SGameMng.I.FindMobList.Equals(null))
             {
-                SGameMng.I.FindMobList[i].Debuffs(SGameMng.I.PlayerSc.Playertype);
+                SGameMng.I.FindMobList[i].Debuffs(SGameMng.I.PlayerSc._Playertype);
             }
         }
     }

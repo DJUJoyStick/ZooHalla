@@ -43,11 +43,11 @@ public class BtnMng : MonoBehaviour
             PlatformSwtichSetActive(false);
     }
 
-    void PlatformSwtichSetActive(bool SwtichOn)
+    void PlatformSwtichSetActive(bool SwitchOn)
     {
-        SGameMng.I.bMobileOn = SwtichOn;
-        MobileUIGams.SetActive(SwtichOn);
-        AttackBtnGams.SetActive(SwtichOn);
-        RollinBtnGams.SetActive(SwtichOn);
+        SGameMng.I.bMobileOn = SwitchOn;
+        MobileUIGams.SetActive(SwitchOn);
+        AttackBtnGams.SetActive(SwitchOn);
+        RollinBtnGams.SetActive(SwitchOn);
     }
 }
