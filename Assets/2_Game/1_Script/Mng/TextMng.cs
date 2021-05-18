@@ -14,7 +14,6 @@ public class TextMng : MonoBehaviour
     {
         HealthState();
         AmountState();
-        //Debug.Log(SGameMng.I.PlayerSc._nBulletAmount + " / " + SGameMng.I.PlayerSc._nFullBulletAmount);
     }
 
     void HealthState()

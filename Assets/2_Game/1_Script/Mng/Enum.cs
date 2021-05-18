@@ -46,12 +46,12 @@ public enum WEAPONTYPE
 public enum MELEEWEAPON             // 근접무기
 {
     TOOTH_PICK,                     // 이쑤시개 (normal)
-    CLIP,                           // 클립?
+    CLUB,                           // 클럽
     STONE_SPEAR,                    // 돌창
     VINE_WHIP,                      // 넝쿨채찍
     WOOD_SHIELD,                    // 나무방패
     SPIRAL_SWORD,                   // 나선검 (rare)
-    SWORD_SHIELD,                   // 소드쉴드
+    RIGHT_SWORD_LEFT_SHILED,        // 오른손엔 검 왼손엔 방패
     KOLA,                           // kola
     RAPIER,                         // 레이피어
     FORK,                           // 포크 (unique)
@@ -72,11 +72,11 @@ public enum RANGEDWEAPON            // 원거리무기
     FIRE_BIRD,                      // 불새 (rare)
     FIRE_LOCK,                      // 화승총
     CHAKRAM,                        // 차크람
-    RAILGUN,                        // 레일건
+    NAILGUN,                        // 네일건
     SHILED_PISTOL,                  // 실드피소톨 (unique)
     GENTLEMAN_UMBRELLA,             // 신사우산
     THREE_SIX_NINE,                 // 369
-    FLAXGUN,                        // Flax Gun
+    FLAX_GUN,                       // Flax Gun
     END_OF_THE_CENTURY_GAUNTLET     // 세기말 건틀릿 (legend)
 }
 
