@@ -7,7 +7,6 @@ public class PlayerMng : MonoBehaviour
 {
     private Image C_GetMapColor;
 
-
     public PLAYERTYPE _Playertype;
     public WEAPONRATING _PlayerWeaponRating;
     public WEAPONTYPE _PlayerWeaponType;
@@ -35,7 +34,6 @@ public class PlayerMng : MonoBehaviour
     public bool _bPlayerDie = false;
     public bool _bBulletReloading = false;
     public bool _bSkillOn = false;
-
 
     public IEnumerator DoorToNextStage()
     {
@@ -77,88 +75,46 @@ public class PlayerMng : MonoBehaviour
             switch (_PlayerMeleeWeapon)
             {
                 case MELEEWEAPON.TOOTH_PICK:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 이쑤시개";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nWeaponDmg = 4;
-                    _fAttackSpeed = 0.3f;
+                    MeleeWeaponSetting("현재무기 : 이쑤시개", WEAPONRATING.NORMAL, 4, 0.3f);
                     break;
-                case MELEEWEAPON.CLIP:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 클립";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nWeaponDmg = 6;
-                    _fAttackSpeed = 0.5f;
+                case MELEEWEAPON.CLUB:
+                    MeleeWeaponSetting("현재무기 : 클럽", WEAPONRATING.NORMAL, 6, 0.5f);
                     break;
                 case MELEEWEAPON.STONE_SPEAR:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 돌창";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nWeaponDmg = 7;
-                    _fAttackSpeed = 0.5f;
+                    MeleeWeaponSetting("현재무기 : 돌창", WEAPONRATING.NORMAL, 7, 0.5f);
                     break;
                 case MELEEWEAPON.VINE_WHIP:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 넝쿨채찍";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nWeaponDmg = 6;
-                    _fAttackSpeed = 0.4f;
+                    MeleeWeaponSetting("현재무기 : 넝쿨채찍", WEAPONRATING.NORMAL, 6, 0.4f);
                     break;
                 case MELEEWEAPON.WOOD_SHIELD:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 나무방패";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nWeaponDmg = 4;
-                    _fAttackSpeed = 0.6f;
+                    MeleeWeaponSetting("현재무기 : 나무방패", WEAPONRATING.NORMAL, 4, 0.6f);
                     break;
                 case MELEEWEAPON.SPIRAL_SWORD:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 나선검";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nWeaponDmg = 9;
-                    _fAttackSpeed = 0.5f;
+                    MeleeWeaponSetting("현재무기 : 나선검", WEAPONRATING.RARE, 9, 0.5f);
                     break;
-                case MELEEWEAPON.SWORD_SHIELD:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 소드쉴드";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nWeaponDmg = 9;
-                    _fAttackSpeed = 0.5f;
+                case MELEEWEAPON.RIGHT_SWORD_LEFT_SHILED:
+                    MeleeWeaponSetting("현재무기 : 오른쪽엔 검 왼쪽엔 방패", WEAPONRATING.RARE, 9, 0.5f);
                     break;
                 case MELEEWEAPON.KOLA:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : Kola";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nWeaponDmg = 11;
-                    _fAttackSpeed = 0.4f;
+                    MeleeWeaponSetting("현재무기 : Kola", WEAPONRATING.RARE, 11, 0.4f);
                     break;
                 case MELEEWEAPON.RAPIER:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 레이피어";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nWeaponDmg = 8;
-                    _fAttackSpeed = 0.2f;
+                    MeleeWeaponSetting("현재무기 : 레이피어", WEAPONRATING.RARE, 8, 0.2f);
                     break;
                 case MELEEWEAPON.FORK:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 포크";
-                    _PlayerWeaponRating = WEAPONRATING.UNIQUE;
-                    _nWeaponDmg = 14;
-                    _fAttackSpeed = 0.4f;
+                    MeleeWeaponSetting("현재무기 : 포크", WEAPONRATING.UNIQUE, 14, 0.4f);
                     break;
                 case MELEEWEAPON.SEALED_KEY:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 봉인된 열쇠";
-                    _PlayerWeaponRating = WEAPONRATING.UNIQUE;
-                    _nWeaponDmg = 17;
-                    _fAttackSpeed = 0.3f;
+                    MeleeWeaponSetting("현재무기 : 봉인된 열쇠", WEAPONRATING.UNIQUE, 17, 0.3f);
                     break;
                 case MELEEWEAPON.MASTER_KEY:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 마스터키";
-                    _PlayerWeaponRating = WEAPONRATING.LEGEND;
-                    _nWeaponDmg = 35;
-                    _fAttackSpeed = 0.3f;
+                    MeleeWeaponSetting("현재무기 : 마스터키", WEAPONRATING.LEGEND, 35, 0.3f);
                     break;
                 case MELEEWEAPON.GAUNTLET:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : ??? 건틀릿";
-                    _PlayerWeaponRating = WEAPONRATING.UNKNOWN;
-                    _nWeaponDmg = 6;
-                    _fAttackSpeed = 0.4f;
+                    MeleeWeaponSetting("현재무기 : ??? 건틀릿", WEAPONRATING.UNKNOWN, 6, 0.4f);
                     break;
                 case MELEEWEAPON.SMALL_KEY:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : ??? 작은열쇠";
-                    _PlayerWeaponRating = WEAPONRATING.UNKNOWN;
-                    _nWeaponDmg = 6;
-                    _fAttackSpeed = 0.5f;
+                    MeleeWeaponSetting("현재무기 : ??? 작은 열쇠", WEAPONRATING.UNKNOWN, 6, 0.5f);
                     break;
             }
         }
@@ -167,141 +123,71 @@ public class PlayerMng : MonoBehaviour
             switch (_PlayerRangedWeapon)
             {
                 case RANGEDWEAPON.TEST_GUN:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : TestGun";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nBulletAmount = 30;
-                    _nFullBulletAmount = 30;
-                    _fReloadTime = 5.0f;
-                    _nWeaponDmg = 1;
-                    _fAttackSpeed = 0.1f;
+                    RangedWeaponSetting("현재무기 : TestGun", WEAPONRATING.NORMAL, 30, 30, 5.0f, 1, 0.1f);
                     break;
                 case RANGEDWEAPON.WOOD_SLINGSHOT:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 나무새총";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nBulletAmount = 15;
-                    _nFullBulletAmount = 90;
-                    _fReloadTime = 1.0f;
-                    _nWeaponDmg = 3;
-                    _fAttackSpeed = 0.4f;
+                    RangedWeaponSetting("현재무기 : 나무새총", WEAPONRATING.NORMAL, 15, 90, 1.0f, 3, 0.4f);
                     break;
                 case RANGEDWEAPON.WOOD_BOW:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 나무활";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nBulletAmount = 10;
-                    _nFullBulletAmount = 100;
-                    _fReloadTime = 1.3f;
-                    _nWeaponDmg = 4;
-                    _fAttackSpeed = 0.6f;
+                    RangedWeaponSetting("현재무기 : 나무활", WEAPONRATING.NORMAL, 10, 100, 1.3f, 4, 0.6f);
                     break;
                 case RANGEDWEAPON.STING:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 독침";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nBulletAmount = 15;
-                    _nFullBulletAmount = 100;
-                    _fReloadTime = 0.8f;
-                    _nWeaponDmg = 3;
-                    _fAttackSpeed = 0.4f;
+                    RangedWeaponSetting("현재무기 : 독침", WEAPONRATING.NORMAL, 15, 100, 0.8f, 3, 0.4f);
                     break;
                 case RANGEDWEAPON.BOOMERANG:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 부메랑";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    //_nBulletAmount = 30;
-                    //_nFullBulletAmount = 30;
-                    //_fReloadTime = 5.0f;
-                    _nWeaponDmg = 5;
+                    RangedWeaponSetting("현재무기 : 부메랑", WEAPONRATING.NORMAL, 1, 1, 1.0f, 5, 1.0f);
                     break;
                 case RANGEDWEAPON.SEEDING:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 씨뿌리기";
-                    _PlayerWeaponRating = WEAPONRATING.NORMAL;
-                    _nBulletAmount = 15;
-                    _nFullBulletAmount = 80;
-                    _fReloadTime = 1.0f;
-                    _nWeaponDmg = 4;
-                    _fAttackSpeed = 0.4f;
+                    RangedWeaponSetting("현재무기 : 씨뿌리기", WEAPONRATING.NORMAL, 15, 80, 1.0f, 4, 0.4f);
                     break;
                 case RANGEDWEAPON.FIRE_BIRD:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 불새";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nBulletAmount = 10;
-                    _nFullBulletAmount = 100;
-                    _fReloadTime = 1.2f;
-                    _nWeaponDmg = 6;
-                    _fAttackSpeed = 0.6f;
+                    RangedWeaponSetting("현재무기 : 불새", WEAPONRATING.RARE, 10, 100, 1.2f, 6, 0.6f);
                     break;
                 case RANGEDWEAPON.FIRE_LOCK:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 화승총";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nBulletAmount = 5;
-                    _nFullBulletAmount = 60;
-                    _fReloadTime = 1.7f;
-                    _nWeaponDmg = 9;
-                    _fAttackSpeed = 1.0f;
+                    RangedWeaponSetting("현재무기 : 화승총", WEAPONRATING.RARE, 5, 60, 1.7f, 9, 1.0f);
                     break;
                 case RANGEDWEAPON.CHAKRAM:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 차크람";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nBulletAmount = 10;
-                    _nFullBulletAmount = 80;
-                    _fReloadTime = 0.8f;
-                    _nWeaponDmg = 8;
-                    _fAttackSpeed = 0.6f;
+                    RangedWeaponSetting("현재무기 : 차크람", WEAPONRATING.RARE, 10, 80, 0.8f, 8, 0.6f);
                     break;
-                case RANGEDWEAPON.RAILGUN:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 레일건";
-                    _PlayerWeaponRating = WEAPONRATING.RARE;
-                    _nBulletAmount = 25;
-                    _nFullBulletAmount = 120;
-                    _fReloadTime = 1.0f;
-                    _nWeaponDmg = 7;
-                    _fAttackSpeed = 0.4f;
+                case RANGEDWEAPON.NAILGUN:
+                    RangedWeaponSetting("현재무기 : 네일건", WEAPONRATING.RARE, 25, 120, 1.0f, 7, 0.4f);
                     break;
                 case RANGEDWEAPON.SHILED_PISTOL:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 쉴드피스톨";
-                    _PlayerWeaponRating = WEAPONRATING.UNIQUE;
-                    _nBulletAmount = 20;
-                    _nFullBulletAmount = 120;
-                    _fReloadTime = 1.0f;
-                    _nWeaponDmg = 10;
-                    _fAttackSpeed = 0.5f;
+                    RangedWeaponSetting("현재무기 : 쉴드피스톨", WEAPONRATING.UNIQUE, 20, 120, 1.0f, 10, 0.5f);
                     break;
                 case RANGEDWEAPON.GENTLEMAN_UMBRELLA:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 신사 우산";
-                    _PlayerWeaponRating = WEAPONRATING.UNIQUE;
-                    _nBulletAmount = 20;
-                    _nFullBulletAmount = 100;
-                    _fReloadTime = 0.7f;
-                    _nWeaponDmg = 8;
-                    _fAttackSpeed = 0.4f;
+                    RangedWeaponSetting("현재무기 : 신사 우산", WEAPONRATING.UNIQUE, 20, 100, 0.7f, 8, 0.4f);
                     break;
                 case RANGEDWEAPON.THREE_SIX_NINE:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 369";
-                    _PlayerWeaponRating = WEAPONRATING.UNIQUE;
-                    _nBulletAmount = 6;
-                    _nFullBulletAmount = 93;
-                    _fReloadTime = 1.3f;
-                    _nWeaponDmg = 6;
-                    _fAttackSpeed = 0.5f;
+                    RangedWeaponSetting("현재무기 : 369", WEAPONRATING.UNIQUE, 6, 93, 1.3f, 6, 0.5f);
                     break;
-                case RANGEDWEAPON.FLAXGUN:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : FlaxGun";
-                    _PlayerWeaponRating = WEAPONRATING.UNIQUE;
-                    _nBulletAmount = 15;
-                    _nFullBulletAmount = 150;
-                    _fReloadTime = 1.2f;
-                    _nWeaponDmg = 9;
-                    _fAttackSpeed = 0.3f;
+                case RANGEDWEAPON.FLAX_GUN:
+                    RangedWeaponSetting("현재무기 : Flax Gun", WEAPONRATING.UNIQUE, 15, 150, 1.2f, 9, 0.3f);
                     break;
                 case RANGEDWEAPON.END_OF_THE_CENTURY_GAUNTLET:
-                    SGameMng.I.TextMngSc.NowWeaponText.text = "현재무기 : 세기말 건틀릿";
-                    _PlayerWeaponRating = WEAPONRATING.LEGEND;
-                    _nBulletAmount = 6;
-                    _nFullBulletAmount = 60;
-                    _fReloadTime = 1.5f;
-                    _nWeaponDmg = 22;
-                    _fAttackSpeed = 2.0f;
+                    RangedWeaponSetting("현재무기 : 세기말 건틀릿", WEAPONRATING.LEGEND, 6, 60, 1.5f, 22, 2.0f);
                     break;
             }
         }
         
+    }
+
+    void MeleeWeaponSetting(string text, WEAPONRATING rating, int dmg, float attackspeed)
+    {
+        SGameMng.I.TextMngSc.NowWeaponText.text = text;
+        _PlayerWeaponRating = rating;
+        _nWeaponDmg = dmg;
+        _fAttackSpeed = attackspeed;
+    }
+
+    void RangedWeaponSetting(string text, WEAPONRATING rating, int amount, int fullamount, float reloadtime, int dmg, float attackspeed)
+    {
+        SGameMng.I.TextMngSc.NowWeaponText.text = text;
+        _PlayerWeaponRating = rating;
+        _nBulletAmount = amount;
+        _nFullBulletAmount = fullamount;
+        _fReloadTime = reloadtime;
+        _nWeaponDmg = dmg;
+        _fAttackSpeed = attackspeed;
     }
 }
