@@ -5,9 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerMng : MonoBehaviour
 {
-    
 
-    public PLAYERTYPE _Playertype;
+    public SpriteRenderer _PlayerSr;
+
+    public Rigidbody2D _PlayerRig;
+
+    public Vector3 _MoveVec;                        // 모바일
+    public Vector3 _RotVec;                         // 모바일
+
     public WEAPONRATING _PlayerWeaponRating;
     public WEAPONTYPE _PlayerWeaponType;
     public MELEEWEAPON _PlayerMeleeWeapon;
@@ -17,7 +22,6 @@ public class PlayerMng : MonoBehaviour
     public int _nFullHp;                            // 최대 체력
     public int _nBulletAmount;
     public int _nFullBulletAmount;                  // 최대 총알
-    public int _nEvasion;                           // 회피율
     public int _nWeaponDmg;
 
     public float _fMoveSpeed;
@@ -35,12 +39,34 @@ public class PlayerMng : MonoBehaviour
     public bool _bBulletReloading = false;
     public bool _bSkillOn = false;
 
+
+    public void getKey()
+    {
+        _MoveVec = new Vector3(CnControls.CnInputManager.GetAxis("Horizontal"), CnControls.CnInputManager.GetAxis("Vertical"));
+        _RotVec = new Vector3(CnControls.CnInputManager.GetAxis("RotateX"), CnControls.CnInputManager.GetAxis("RotateY"));
+    }
+
+    public void movement()
+    {
+        if (_bMoveAccess)
+            _PlayerRig.velocity = _MoveVec * _fMoveSpeed;
+    }
+
     public IEnumerator DoorToNextStage()
     {
         _bMoveAccess = false;
-        SGameMng.I.PlayerSc.PlayerRig.velocity = Vector2.zero;
+        _PlayerRig.velocity = Vector2.zero;
         yield return new WaitForSeconds(1.0f);
         _bMoveAccess = true;
+    }
+
+    public IEnumerator _DamageCtrl()
+    {
+        _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 125 / 255f);                 // 피격시 플레이어의 스프라이트 알파값 조정(잠시 무적이라는 의미 *임시임)
+        _bDmgAccess = false;
+        yield return new WaitForSeconds(1.5f);
+        _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+        _bDmgAccess = true;
     }
 
     //맵 이동시 맵 스프라이트 알파값 조정

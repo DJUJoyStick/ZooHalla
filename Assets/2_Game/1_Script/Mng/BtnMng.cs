@@ -9,6 +9,7 @@ public class BtnMng : MonoBehaviour
     public GameObject AttackBtnGams;
     public GameObject RollinBtnGams;
     public GameObject PauseSceneGams;
+    public Text CharSwitchText;
 
     public void PauseBtn()
     {
@@ -22,25 +23,52 @@ public class BtnMng : MonoBehaviour
 
     public void AttackBtnDown()
     {
-        SGameMng.I.PlayerSc._bAttackAccess = true;
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+            SGameMng.I.RatSc._bAttackAccess = true;
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+            SGameMng.I.TurtleSc._bAttackAccess = true;
     }
 
     public void AttackBtnUp()
     {
-        SGameMng.I.PlayerSc._bAttackAccess = false;
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+            SGameMng.I.RatSc._bAttackAccess = false;
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+            SGameMng.I.TurtleSc._bAttackAccess = false;
     }
 
     public void ActiveSkillBtn()
     {
-        SGameMng.I.PlayerSc._bSkillOn = true;
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+            SGameMng.I.RatSc._bSkillOn = true;
+        //else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        //    SGameMng.I.TurtleSc._bSkillOn = true;
     }
 
     public void PlatformSwitchBtn()
     {
         if (!SGameMng.I.bMobileOn)
-            PlatformSwtichSetActive(true);   
+            PlatformSwtichSetActive(true);
         else
             PlatformSwtichSetActive(false);
+    }
+
+    public void CharSwitchBtn()
+    {
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+        {
+            CharSwitchText.text = "Rat";
+            SGameMng.I.PlayerType = PLAYERTYPE.TURTLE;
+            SGameMng.I.RatSc.gameObject.SetActive(false);
+            SGameMng.I.TurtleSc.gameObject.SetActive(true);
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            CharSwitchText.text = "Turtle";
+            SGameMng.I.PlayerType = PLAYERTYPE.RAT;
+            SGameMng.I.TurtleSc.gameObject.SetActive(false);
+            SGameMng.I.RatSc.gameObject.SetActive(true);
+        }
     }
 
     void PlatformSwtichSetActive(bool SwitchOn)
