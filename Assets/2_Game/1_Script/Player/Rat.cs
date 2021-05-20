@@ -306,6 +306,7 @@ public class Rat : PlayerMng
         //플레이어 캐릭터 이동
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
         //맵 알파값 조정
-        StartCoroutine(MoveMapAlphaCtrl());
+        StartCoroutine(MoveMapAlphaCtrl(col));
+        
     }
 }

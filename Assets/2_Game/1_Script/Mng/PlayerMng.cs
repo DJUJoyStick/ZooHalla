@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMng : MonoBehaviour
 {
-    private Image C_GetMapColor;
+    
 
     public PLAYERTYPE _Playertype;
     public WEAPONRATING _PlayerWeaponRating;
@@ -45,28 +45,38 @@ public class PlayerMng : MonoBehaviour
 
     //맵 이동시 맵 스프라이트 알파값 조정
     //맵 이동시 맵 스프라이트 알파값 조정
-    public IEnumerator MoveMapAlphaCtrl()
+    public IEnumerator MoveMapAlphaCtrl(Collider2D GetTag)
     {
-        float progress = 0f;
-        float increment = _fSmoothness / _fAlphaDuration;
-
-        while (progress < 1)
+        if (GetTag.CompareTag("UpDoor") || GetTag.CompareTag("DownDoor") || GetTag.CompareTag("LeftDoor") || GetTag.CompareTag("RightDoor"))
         {
-            SGameMng.I.C_MapColor.GetComponent<Image>().color = Color.Lerp(Color.clear, Color.white, progress);
-            progress += increment;
-            yield return new WaitForSeconds(_fSmoothness);
+            float progress = 0f;
+            float increment = _fSmoothness / _fAlphaDuration;
+
+            while (progress < 1)
+            {
+                SGameMng.I.C_MapColor.GetComponent<Image>().color = Color.Lerp(Color.clear, Color.white, progress);
+                progress += increment;
+                yield return new WaitForSeconds(_fSmoothness);
+            }
+
+            progress = 0f;
+            yield return new WaitForSeconds(_fDuration);
+
+            while (progress < 1)
+            {
+                SGameMng.I.C_MapColor.GetComponent<Image>().color = Color.Lerp(Color.white, Color.clear, progress);
+                progress += increment;
+                yield return new WaitForSeconds(_fSmoothness);
+            }
         }
 
-        progress = 0f;
-        yield return new WaitForSeconds(_fDuration);
-
-        while (progress < 1)
-        {
-            SGameMng.I.C_MapColor.GetComponent<Image>().color = Color.Lerp(Color.white, Color.clear, progress);
-            progress += increment;
-            yield return new WaitForSeconds(_fSmoothness);
-        }
     }
+
+    //public void InvenCtrl(Collider2D col)
+    //{
+
+       
+    //}
 
     public void WeaponSetting(WEAPONTYPE WeaponType)
     {
@@ -169,7 +179,7 @@ public class PlayerMng : MonoBehaviour
                     break;
             }
         }
-        
+
     }
 
     void MeleeWeaponSetting(string text, WEAPONRATING rating, int dmg, float attackspeed)

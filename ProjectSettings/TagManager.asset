@@ -12,6 +12,7 @@ TagManager:
   - DownDoor
   - LeftDoor
   - RightDoor
+  - Item
   layers:
   - Default
   - TransparentFX

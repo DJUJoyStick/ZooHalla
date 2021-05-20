@@ -30,11 +30,13 @@ public class SGameMng : MonoBehaviour
 
     public UnityEngine.UI.Text testLog;
     public UnityEngine.UI.Image C_MapColor;
+    public Inventory GetInven;
 
     public Rat PlayerSc;
     public MonsterMng MonsterMngSc;
     public Monster TargetEneymSc;
     public TextMng TextMngSc;
+    public GameObject[] GetItemGams;
 
     public float fTargetDis;
 
