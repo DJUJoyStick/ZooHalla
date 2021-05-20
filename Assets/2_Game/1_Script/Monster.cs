@@ -34,7 +34,13 @@ public class Monster : MonoBehaviour
 
     void MonsterState()
     {
-        fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.PlayerSc.transform.position);
+        if(SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+            fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.RatSc.transform.position);
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+            fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.TurtleSc.transform.position);
+        //else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+        //    fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.WolfSc.transform.position);
+
         if (nMonsterHp <= 0)
         {
             Destroy(gameObject);

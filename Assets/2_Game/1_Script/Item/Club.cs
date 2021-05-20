@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tooth_Pick : Item
+public class Club : Item
 {
     new string name;
     int dmg;
@@ -12,7 +12,7 @@ public class Tooth_Pick : Item
     Sprite Icon;
 
     [SerializeField]
-    int num = 0;
+    int num = 1;
 
     public string s_name
     {

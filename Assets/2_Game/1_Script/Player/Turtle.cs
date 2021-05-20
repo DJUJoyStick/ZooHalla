@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rat : PlayerMng
+public class Turtle : PlayerMng
 {
     public GameObject BulletPre;
 
@@ -12,12 +12,7 @@ public class Rat : PlayerMng
 
     public PlayerMapPosition GetMapPlayer;
 
-    Coroutine RatPassiveCor;
-
     Vector2 PlayerMoveVec;
-
-    int nEvasion;                           // 회피율
-    int nSaveHealth;
 
     const float correction = 90f * Mathf.Deg2Rad;   // 모바일
     //public float fBulletDirect;
@@ -25,24 +20,20 @@ public class Rat : PlayerMng
     float fBulletDelay;
     float fGunRot;
 
-    bool bRatPassive = false;
-
     // Start is called before the first frame update
     void Start()
     {
-        SGameMng.I.PlayerType = PLAYERTYPE.RAT;
+        SGameMng.I.PlayerType = PLAYERTYPE.TURTLE;
         _PlayerWeaponType = WEAPONTYPE.RANGED_WEAPON;
         //direction = PLAYERDIRECT.DONTMOVE;
         _PlayerSr = GetComponent<SpriteRenderer>();
         _PlayerRig = GetComponent<Rigidbody2D>();
-        _fMoveSpeed = 10.0f;
-        _nPlayerHp = 5;
-        _nFullHp = 5;
-        nEvasion = 30;
+        _fMoveSpeed = 5.0f;
+        _nPlayerHp = 10;
+        _nFullHp = 10;
         _bMoveAccess = true;
         _bDmgAccess = true;
         WeaponSetting(_PlayerWeaponType);
-        RatPassiveCor = StartCoroutine(AutoHealth());
     }
 
     // Update is called once per frame
@@ -94,12 +85,6 @@ public class Rat : PlayerMng
         {
             _bMoveAccess = false;
             _bDmgAccess = false;
-        }
-
-        if (!bRatPassive && _nPlayerHp <= 3)
-        {
-            RatPassiveCor = StartCoroutine(AutoHealth());
-            bRatPassive = true;
         }
     }
 
@@ -225,20 +210,6 @@ public class Rat : PlayerMng
         }
     }
 
-    IEnumerator AutoHealth()
-    {
-        yield return new WaitForSeconds(5.0f);
-        if (_nPlayerHp.Equals(nSaveHealth))
-        {
-            if (_nPlayerHp <= 3)
-            {
-                _nPlayerHp++;
-                nSaveHealth++;
-            }
-        }
-        bRatPassive = false;
-    }
-
     IEnumerator WeaponReload()
     {
         _bBulletReloading = true;
@@ -255,19 +226,8 @@ public class Rat : PlayerMng
         {
             if (_bDmgAccess)
             {
-                int nRand = Random.Range(1, 100);
                 StartCoroutine(_DamageCtrl());
-                if (nRand > nEvasion)
-                {
-                    _nPlayerHp -= 1;
-                    nSaveHealth = _nPlayerHp;
-
-                    StopCoroutine(RatPassiveCor);
-                    if (bRatPassive)
-                    {
-                        bRatPassive = false;
-                    }
-                }
+                _nPlayerHp -= 1;
             }
         }
     }

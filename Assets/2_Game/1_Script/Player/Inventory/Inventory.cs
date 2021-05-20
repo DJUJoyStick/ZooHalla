@@ -9,13 +9,12 @@ public class Inventory : MonoBehaviour
     public List<Item> InvenItem;
     public GameObject ItemIcon;
 
-    private int invennum = 0;
 
 
     public void AddItem(Item GetItem)
     {
         InvenItem.Add(GetItem);
-        Instantiate(ItemIcon, GetSlots[invennum++]).GetComponent<Image>().sprite = InvenItem[0].S_Icon;
+        Instantiate(ItemIcon, GetSlots[InvenItem.Count - 1]).GetComponent<Image>().sprite = InvenItem[InvenItem.Count - 1].S_Icon;
     }
 
 }

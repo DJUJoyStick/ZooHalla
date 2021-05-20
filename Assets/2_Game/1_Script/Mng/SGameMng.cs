@@ -24,6 +24,8 @@ public class SGameMng : MonoBehaviour
         Screen.SetResolution(1280, 720, true);
     }
 
+    public PLAYERTYPE PlayerType;
+
     public List<Monster> FindMobList = new List<Monster>();
 
     public Transform TargetEnemyTr;
@@ -32,9 +34,10 @@ public class SGameMng : MonoBehaviour
     public UnityEngine.UI.Image C_MapColor;
     public Inventory GetInven;
 
-    public Rat PlayerSc;
+    public Rat RatSc;
+    public Turtle TurtleSc;
     public MonsterMng MonsterMngSc;
-    public Monster TargetEneymSc;
+    public Monster TargetEnemySc;
     public TextMng TextMngSc;
     public GameObject[] GetItemGams;
 

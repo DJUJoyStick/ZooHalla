@@ -26,7 +26,7 @@ public class MonsterMng : MonoBehaviour
                 {
                     SGameMng.I.TargetEnemyTr = SGameMng.I.FindMobList[j].transform;
                     SGameMng.I.fTargetDis = SGameMng.I.FindMobList[j].fPlayerDis;
-                    SGameMng.I.TargetEneymSc = SGameMng.I.FindMobList[j].SelfMonsterSc;
+                    SGameMng.I.TargetEnemySc = SGameMng.I.FindMobList[j].SelfMonsterSc;
                 }
             }
         }
@@ -38,7 +38,7 @@ public class MonsterMng : MonoBehaviour
         {
             if (!SGameMng.I.FindMobList.Equals(null))
             {
-                SGameMng.I.FindMobList[i].Debuffs(SGameMng.I.PlayerSc._Playertype);
+                SGameMng.I.FindMobList[i].Debuffs(SGameMng.I.PlayerType);
             }
         }
     }

@@ -55,25 +55,41 @@ public class PlayerMapPosition : MonoBehaviour
         if (GetTag.CompareTag("UpDoor"))
         {
             tempVec2.y = gutter;
-            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
+            NextStageStopPlayer(SGameMng.I.PlayerType);
         }
         else if (GetTag.CompareTag("DownDoor"))
         {
             tempVec2.y = -gutter;
-            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
+            NextStageStopPlayer(SGameMng.I.PlayerType);
         }
         else if (GetTag.CompareTag("LeftDoor"))
         {
             tempVec2.x = -gutter;
-            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
+            NextStageStopPlayer(SGameMng.I.PlayerType);
         }
         else if (GetTag.CompareTag("RightDoor"))
         {
             tempVec2.x = gutter;
-            StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
+            NextStageStopPlayer(SGameMng.I.PlayerType);
         }
         //GetTrans.Translate(tempVec2);
         return tempVec2;
+    }
+
+    void NextStageStopPlayer(PLAYERTYPE type)
+    {
+        if (type.Equals(PLAYERTYPE.RAT))
+        {
+            StartCoroutine(SGameMng.I.RatSc.DoorToNextStage());
+        }
+        else if (type.Equals(PLAYERTYPE.TURTLE))
+        {
+            StartCoroutine(SGameMng.I.TurtleSc.DoorToNextStage());
+        }
+        else if (type.Equals(PLAYERTYPE.WOLF))
+        {
+
+        }
     }
 
     private void Render_MiniMap_Sprite(Vector2 Vec2)
