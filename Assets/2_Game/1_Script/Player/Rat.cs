@@ -12,18 +12,11 @@ public class Rat : PlayerMng
 
     public PlayerMapPosition GetMapPlayer;
 
-    SpriteRenderer PlayerSr;
-
-    public Rigidbody2D PlayerRig;
-
     Coroutine RatPassiveCor;
 
     Vector2 PlayerMoveVec;
-    Vector3 SaveMoveVec;
-    public Vector3 MoveVec;                        // 모바일
-    Vector3 RotVec;                                // 모바일
 
-
+    int nEvasion;                           // 회피율
     int nSaveHealth;
 
     const float correction = 90f * Mathf.Deg2Rad;   // 모바일
@@ -37,15 +30,15 @@ public class Rat : PlayerMng
     // Start is called before the first frame update
     void Start()
     {
-        _Playertype = PLAYERTYPE.RAT;
+        SGameMng.I.PlayerType = PLAYERTYPE.RAT;
         _PlayerWeaponType = WEAPONTYPE.RANGED_WEAPON;
         //direction = PLAYERDIRECT.DONTMOVE;
-        PlayerSr = GetComponent<SpriteRenderer>();
-        PlayerRig = GetComponent<Rigidbody2D>();
+        _PlayerSr = GetComponent<SpriteRenderer>();
+        _PlayerRig = GetComponent<Rigidbody2D>();
         _fMoveSpeed = 10.0f;
         _nPlayerHp = 5;
         _nFullHp = 5;
-        _nEvasion = 30;
+        nEvasion = 30;
         _bMoveAccess = true;
         _bDmgAccess = true;
         WeaponSetting(_PlayerWeaponType);
@@ -110,33 +103,21 @@ public class Rat : PlayerMng
         }
     }
 
-    void getKey()
-    {
-        MoveVec = new Vector3(CnControls.CnInputManager.GetAxis("Horizontal"), CnControls.CnInputManager.GetAxis("Vertical"));
-        RotVec = new Vector3(CnControls.CnInputManager.GetAxis("RotateX"), CnControls.CnInputManager.GetAxis("RotateY"));
-    }
-
-    void movement()
-    {
-        if (_bMoveAccess)
-            PlayerRig.velocity = MoveVec * _fMoveSpeed;
-    }
-
     void rotation()
     {
-        if (MoveVec.Equals(Vector3.zero))
+        if (_MoveVec.Equals(Vector3.zero))
             return;
 
-        fGunRot = (Mathf.Atan2(MoveVec.y, MoveVec.x) - correction) * Mathf.Rad2Deg;
+        fGunRot = (Mathf.Atan2(_MoveVec.y, _MoveVec.x) - correction) * Mathf.Rad2Deg;
         if (_bMoveAccess)
             GunParentTr.rotation = Quaternion.Euler(0f, 0f, fGunRot - 90f);
         if (JoyStickTr.localPosition.x < 0)
         {
-            PlayerSr.flipX = false;
+            _PlayerSr.flipX = false;
         }
         else if (JoyStickTr.localPosition.x > 0)
         {
-            PlayerSr.flipX = true;
+            _PlayerSr.flipX = true;
         }
     }
 
@@ -158,16 +139,16 @@ public class Rat : PlayerMng
             if (Input.GetKey(KeyCode.A))
             {
                 //direction = PLAYERDIRECT.LEFT;
-                PlayerSr.flipX = false;
+                _PlayerSr.flipX = false;
                 PlayerMoveVec.x -= _fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 //direction = PLAYERDIRECT.RIGHT;
-                PlayerSr.flipX = true;
+                _PlayerSr.flipX = true;
                 PlayerMoveVec.x += _fMoveSpeed;
             }
-            PlayerRig.velocity = PlayerMoveVec;
+            _PlayerRig.velocity = PlayerMoveVec;
         }
         if (Input.GetMouseButton(0) && !_bPlayerDie)
         {
@@ -266,24 +247,17 @@ public class Rat : PlayerMng
         _bBulletReloading = false;
     }
 
-    IEnumerator DamageCtrl()
-    {
-        PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 125 / 255f);                 // 피격시 플레이어의 스프라이트 알파값 조정(잠시 무적이라는 의미 *임시임)
-        _bDmgAccess = false;
-        yield return new WaitForSeconds(1.5f);
-        PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
-        _bDmgAccess = true;
-    }
+
 
     private void OnCollisionStay2D(Collision2D col)
     {
         if (col.transform.CompareTag("Monster"))
         {
-            int nRand = Random.Range(1, 100);
             if (_bDmgAccess)
             {
-                StartCoroutine(DamageCtrl());
-                if (nRand > 30)
+                int nRand = Random.Range(1, 100);
+                StartCoroutine(_DamageCtrl());
+                if (nRand > nEvasion)
                 {
                     _nPlayerHp -= 1;
                     nSaveHealth = _nPlayerHp;
@@ -307,6 +281,6 @@ public class Rat : PlayerMng
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
         //맵 알파값 조정
         StartCoroutine(MoveMapAlphaCtrl(col));
-        
+
     }
 }

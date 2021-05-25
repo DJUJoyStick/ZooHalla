@@ -1,0 +1,1704 @@
+fileFormatVersion: 2
+guid: 3321e6ba64b5fc7469099ad006b04b77
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6822061449243812990
+    second: Map_Ground_0
+  - first:
+      213: 330935608887540156
+    second: Map_Ground_1
+  - first:
+      213: 6063641194748161919
+    second: Map_Ground_2
+  - first:
+      213: 8836155271228880153
+    second: Map_Ground_3
+  - first:
+      213: -5528834260017837927
+    second: Map_Ground_4
+  - first:
+      213: 382692061020961514
+    second: Map_Ground_5
+  - first:
+      213: 2721466008110782024
+    second: Map_Ground_6
+  - first:
+      213: -4153743861919988092
+    second: Map_Ground_7
+  - first:
+      213: -2941294502929637381
+    second: Map_Ground_8
+  - first:
+      213: -8320470582426717591
+    second: Map_Ground_9
+  - first:
+      213: 5631242947878045246
+    second: Map_Ground_10
+  - first:
+      213: 4788166986564796799
+    second: Map_Ground_11
+  - first:
+      213: -4102438118010867423
+    second: Map_Ground_12
+  - first:
+      213: 579435525036032130
+    second: Map_Ground_13
+  - first:
+      213: 693571451245391022
+    second: Map_Ground_14
+  - first:
+      213: 8259831315206351361
+    second: Map_Ground_15
+  - first:
+      213: 4669380107962570603
+    second: Map_Ground_16
+  - first:
+      213: -7465555948833907460
+    second: Map_Ground_17
+  - first:
+      213: -607568308496059932
+    second: Map_Ground_18
+  - first:
+      213: -4731185398761649199
+    second: Map_Ground_19
+  - first:
+      213: 1091268876156227136
+    second: Map_Ground_20
+  - first:
+      213: 7478648941504002276
+    second: Map_Ground_21
+  - first:
+      213: 3347409709484017495
+    second: Map_Ground_22
+  - first:
+      213: -4350877891881862075
+    second: Map_Ground_23
+  - first:
+      213: -7446019157268038764
+    second: Map_Ground_24
+  - first:
+      213: -2613534829661489480
+    second: Map_Ground_25
+  - first:
+      213: -414762162698342230
+    second: Map_Ground_26
+  - first:
+      213: -1916427102039968406
+    second: Map_Ground_27
+  - first:
+      213: 6740124654722641819
+    second: Map_Ground_28
+  - first:
+      213: -3162078230569321549
+    second: Map_Ground_29
+  - first:
+      213: 5800443090134274351
+    second: Map_Ground_30
+  - first:
+      213: -5762215018820372007
+    second: Map_Ground_31
+  - first:
+      213: 7576481435047106733
+    second: Map_Ground_32
+  - first:
+      213: 4820118741039695272
+    second: Map_Ground_33
+  - first:
+      213: -2229524730908947764
+    second: Map_Ground_34
+  - first:
+      213: 4565235405294149146
+    second: Map_Ground_35
+  - first:
+      213: -1915989442669081058
+    second: Map_Ground_36
+  - first:
+      213: -3522893638461531824
+    second: Map_Ground_37
+  - first:
+      213: 7726842761354816058
+    second: Map_Ground_38
+  - first:
+      213: 8155675334648428694
+    second: Map_Ground_39
+  - first:
+      213: -7109988996699604299
+    second: Map_Ground_40
+  - first:
+      213: -1416806196613575098
+    second: Map_Ground_41
+  - first:
+      213: 2052465058362123640
+    second: Map_Ground_42
+  - first:
+      213: -6547591419217388570
+    second: Map_Ground_43
+  - first:
+      213: -3485487882140991636
+    second: Map_Ground_44
+  - first:
+      213: 7797307042618791832
+    second: Map_Ground_45
+  - first:
+      213: -1560885371513268055
+    second: Map_Ground_46
+  - first:
+      213: -3262682702651414520
+    second: Map_Ground_47
+  - first:
+      213: -4914266977706684474
+    second: Map_Ground_48
+  - first:
+      213: -8108646368484947539
+    second: Map_Ground_49
+  - first:
+      213: 8834512431233626479
+    second: Map_Ground_50
+  - first:
+      213: 5990012848522401645
+    second: Map_Ground_51
+  - first:
+      213: 3966145067369098687
+    second: Map_Ground_52
+  - first:
+      213: 6200078227210167441
+    second: Map_Ground_53
+  - first:
+      213: -5456101726264206790
+    second: Map_Ground_54
+  - first:
+      213: -3144243308199149721
+    second: Map_Ground_55
+  - first:
+      213: -2934620091922886781
+    second: Map_Ground_56
+  - first:
+      213: 3427129472209675848
+    second: Map_Ground_57
+  - first:
+      213: -2852276783114103273
+    second: Map_Ground_58
+  - first:
+      213: 449335298450241698
+    second: Map_Ground_59
+  - first:
+      213: -1876921582116519587
+    second: Map_Ground_60
+  - first:
+      213: 8029319053365628719
+    second: Map_Ground_61
+  - first:
+      213: 8252249643147552289
+    second: Map_Ground_62
+  - first:
+      213: 1907752017108087305
+    second: Map_Ground_63
+  - first:
+      213: 8461729852955845053
+    second: Map_Ground_64
+  - first:
+      213: -5795062039090835633
+    second: Map_Ground_65
+  - first:
+      213: -6280421717147756201
+    second: Map_Ground_66
+  - first:
+      213: 1721783337305385268
+    second: Map_Ground_67
+  - first:
+      213: -8610160973658742021
+    second: Map_Ground_68
+  - first:
+      213: 2073046017671457164
+    second: Map_Ground_69
+  - first:
+      213: 6795511637694693894
+    second: Map_Ground_70
+  - first:
+      213: 1328286118976665858
+    second: Map_Ground_71
+  - first:
+      213: -832529754888296579
+    second: Map_Ground_72
+  - first:
+      213: -9031104433654969382
+    second: Map_Ground_73
+  - first:
+      213: 9089796631909395302
+    second: Map_Ground_74
+  - first:
+      213: 2936744701816595330
+    second: Map_Ground_75
+  - first:
+      213: 912286038898395591
+    second: Map_Ground_76
+  - first:
+      213: -345367588314634593
+    second: Map_Ground_77
+  - first:
+      213: -4406271903009212365
+    second: Map_Ground_78
+  - first:
+      213: -5777579536862137367
+    second: Map_Ground_79
+  - first:
+      213: -400322858607726192
+    second: Map_Ground_80
+  - first:
+      213: 2004714276796457339
+    second: Map_Ground_81
+  - first:
+      213: 3734055609016591504
+    second: Map_Ground_82
+  - first:
+      213: 3875298160291755451
+    second: Map_Ground_83
+  - first:
+      213: 1638225288733584879
+    second: Map_Ground_84
+  - first:
+      213: 8816561132939163385
+    second: Map_Ground_85
+  - first:
+      213: 4908417892781175096
+    second: Map_Ground_86
+  - first:
+      213: -988912819581663989
+    second: Map_Ground_87
+  - first:
+      213: -855788316279623652
+    second: Map_Ground_88
+  - first:
+      213: 2604992182436210202
+    second: Map_Ground_89
+  - first:
+      213: 2410337305474453348
+    second: Map_Ground_90
+  - first:
+      213: 1228460075017457396
+    second: Map_Ground_91
+  - first:
+      213: -9145258921998184392
+    second: Map_Ground_92
+  - first:
+      213: -158826596887237806
+    second: Map_Ground_93
+  - first:
+      213: 4982385725626290215
+    second: Map_Ground_94
+  - first:
+      213: -3652172967195249056
+    second: Map_Ground_95
+  - first:
+      213: -6620488877660030669
+    second: Map_Ground_96
+  - first:
+      213: -4685551628344306676
+    second: Map_Ground_97
+  - first:
+      213: -1657367841283540930
+    second: Map_Ground_98
+  - first:
+      213: 6588532943738591291
+    second: Map_Ground_99
+  - first:
+      213: 5848609550356272029
+    second: Map_Ground_100
+  - first:
+      213: 7025384807763979667
+    second: Map_Ground_101
+  - first:
+      213: 5858139118770201074
+    second: Map_Ground_102
+  - first:
+      213: 4746393534255843200
+    second: Map_Ground_103
+  - first:
+      213: 1199017539517403735
+    second: Map_Ground_104
+  - first:
+      213: 5495572148704779535
+    second: Map_Ground_105
+  - first:
+      213: 6506951714569439670
+    second: Map_Ground_106
+  - first:
+      213: 826357036460824413
+    second: Map_Ground_107
+  - first:
+      213: 5167279395819277711
+    second: Map_Ground_108
+  - first:
+      213: -4776743002836671946
+    second: Map_Ground_109
+  - first:
+      213: -9086528504884279052
+    second: Map_Ground_110
+  - first:
+      213: -2187303008156439510
+    second: Map_Ground_111
+  - first:
+      213: -8421572671536148470
+    second: Map_Ground_112
+  - first:
+      213: 1474244058369359303
+    second: Map_Ground_113
+  - first:
+      213: -5283058991336434473
+    second: Map_Ground_114
+  - first:
+      213: -1553197304475327801
+    second: Map_Ground_115
+  - first:
+      213: 4037133619917254210
+    second: Map_Ground_116
+  - first:
+      213: -7653913139382697051
+    second: Map_Ground_117
+  - first:
+      213: -9212453821941800040
+    second: Map_Ground_118
+  - first:
+      213: -7722973297610473904
+    second: Map_Ground_119
+  - first:
+      213: -3770847997873691305
+    second: Map_Ground_120
+  - first:
+      213: -8851997206518020382
+    second: Map_Ground_121
+  - first:
+      213: 1413408527525211594
+    second: Map_Ground_122
+  - first:
+      213: 1682051244545458663
+    second: Map_Ground_123
+  - first:
+      213: 6999578898014606647
+    second: Map_Ground_124
+  - first:
+      213: 7792129938688823065
+    second: Map_Ground_125
+  - first:
+      213: -4857540335231885717
+    second: Map_Ground_126
+  - first:
+      213: 3991770548550712939
+    second: Map_Ground_127
+  - first:
+      213: -6906889675293239394
+    second: Map_Ground_128
+  - first:
+      213: -6830785844965408472
+    second: Map_Ground_129
+  - first:
+      213: 8037711738210004493
+    second: Map_Ground_130
+  - first:
+      213: -2187871395557585494
+    second: Map_Ground_131
+  - first:
+      213: 7500777418303531575
+    second: Map_Ground_132
+  - first:
+      213: -9179691874439981447
+    second: Map_Ground_133
+  - first:
+      213: -501067516375761093
+    second: Map_Ground_134
+  - first:
+      213: -6760512969784451268
+    second: Map_Ground_135
+  - first:
+      213: 9131668613110741864
+    second: Map_Ground_136
+  - first:
+      213: -6375371099095918953
+    second: Map_Ground_137
+  - first:
+      213: 5841820356465825843
+    second: Map_Ground_138
+  - first:
+      213: -6683146276492205139
+    second: Map_Ground_139
+  - first:
+      213: 3313078752328897127
+    second: Map_Ground_140
+  - first:
+      213: 4266295089584763548
+    second: Map_Ground_141
+  - first:
+      213: -1228163195652350076
+    second: Map_Ground_142
+  - first:
+      213: 810691951348089610
+    second: Map_Ground_143
+  - first:
+      213: -6550265985768813810
+    second: Map_Ground_144
+  - first:
+      213: -60050054184565406
+    second: Map_Ground_145
+  - first:
+      213: -2407787446147822909
+    second: Map_Ground_146
+  - first:
+      213: 6579910126971426965
+    second: Map_Ground_147
+  - first:
+      213: -8335394199065774161
+    second: Map_Ground_148
+  - first:
+      213: 737415138820794617
+    second: Map_Ground_149
+  - first:
+      213: 6112746227918206118
+    second: Map_Ground_150
+  - first:
+      213: 8848258911269332941
+    second: Map_Ground_151
+  - first:
+      213: -5798533624861323917
+    second: Map_Ground_152
+  - first:
+      213: 1753808023264617962
+    second: Map_Ground_153
+  - first:
+      213: -1842592754152074004
+    second: Map_Ground_154
+  - first:
+      213: -8071740613937039198
+    second: Map_Ground_155
+  - first:
+      213: -10260375247826558
+    second: Map_Ground_156
+  - first:
+      213: 1837390619232378894
+    second: Map_Ground_157
+  - first:
+      213: 4835426474890493364
+    second: Map_Ground_158
+  - first:
+      213: 3690821704182346485
+    second: Map_Ground_159
+  - first:
+      213: 1287217375612876275
+    second: Map_Ground_160
+  - first:
+      213: 3368328064065241201
+    second: Map_Ground_161
+  - first:
+      213: -9121156259695334160
+    second: Map_Ground_162
+  - first:
+      213: 7543220719272885910
+    second: Map_Ground_163
+  - first:
+      213: 3576107941073786580
+    second: Map_Ground_164
+  - first:
+      213: -702076990552709429
+    second: Map_Ground_165
+  - first:
+      213: 7875517507694834088
+    second: Map_Ground_166
+  - first:
+      213: 7571779862660736580
+    second: Map_Ground_167
+  - first:
+      213: -4471134480614979919
+    second: Map_Ground_168
+  - first:
+      213: -8665474590534075972
+    second: Map_Ground_169
+  - first:
+      213: 6669044310521896325
+    second: Map_Ground_170
+  - first:
+      213: 4642484659659011635
+    second: Map_Ground_171
+  - first:
+      213: -5806873235044935197
+    second: Map_Ground_172
+  - first:
+      213: 4468880331636866529
+    second: Map_Ground_173
+  - first:
+      213: 8654848156561775119
+    second: Map_Ground_174
+  - first:
+      213: -8086384407997610855
+    second: Map_Ground_175
+  - first:
+      213: -6616290919502071693
+    second: Map_Ground_176
+  - first:
+      213: 4878160411214921207
+    second: Map_Ground_177
+  - first:
+      213: 7927621288481445496
+    second: Map_Ground_178
+  - first:
+      213: -9171072240989143001
+    second: Map_Ground_179
+  - first:
+      213: -2122227868691815525
+    second: Map_Ground_180
+  - first:
+      213: -881867040451718083
+    second: Map_Ground_181
+  - first:
+      213: 7382471807789156964
+    second: Map_Ground_182
+  - first:
+      213: 6120756186072149483
+    second: Map_Ground_183
+  - first:
+      213: -6040486683653391711
+    second: Map_Ground_184
+  - first:
+      213: 1349813643800030655
+    second: Map_Ground_185
+  - first:
+      213: -1471771473473675402
+    second: Map_Ground_186
+  - first:
+      213: 8389574167690723715
+    second: Map_Ground_187
+  - first:
+      213: 8016096942578421461
+    second: Map_Ground_188
+  - first:
+      213: 5014568533681423650
+    second: Map_Ground_189
+  - first:
+      213: -1408278422533690279
+    second: Map_Ground_190
+  - first:
+      213: 2305492294302794429
+    second: Map_Ground_191
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Map_Ground_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b9fe9b14b2351a0800000000000000
+      internalID: -6822061449243812990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9f443de28b79400800000000000000
+      internalID: 330935608887540156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7fa3624a81662450800000000000000
+      internalID: 6063641194748161919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915fac9376450aa70800000000000000
+      internalID: 8836155271228880153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99880a59882a543b0800000000000000
+      internalID: -5528834260017837927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea3483e6689f4500800000000000000
+      internalID: 382692061020961514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8465eb95ae694c520800000000000000
+      internalID: 2721466008110782024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486cc4e07ffea56c0800000000000000
+      internalID: -4153743861919988092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffd115bb3c6e27d0800000000000000
+      internalID: -2941294502929637381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9623e5ac610c78c80800000000000000
+      internalID: -8320470582426717591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36c13020a1362e40800000000000000
+      internalID: 5631242947878045246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_11
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f718277618cf27240800000000000000
+      internalID: 4788166986564796799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121b0fe64463117c0800000000000000
+      internalID: -4102438118010867423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280c3004a819a0800800000000000000
+      internalID: 579435525036032130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac65d96f8f00a900800000000000000
+      internalID: 693571451245391022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10aa58791d0d0a270800000000000000
+      internalID: 8259831315206351361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6752600878fcc040800000000000000
+      internalID: 4669380107962570603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_17
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfc53f23b64056890800000000000000
+      internalID: -7465555948833907460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1be4ba7db7197f0800000000000000
+      internalID: -607568308496059932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db0c4c52f3775eb0800000000000000
+      internalID: -4731185398761649199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04e4bb5d247f42f00800000000000000
+      internalID: 1091268876156227136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_21
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e87236b69f79c760800000000000000
+      internalID: 7478648941504002276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_22
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7570d7b3563647e20800000000000000
+      internalID: 3347409709484017495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_23
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cf749fb939e93c0800000000000000
+      internalID: -4350877891881862075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49bf844f60d6aa890800000000000000
+      internalID: -7446019157268038764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b67ae56bebdabbd0800000000000000
+      internalID: -2613534829661489480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0b712b2087e3af0800000000000000
+      internalID: -414762162698342230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a65f9f054bb7765e0800000000000000
+      internalID: -1916427102039968406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f689aa9abb98d50800000000000000
+      internalID: 6740124654722641819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb7bea4a9a0e14d0800000000000000
+      internalID: -3162078230569321549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21925722405f7050800000000000000
+      internalID: 5800443090134274351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d97acb48ff7800b0800000000000000
+      internalID: -5762215018820372007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da8135729b1152960800000000000000
+      internalID: 7576481435047106733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a5cfd6f47084e240800000000000000
+      internalID: 4820118741039695272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca493cd1132f01e0800000000000000
+      internalID: -2229524730908947764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_35
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e1898d969fa5f30800000000000000
+      internalID: 4565235405294149146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e8f44d0c90965e0800000000000000
+      internalID: -1915989442669081058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0595402a6ea2c1fc0800000000000000
+      internalID: -3522893638461531824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_38
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a2ad98d824b3b60800000000000000
+      internalID: 7726842761354816058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_39
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69872299187ce2170800000000000000
+      internalID: 8155675334648428694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_40
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bab8c68dae345d90800000000000000
+      internalID: -7109988996699604299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_41
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e864f454e765ce0800000000000000
+      internalID: -1416806196613575098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875639d9812db7c10800000000000000
+      internalID: 2052465058362123640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ebd62b7b484225a0800000000000000
+      internalID: -6547591419217388570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fbe04fc3f01afc0800000000000000
+      internalID: -3485487882140991636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 897d1ff7179953c60800000000000000
+      internalID: 7797307042618791832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a819d7460f965ae0800000000000000
+      internalID: -1560885371513268055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Map_Ground_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808a6ad4e5f98b2d0800000000000000
+      internalID: -3262682702651414520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
