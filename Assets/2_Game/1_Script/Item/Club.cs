@@ -6,13 +6,20 @@ public class Club : Item
 {
     new string name;
     int dmg;
+
     WEAPONRATING rating;
+
+    int rating;
+
     float attspeed;
     float range;
     Sprite Icon;
 
     [SerializeField]
-    //¾ÆÀÌÅÛ ½Äº°¹øÈ£
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½È£
+
+
     int num = 1;
 
     public string s_name
@@ -26,7 +33,12 @@ public class Club : Item
             name = value;
         }
 
+
     }
+
+    }
+
+
     public int i_dmg
     {
         get
@@ -38,7 +50,12 @@ public class Club : Item
             dmg = value;
         }
     }
+
     public WEAPONRATING i_rating
+
+
+    public int i_rating
+
     {
         get
         {
@@ -49,6 +66,7 @@ public class Club : Item
             rating = value;
         }
     }
+
     public float f_attspeed
     {
         get
@@ -60,6 +78,7 @@ public class Club : Item
             attspeed = value;
         }
     }
+
     public float f_range
     {
         get
@@ -71,6 +90,7 @@ public class Club : Item
             range = value;
         }
     }
+
     public Sprite S_Icon
     {
         get
@@ -86,12 +106,37 @@ public class Club : Item
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
+
         CollPlayer(coll, num);
+
+        if (coll.gameObject.CompareTag("Player"))
+        {
+            GameObject gam = GameObject.Find("ItemMng");
+            gam.GetComponent<ItemMng>().GetItemInfo(num);
+            DestroyItem();
+        }
+
     }
 
     protected override void DestroyItem()
     {
         Destroy(gameObject);
     }
+
+
+
+
+    //public Tooth_Pick(string name, int num, int rating, int dmg, float speed, float range)
+    //{
+    //    this.name = name;
+    //    this.num = num;
+    //    this.rating = rating;
+    //    this.dmg = dmg;
+    //    this.attspeed = speed;
+    //    this.range = range;
+    //}
+
+
+
 
 }

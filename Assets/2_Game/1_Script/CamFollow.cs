@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour
 {
 
-    public Transform PlayerTr;
+    public Transform[] PlayerTr = new Transform[3];
 
     float fCamSpeed;
 
@@ -17,9 +17,25 @@ public class CamFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 TargetPos = new Vector3(PlayerTr.position.x, PlayerTr.position.y, -10f);
 
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * fCamSpeed);
-
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+        {
+            ChaseCam(SGameMng.I.PlayerType);
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            ChaseCam(SGameMng.I.PlayerType);
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+        {
+            ChaseCam(SGameMng.I.PlayerType);
+        }
     }
+
+    void ChaseCam(PLAYERTYPE type)
+    {
+        Vector3 TargetPos = new Vector3(PlayerTr[(int)type].position.x, PlayerTr[(int)type].position.y, -10f);
+        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * fCamSpeed);
+    }
+
 }

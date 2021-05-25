@@ -9,13 +9,14 @@ public class Inventory : MonoBehaviour
     public List<Item> InvenItem;
     public GameObject ItemIcon;
     [SerializeField]
-    //20Ä­À¸·Î ´Ã¸± ¾ÆÀÌÅÛÀÌ ÀÖ´ä´Ï´Ù ¤¾¤¾; Áö±ÝÀº »ý°¢ÇÏÁö ¸¿½Ã´Ù
+    //20Ä­ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½; ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã´ï¿½
     private const int InvenMax = 10;
     private int InvenNum = 0;
 
 
     public bool AddItem(Item GetItem)
     {
+
         if(InvenNum < 10)
         {
             InvenItem.Add(GetItem);
@@ -28,6 +29,10 @@ public class Inventory : MonoBehaviour
             Debug.Log("No Slot");
             return false;
         }
+
+
+        InvenItem.Add(GetItem);
+        Instantiate(ItemIcon, GetSlots[InvenItem.Count - 1]).GetComponent<Image>().sprite = InvenItem[InvenItem.Count - 1].S_Icon;
 
     }
 

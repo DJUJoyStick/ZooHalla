@@ -13,6 +13,7 @@ public class Tooth_Pick : Item
 
     [SerializeField]
     int num = 0;
+
     public string s_name
     {
         get
@@ -23,7 +24,6 @@ public class Tooth_Pick : Item
         {
             name = value;
         }
-
     }
 
     public int i_dmg
@@ -38,7 +38,11 @@ public class Tooth_Pick : Item
         }
     }
 
+
     public WEAPONRATING i_rating
+
+    public int i_rating
+
     {
         get
         {
