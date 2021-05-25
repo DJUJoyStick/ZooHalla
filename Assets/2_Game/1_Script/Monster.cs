@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
 
     public int nMonsterHp;
 
-    public int nDotCount;                                                       // µµÆ®µ¥¹ÌÁö È½¼ö º¯¼ö
+    public int nDotCount;                                                       // ÂµÂµÃ†Â®ÂµÂ¥Â¹ÃŒÃÃ¶ ÃˆÂ½Â¼Ã¶ ÂºÂ¯Â¼Ã¶
 
     public float fPlayerDis;
     public bool bThisTarget = false;
@@ -34,12 +34,16 @@ public class Monster : MonoBehaviour
 
     void MonsterState()
     {
+
+        fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.RatSc.transform.position);
+
         if(SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
             fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.RatSc.transform.position);
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
             fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.TurtleSc.transform.position);
         //else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
         //    fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.WolfSc.transform.position);
+
 
         if (nMonsterHp <= 0)
         {

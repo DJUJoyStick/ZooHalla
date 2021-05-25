@@ -6,12 +6,20 @@ public class Club : Item
 {
     new string name;
     int dmg;
+
+    WEAPONRATING rating;
+
     int rating;
+
     float attspeed;
     float range;
     Sprite Icon;
 
     [SerializeField]
+
+    //������ �ĺ���ȣ
+
+
     int num = 1;
 
     public string s_name
@@ -24,7 +32,12 @@ public class Club : Item
         {
             name = value;
         }
+
+
     }
+
+    }
+
 
     public int i_dmg
     {
@@ -38,7 +51,11 @@ public class Club : Item
         }
     }
 
+    public WEAPONRATING i_rating
+
+
     public int i_rating
+
     {
         get
         {
@@ -89,18 +106,23 @@ public class Club : Item
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
+
+        CollPlayer(coll, num);
+
         if (coll.gameObject.CompareTag("Player"))
         {
             GameObject gam = GameObject.Find("ItemMng");
             gam.GetComponent<ItemMng>().GetItemInfo(num);
             DestroyItem();
         }
+
     }
 
     protected override void DestroyItem()
     {
         Destroy(gameObject);
     }
+
 
 
 
@@ -113,6 +135,7 @@ public class Club : Item
     //    this.attspeed = speed;
     //    this.range = range;
     //}
+
 
 
 

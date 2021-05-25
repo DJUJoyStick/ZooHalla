@@ -72,6 +72,7 @@ public class PlayerMapPosition : MonoBehaviour
             tempVec2.x = gutter;
             NextStageStopPlayer(SGameMng.I.PlayerType);
         }
+
         //GetTrans.Translate(tempVec2);
         return tempVec2;
     }

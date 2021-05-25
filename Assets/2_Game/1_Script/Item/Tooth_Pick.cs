@@ -6,7 +6,7 @@ public class Tooth_Pick : Item
 {
     new string name;
     int dmg;
-    int rating;
+    WEAPONRATING rating;
     float attspeed;
     float range;
     Sprite Icon;
@@ -38,7 +38,11 @@ public class Tooth_Pick : Item
         }
     }
 
+
+    public WEAPONRATING i_rating
+
     public int i_rating
+
     {
         get
         {
@@ -89,12 +93,7 @@ public class Tooth_Pick : Item
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.CompareTag("Player"))
-        {
-            GameObject gam = GameObject.Find("ItemMng");
-            gam.GetComponent<ItemMng>().GetItemInfo(num);
-            DestroyItem();
-        }
+        CollPlayer(coll, num);
     }
 
     protected override void DestroyItem()
@@ -103,16 +102,6 @@ public class Tooth_Pick : Item
     }
 
 
-
-    //public Tooth_Pick(string name, int num, int rating, int dmg, float speed, float range)
-    //{
-    //    this.name = name;
-    //    this.num = num;
-    //    this.rating = rating;
-    //    this.dmg = dmg;
-    //    this.attspeed = speed;
-    //    this.range = range;
-    //}
 
 
 

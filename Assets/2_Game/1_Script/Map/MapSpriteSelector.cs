@@ -9,7 +9,7 @@ public class MapSpriteSelector : MonoBehaviour {
 			spULD, spRUL, spDRU, spLDR, spUDRL;
 	public bool up, down, left, right;
 	public int type;
-	public Color normalColor, enterColor, bossColor;
+	public Color normalColor, enterColor, bossColor, eventColor;
 	Color mainColor;
 	SpriteRenderer rend;
 	void Start () {
@@ -86,6 +86,10 @@ public class MapSpriteSelector : MonoBehaviour {
 		{
 			mainColor = bossColor;
 		}
+        else if (type.Equals(3))
+        {
+            mainColor = eventColor;
+        }
 		rend.color = mainColor;
 	}
 }

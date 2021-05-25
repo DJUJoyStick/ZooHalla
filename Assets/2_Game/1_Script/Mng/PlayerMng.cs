@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class PlayerMng : MonoBehaviour
 {
 
+
     public SpriteRenderer _PlayerSr;
 
     public Rigidbody2D _PlayerRig;
 
-    public Vector3 _MoveVec;                        // ¸ğ¹ÙÀÏ
-    public Vector3 _RotVec;                         // ¸ğ¹ÙÀÏ
+    public Vector3 _MoveVec;                        // ëª¨ë°”ì¼
+    public Vector3 _RotVec;                         // ëª¨ë°”ì¼
 
     public WEAPONRATING _PlayerWeaponRating;
     public WEAPONTYPE _PlayerWeaponType;
@@ -19,9 +20,9 @@ public class PlayerMng : MonoBehaviour
     public RANGEDWEAPON _PlayerRangedWeapon;
 
     public int _nPlayerHp;
-    public int _nFullHp;                            // ÃÖ´ë Ã¼·Â
+    public int _nFullHp;                            // ìµœëŒ€ ì²´ë ¥
     public int _nBulletAmount;
-    public int _nFullBulletAmount;                  // ÃÖ´ë ÃÑ¾Ë
+    public int _nFullBulletAmount;                  // ìµœëŒ€ ì´ì•Œ
     public int _nWeaponDmg;
 
     public float _fMoveSpeed;
@@ -62,15 +63,15 @@ public class PlayerMng : MonoBehaviour
 
     public IEnumerator _DamageCtrl()
     {
-        _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 125 / 255f);                 // ÇÇ°İ½Ã ÇÃ·¹ÀÌ¾îÀÇ ½ºÇÁ¶óÀÌÆ® ¾ËÆÄ°ª Á¶Á¤(Àá½Ã ¹«ÀûÀÌ¶ó´Â ÀÇ¹Ì *ÀÓ½ÃÀÓ)
+        _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 125 / 255f);                 // í”¼ê²©ì‹œ í”Œë ˆì´ì–´ì˜ ìŠ¤í”„ë¼ì´íŠ¸ ì•ŒíŒŒê°’ ì¡°ì •(ì ì‹œ ë¬´ì ì´ë¼ëŠ” ì˜ë¯¸ *ì„ì‹œì„)
         _bDmgAccess = false;
         yield return new WaitForSeconds(1.5f);
         _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
         _bDmgAccess = true;
     }
 
-    //¸Ê ÀÌµ¿½Ã ¸Ê ½ºÇÁ¶óÀÌÆ® ¾ËÆÄ°ª Á¶Á¤
-    //¸Ê ÀÌµ¿½Ã ¸Ê ½ºÇÁ¶óÀÌÆ® ¾ËÆÄ°ª Á¶Á¤
+    //ë§µ ì´ë™ì‹œ ë§µ ìŠ¤í”„ë¼ì´íŠ¸ ì•ŒíŒŒê°’ ì¡°ì •
+    //ë§µ ì´ë™ì‹œ ë§µ ìŠ¤í”„ë¼ì´íŠ¸ ì•ŒíŒŒê°’ ì¡°ì •
     public IEnumerator MoveMapAlphaCtrl(Collider2D GetTag)
     {
         if (GetTag.CompareTag("UpDoor") || GetTag.CompareTag("DownDoor") || GetTag.CompareTag("LeftDoor") || GetTag.CompareTag("RightDoor"))
@@ -98,11 +99,11 @@ public class PlayerMng : MonoBehaviour
 
     }
 
-    //public void InvenCtrl(Collider2D col)
-    //{
+    public void SceneChange(string SceneName)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+    }
 
-       
-    //}
 
     public void WeaponSetting(WEAPONTYPE WeaponType)
     {
@@ -111,46 +112,46 @@ public class PlayerMng : MonoBehaviour
             switch (_PlayerMeleeWeapon)
             {
                 case MELEEWEAPON.TOOTH_PICK:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ÀÌ¾¥½Ã°³", WEAPONRATING.NORMAL, 4, 0.3f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ì´ì‘¤ì‹œê°œ", WEAPONRATING.NORMAL, 4, 0.3f);
                     break;
                 case MELEEWEAPON.CLUB:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : Å¬·´", WEAPONRATING.NORMAL, 6, 0.5f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : í´ëŸ½", WEAPONRATING.NORMAL, 6, 0.5f);
                     break;
                 case MELEEWEAPON.STONE_SPEAR:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : µ¹Ã¢", WEAPONRATING.NORMAL, 7, 0.5f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ëŒì°½", WEAPONRATING.NORMAL, 7, 0.5f);
                     break;
                 case MELEEWEAPON.VINE_WHIP:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ³ÕÄğÃ¤Âï", WEAPONRATING.NORMAL, 6, 0.4f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ë„ì¿¨ì±„ì°", WEAPONRATING.NORMAL, 6, 0.4f);
                     break;
                 case MELEEWEAPON.WOOD_SHIELD:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ³ª¹«¹æÆĞ", WEAPONRATING.NORMAL, 4, 0.6f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ë‚˜ë¬´ë°©íŒ¨", WEAPONRATING.NORMAL, 4, 0.6f);
                     break;
                 case MELEEWEAPON.SPIRAL_SWORD:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ³ª¼±°Ë", WEAPONRATING.RARE, 9, 0.5f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ë‚˜ì„ ê²€", WEAPONRATING.RARE, 9, 0.5f);
                     break;
                 case MELEEWEAPON.RIGHT_SWORD_LEFT_SHILED:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ¿À¸¥ÂÊ¿£ °Ë ¿ŞÂÊ¿£ ¹æÆĞ", WEAPONRATING.RARE, 9, 0.5f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ì˜¤ë¥¸ìª½ì—” ê²€ ì™¼ìª½ì—” ë°©íŒ¨", WEAPONRATING.RARE, 9, 0.5f);
                     break;
                 case MELEEWEAPON.KOLA:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : Kola", WEAPONRATING.RARE, 11, 0.4f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : Kola", WEAPONRATING.RARE, 11, 0.4f);
                     break;
                 case MELEEWEAPON.RAPIER:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ·¹ÀÌÇÇ¾î", WEAPONRATING.RARE, 8, 0.2f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ë ˆì´í”¼ì–´", WEAPONRATING.RARE, 8, 0.2f);
                     break;
                 case MELEEWEAPON.FORK:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : Æ÷Å©", WEAPONRATING.UNIQUE, 14, 0.4f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : í¬í¬", WEAPONRATING.UNIQUE, 14, 0.4f);
                     break;
                 case MELEEWEAPON.SEALED_KEY:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ºÀÀÎµÈ ¿­¼è", WEAPONRATING.UNIQUE, 17, 0.3f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ë´‰ì¸ëœ ì—´ì‡ ", WEAPONRATING.UNIQUE, 17, 0.3f);
                     break;
                 case MELEEWEAPON.MASTER_KEY:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ¸¶½ºÅÍÅ°", WEAPONRATING.LEGEND, 35, 0.3f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ë§ˆìŠ¤í„°í‚¤", WEAPONRATING.LEGEND, 35, 0.3f);
                     break;
                 case MELEEWEAPON.GAUNTLET:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ??? °ÇÆ²¸´", WEAPONRATING.UNKNOWN, 6, 0.4f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ??? ê±´í‹€ë¦¿", WEAPONRATING.UNKNOWN, 6, 0.4f);
                     break;
                 case MELEEWEAPON.SMALL_KEY:
-                    MeleeWeaponSetting("ÇöÀç¹«±â : ??? ÀÛÀº ¿­¼è", WEAPONRATING.UNKNOWN, 6, 0.5f);
+                    MeleeWeaponSetting("í˜„ì¬ë¬´ê¸° : ??? ì‘ì€ ì—´ì‡ ", WEAPONRATING.UNKNOWN, 6, 0.5f);
                     break;
             }
         }
@@ -159,49 +160,49 @@ public class PlayerMng : MonoBehaviour
             switch (_PlayerRangedWeapon)
             {
                 case RANGEDWEAPON.TEST_GUN:
-                    RangedWeaponSetting("ÇöÀç¹«±â : TestGun", WEAPONRATING.NORMAL, 30, 30, 5.0f, 1, 0.1f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : TestGun", WEAPONRATING.NORMAL, 30, 30, 5.0f, 1, 0.1f);
                     break;
                 case RANGEDWEAPON.WOOD_SLINGSHOT:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ³ª¹«»õÃÑ", WEAPONRATING.NORMAL, 15, 90, 1.0f, 3, 0.4f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ë‚˜ë¬´ìƒˆì´", WEAPONRATING.NORMAL, 15, 90, 1.0f, 3, 0.4f);
                     break;
                 case RANGEDWEAPON.WOOD_BOW:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ³ª¹«È°", WEAPONRATING.NORMAL, 10, 100, 1.3f, 4, 0.6f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ë‚˜ë¬´í™œ", WEAPONRATING.NORMAL, 10, 100, 1.3f, 4, 0.6f);
                     break;
                 case RANGEDWEAPON.STING:
-                    RangedWeaponSetting("ÇöÀç¹«±â : µ¶Ä§", WEAPONRATING.NORMAL, 15, 100, 0.8f, 3, 0.4f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ë…ì¹¨", WEAPONRATING.NORMAL, 15, 100, 0.8f, 3, 0.4f);
                     break;
                 case RANGEDWEAPON.BOOMERANG:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ºÎ¸Ş¶û", WEAPONRATING.NORMAL, 1, 1, 1.0f, 5, 1.0f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ë¶€ë©”ë‘", WEAPONRATING.NORMAL, 1, 1, 1.0f, 5, 1.0f);
                     break;
                 case RANGEDWEAPON.SEEDING:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ¾¾»Ñ¸®±â", WEAPONRATING.NORMAL, 15, 80, 1.0f, 4, 0.4f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ì”¨ë¿Œë¦¬ê¸°", WEAPONRATING.NORMAL, 15, 80, 1.0f, 4, 0.4f);
                     break;
                 case RANGEDWEAPON.FIRE_BIRD:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ºÒ»õ", WEAPONRATING.RARE, 10, 100, 1.2f, 6, 0.6f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ë¶ˆìƒˆ", WEAPONRATING.RARE, 10, 100, 1.2f, 6, 0.6f);
                     break;
                 case RANGEDWEAPON.FIRE_LOCK:
-                    RangedWeaponSetting("ÇöÀç¹«±â : È­½ÂÃÑ", WEAPONRATING.RARE, 5, 60, 1.7f, 9, 1.0f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : í™”ìŠ¹ì´", WEAPONRATING.RARE, 5, 60, 1.7f, 9, 1.0f);
                     break;
                 case RANGEDWEAPON.CHAKRAM:
-                    RangedWeaponSetting("ÇöÀç¹«±â : Â÷Å©¶÷", WEAPONRATING.RARE, 10, 80, 0.8f, 8, 0.6f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ì°¨í¬ëŒ", WEAPONRATING.RARE, 10, 80, 0.8f, 8, 0.6f);
                     break;
                 case RANGEDWEAPON.NAILGUN:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ³×ÀÏ°Ç", WEAPONRATING.RARE, 25, 120, 1.0f, 7, 0.4f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ë„¤ì¼ê±´", WEAPONRATING.RARE, 25, 120, 1.0f, 7, 0.4f);
                     break;
                 case RANGEDWEAPON.SHILED_PISTOL:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ½¯µåÇÇ½ºÅç", WEAPONRATING.UNIQUE, 20, 120, 1.0f, 10, 0.5f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ì‰´ë“œí”¼ìŠ¤í†¨", WEAPONRATING.UNIQUE, 20, 120, 1.0f, 10, 0.5f);
                     break;
                 case RANGEDWEAPON.GENTLEMAN_UMBRELLA:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ½Å»ç ¿ì»ê", WEAPONRATING.UNIQUE, 20, 100, 0.7f, 8, 0.4f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ì‹ ì‚¬ ìš°ì‚°", WEAPONRATING.UNIQUE, 20, 100, 0.7f, 8, 0.4f);
                     break;
                 case RANGEDWEAPON.THREE_SIX_NINE:
-                    RangedWeaponSetting("ÇöÀç¹«±â : 369", WEAPONRATING.UNIQUE, 6, 93, 1.3f, 6, 0.5f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : 369", WEAPONRATING.UNIQUE, 6, 93, 1.3f, 6, 0.5f);
                     break;
                 case RANGEDWEAPON.FLAX_GUN:
-                    RangedWeaponSetting("ÇöÀç¹«±â : Flax Gun", WEAPONRATING.UNIQUE, 15, 150, 1.2f, 9, 0.3f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : Flax Gun", WEAPONRATING.UNIQUE, 15, 150, 1.2f, 9, 0.3f);
                     break;
                 case RANGEDWEAPON.END_OF_THE_CENTURY_GAUNTLET:
-                    RangedWeaponSetting("ÇöÀç¹«±â : ¼¼±â¸» °ÇÆ²¸´", WEAPONRATING.LEGEND, 6, 60, 1.5f, 22, 2.0f);
+                    RangedWeaponSetting("í˜„ì¬ë¬´ê¸° : ì„¸ê¸°ë§ ê±´í‹€ë¦¿", WEAPONRATING.LEGEND, 6, 60, 1.5f, 22, 2.0f);
                     break;
             }
         }
