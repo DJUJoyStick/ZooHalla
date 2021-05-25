@@ -167,4 +167,17 @@ public class RoomInstance : MonoBehaviour
         ret = new Vector3(tileSize * (float)x, -tileSize * (float)y, 0) + offset + transform.position;
         return ret;
     }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.CompareTag("Player"))
+        {
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        
+    }
 }
