@@ -14,7 +14,7 @@ public class Turtle : PlayerMng
 
     Vector2 PlayerMoveVec;
 
-    const float correction = 90f * Mathf.Deg2Rad;   // ¸ğ¹ÙÀÏ
+    const float correction = 90f * Mathf.Deg2Rad;   // ëª¨ë°”ì¼
     //public float fBulletDirect;
     float fRotateDegree;
     float fBulletDelay;
@@ -61,7 +61,7 @@ public class Turtle : PlayerMng
                 Attack();
             }
         }
-        if (Time.time > fBulletDelay + _fAttackSpeed)                                                                                // 0.1fºÎºĞÀ» º¯¼öÈ­ÇØ¼­ ÃÑ¾Ë µô·¹ÀÌ ¼³Á¤
+        if (Time.time > fBulletDelay + _fAttackSpeed)                                                                                // 0.1fë¶€ë¶„ì„ ë³€ìˆ˜í™”í•´ì„œ ì´ì•Œ ë”œë ˆì´ ì„¤ì •
         {
             _bBulletShooting = false;
         }
@@ -78,7 +78,7 @@ public class Turtle : PlayerMng
         else
         {
             _bPlayerDie = true;
-            Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á");
+            Debug.Log("í”Œë ˆì´ì–´ ì‚¬ë§");
         }
 
         if (_bPlayerDie)
@@ -154,7 +154,7 @@ public class Turtle : PlayerMng
         float dx = target.x - oPosition.x;
         fRotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
 
-        GunParentTr.rotation = Quaternion.Euler(0f, 0f, fRotateDegree - 180f);                                     // ÃÑ À§Ä¡ È¸Àü(¸¶¿ì½º ¹æÇâ) ÃßÈÄ¿¡ °íÁ¤ ¸ó½ºÅÍ ¹æÇâÀ¸·Î º¯È¯
+        GunParentTr.rotation = Quaternion.Euler(0f, 0f, fRotateDegree - 180f);                                     // ì´ ìœ„ì¹˜ íšŒì „(ë§ˆìš°ìŠ¤ ë°©í–¥) ì¶”í›„ì— ê³ ì • ëª¬ìŠ¤í„° ë°©í–¥ìœ¼ë¡œ ë³€í™˜
 
         //if (!bBulletDirect)
         //{
@@ -234,13 +234,17 @@ public class Turtle : PlayerMng
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //Á¤ÀÇºÎ¿¡¼­ col.tag¸¦ Ã¤Å·ÇÑ´Ù
-        //¹Ì´Ï¸Ê Ä³¸¯ÅÍ ÀÌµ¿
+        //ì •ì˜ë¶€ì—ì„œ col.tagë¥¼ ì±„í‚¹í•œë‹¤
+        //ë¯¸ë‹ˆë§µ ìºë¦­í„° ì´ë™
         GetMapPlayer.GetMapPlayerMove(col);
-        //ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ ÀÌµ¿
+        //í”Œë ˆì´ì–´ ìºë¦­í„° ì´ë™
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
-        //¸Ê ¾ËÆÄ°ª Á¶Á¤
+        //ë§µ ì•ŒíŒŒê°’ ì¡°ì •
         StartCoroutine(MoveMapAlphaCtrl(col));
 
     }
+
 }
+
+}
+
