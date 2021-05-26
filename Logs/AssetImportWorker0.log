@@ -1,0 +1,113 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.8f1 (507919d4fff5) revision 5273881'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19042.985; Version 2009; 64bit' Language: 'ko' Physical Memory: 16310 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.8f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/hhh57/Desktop/Project/Unity/ZooHalla
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+52550
+Successfully changed project path to: C:/Users/hhh57/Desktop/Project/Unity/ZooHalla
+C:/Users/hhh57/Desktop/Project/Unity/ZooHalla
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 45.33 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.8f1 (507919d4fff5)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/hhh57/Desktop/Project/Unity/ZooHalla/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
+    Vendor:   
+    VRAM:     8043 MB
+    Driver:   27.21.14.5751
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56584
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004045 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 36.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.319 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001854 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 36.74 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.750 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.95 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1936 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 91.0 MB.
+System memory in use after: 91.1 MB.
+
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2370.
+Total: 2.059500 ms (FindLiveObjects: 0.155800 ms CreateObjectMapping: 0.049700 ms MarkObjects: 1.796200 ms  DeleteObjects: 0.056800 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/1_Menu
+  artifactKey: Guid(9cafdc1f1f43f8d4abb82129f47caf90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/1_Menu using Guid(9cafdc1f1f43f8d4abb82129f47caf90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39442a9719bd3b56f764155bf30d2718') in 0.009274 seconds
+  Import took 0.011657 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.089179 seconds.
+  path: Assets/1_Menu
+  artifactKey: Guid(9cafdc1f1f43f8d4abb82129f47caf90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/1_Menu using Guid(9cafdc1f1f43f8d4abb82129f47caf90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39442a9719bd3b56f764155bf30d2718') in 0.002960 seconds
+  Import took 0.005617 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.867857 seconds.
+  path: Assets/2_Game/5_Scene/Game.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2_Game/5_Scene/Game.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a68a6d9d631a74ad6f8394e79d4f39d') in 0.010692 seconds
+  Import took 0.013205 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001676 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.65 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.689 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.05 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1926 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 90.4 MB.
+System memory in use after: 90.6 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2374.
+Total: 1.632400 ms (FindLiveObjects: 0.156100 ms CreateObjectMapping: 0.037000 ms MarkObjects: 1.424200 ms  DeleteObjects: 0.014500 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
