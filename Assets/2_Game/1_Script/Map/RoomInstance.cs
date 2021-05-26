@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 public class RoomInstance : MonoBehaviour
 {
     [HideInInspector]
     public Vector2 gridPos;
-    public int type; // 0: 보통맵, 1: 시작맵, 2:보스맵
+    public int type; // 0: 보통맵, 1: 시작맵, 2:보스맵 3:이벤트맵
     public int room_number;
     private static int height = 9;
     private static int width = 17;
@@ -14,12 +14,13 @@ public class RoomInstance : MonoBehaviour
     public bool doorTop, doorBot, doorLeft, doorRight;
     [SerializeField]
     GameObject doorU, doorD, doorL, doorR, doorWall;
-    [SerializeField]
-    ColorToGameObject[] mappings;
+    public TilemapRenderer GetMapTileRend;//최적화용
+    //public GameObject[] GetWalls;//최적화용 
     private const float tileSize = 1;//타일 크기 건들지 말것
     static int mapsize = 2;
     Vector2 roomSizeInTiles = new Vector2(height * mapsize, width * mapsize);//9,17 가로세로 길이
     private Transform DoorInfoTrans;
+
     public void Setup(Vector2 _gridPos, int _type, bool _doorTop, bool _doorBot, bool _doorLeft, bool _doorRight, int roomnum)
     {
         gridPos = _gridPos;
@@ -172,12 +173,17 @@ public class RoomInstance : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-
+            GetMapTileRend.enabled = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D coll)
     {
-        
+        if (coll.gameObject.CompareTag("Player"))
+        {
+            GetMapTileRend.enabled = false;
+        }
     }
+
+
 }

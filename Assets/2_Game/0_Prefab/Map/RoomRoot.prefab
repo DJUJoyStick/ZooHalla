@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5104275176848381463}
   - component: {fileID: 7730133149927111380}
   - component: {fileID: 1991689026163800681}
+  - component: {fileID: 1232419211}
   m_Layer: 0
   m_Name: RoomRoot
   m_TagString: Untagged
@@ -6468,3 +6469,30 @@ MonoBehaviour:
     prefab: {fileID: 8415547873835775469, guid: c4e9f3b32668c54418ef12dd3d9dd708, type: 3}
   - color: {r: 0.0047169924, g: 0.31264576, b: 1, a: 1}
     prefab: {fileID: 7252692646972227147, guid: aa084f3a691ca1d4680eca9d904fa979, type: 3}
+  GetMapTileRend: {fileID: 7730133149927111380}
+--- !u!61 &1232419211
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522351280436238981}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 34, y: 18.5}
+  m_EdgeRadius: 0

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class SheetAssigner : MonoBehaviour {
 	[SerializeField]
-	Texture2D[] sheetsNormal;
-	[SerializeField]
 	GameObject RoomObj;
     [SerializeField]
     GameObject RoomParent;
     const float offset = 0.5f;
 	private int room_number = 0;
+    //private bool first_room = false;
 	public Vector2 roomDimensions = new Vector2(17,9);//272,144(16에서 4로 축소 밑에도)68,36
 	public Vector2 gutterSize = new Vector2(4, 4);//144,64 36,16
 	public void Assign(Room[,] rooms){
@@ -26,6 +25,13 @@ public class SheetAssigner : MonoBehaviour {
             RoomInstance myRoom = Instantiate(RoomObj, pos, Quaternion.identity).GetComponent<RoomInstance>();
 			myRoom.Setup(room.gridPos, room.type, room.doorTop, room.doorBot, room.doorLeft, room.doorRight, room_number++);
 			myRoom.transform.parent = RoomParent.transform;
+            //최적화 코드
+            if (room.type.Equals((int)MapState.Start))
+            {
+                continue;
+            }
+            myRoom.GetMapTileRend.enabled = false;
+
         }
 	}
 }

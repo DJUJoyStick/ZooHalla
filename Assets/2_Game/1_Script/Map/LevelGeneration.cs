@@ -60,7 +60,7 @@ public class LevelGeneration : MonoBehaviour
             }
             while (randnum[0] == randnum[1]);
 
-
+            //swap
             if (randnum[0] > randnum[1])
             {
                 int temp = randnum[0];
@@ -123,7 +123,7 @@ public class LevelGeneration : MonoBehaviour
                 rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, (int)MapState.Event);
                 index++;
             }
-            else
+            else//그 이외는 노말맵
             {
                 rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, (int)MapState.Normal);
             }
