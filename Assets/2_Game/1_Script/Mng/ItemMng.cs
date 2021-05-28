@@ -20,39 +20,30 @@ public class ItemMng : MonoBehaviour
     }
 
     private void Set_Tooth_Pick(int num)
-    {
-        
+    {      
         MeleeItemList.Add(new Tooth_Pick());
-        MeleeItemList[num].s_name = "이쑤시개";
-        MeleeItemList[num].i_rating = WEAPONRATING.NORMAL;
-        MeleeItemList[num].i_dmg = 4;
-        MeleeItemList[num].f_attspeed = 0.3f;
-        MeleeItemList[num].f_range = 1f;
-        MeleeItemList[num].S_Icon = spr[num];
+        InitItem(num, "이쑤시개", WEAPONRATING.NORMAL, 4, 0.3f, 1f, spr[num]);
     }
     private void Set_Club(int num)
     {
-
         MeleeItemList.Add(new Club());
-        MeleeItemList[num].s_name = "클럽";
-        MeleeItemList[num].i_rating = WEAPONRATING.NORMAL;
-        MeleeItemList[num].i_dmg = 5;
-        MeleeItemList[num].f_attspeed = 0.5f;
-        MeleeItemList[num].f_range = 1f;
-        MeleeItemList[num].S_Icon = spr[num];
+        InitItem(num, "클럽", WEAPONRATING.NORMAL, 5, 0.5f, 1f, spr[num]);
     }
 
     private void Set_Stone_Spear(int num)
     {
-
         MeleeItemList.Add(new Club());
-        MeleeItemList[num].s_name = "클럽";
-        MeleeItemList[num].i_rating = WEAPONRATING.NORMAL;
-        MeleeItemList[num].i_dmg = 5;
-        MeleeItemList[num].f_attspeed = 0.5f;
-        MeleeItemList[num].f_range = 1f;
-        MeleeItemList[num].S_Icon = spr[num];
+        InitItem(num, "돌창", WEAPONRATING.NORMAL, 5, 0.5f, 1f, spr[num]);
     }
 
+    void InitItem(int num, string name, WEAPONRATING rating, int dmg, float attspeed, float range, Sprite icon)
+    {
+        MeleeItemList[num].s_name = name;
+        MeleeItemList[num].i_rating = rating;
+        MeleeItemList[num].i_dmg = dmg;
+        MeleeItemList[num].f_attspeed = attspeed;
+        MeleeItemList[num].f_range = range;
+        MeleeItemList[num].S_Icon = icon;
+    }
 
 }

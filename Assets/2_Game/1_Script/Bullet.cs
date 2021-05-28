@@ -8,9 +8,6 @@ public class Bullet : MonoBehaviour
     float fBulletSpeed;
     float fBulletDegree;
 
-    public int nBulletDmg;
-
-    // Start is called before the first frame update
     void Start()
     {
         if (!SGameMng.I.TargetEnemyTr.Equals(null))
@@ -24,12 +21,10 @@ public class Bullet : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(fBulletDegree - 90f, Vector3.forward);
             }
         }
-        nBulletDmg = 5;
         fBulletSpeed = 15.0f;
         StartCoroutine(DestroyBullet());
     }
 
-    // Update is called once per frame
     void Update()
     {
         BulletMove();
@@ -51,7 +46,7 @@ public class Bullet : MonoBehaviour
         if (col.CompareTag("Monster"))
         {
             Monster HitMonsterSc = col.GetComponent<Monster>();
-            HitMonsterSc.nMonsterHp -= SGameMng.I.RatSc._nWeaponDmg;
+            HitMonsterSc.nMonsterHp -= SGameMng.I.PlayerSc._nWeaponDmg;
             Destroy(gameObject);
         }
         if (col.CompareTag("Wall"))

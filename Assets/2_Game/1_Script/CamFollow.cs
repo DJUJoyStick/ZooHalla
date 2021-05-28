@@ -5,13 +5,14 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour
 {
 
-    public Transform PlayerTr;
+    Transform PlayerTr;
 
     float fCamSpeed;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        PlayerTr = SGameMng.I.PlayerSc.transform;
         fCamSpeed = 2.0f;
     }
 
