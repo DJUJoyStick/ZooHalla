@@ -23,6 +23,7 @@ public class SGameMng : MonoBehaviour
     {
         _Instance = this;
         Screen.SetResolution(1280, 720, true);
+        PlayerSc = GameObject.Find("Rat").GetComponent<Player>();
     }
 
     public PLAYERTYPE PlayerType;
@@ -35,8 +36,7 @@ public class SGameMng : MonoBehaviour
     public UnityEngine.UI.Image C_MapColor;
     public Inventory GetInven;
 
-    public Rat RatSc;
-    public Turtle TurtleSc;
+    public Player PlayerSc;
     public MonsterMng MonsterMngSc;
     public Monster TargetEnemySc;
     public TextMng TextMngSc;
@@ -45,7 +45,6 @@ public class SGameMng : MonoBehaviour
     public float fTargetDis;
 
     public bool bMobileOn = false;
-
 
     public void log(string msg)
     {

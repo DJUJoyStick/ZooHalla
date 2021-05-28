@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 246386126495206514}
   - component: {fileID: 246386126495206515}
   - component: {fileID: 246386126495206512}
-  - component: {fileID: 9001054651075579425}
+  - component: {fileID: 7674492605483326414}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Player
@@ -246,7 +246,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 0.96}
   m_EdgeRadius: 0
---- !u!114 &9001054651075579425
+--- !u!114 &7674492605483326414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 246386126495206519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcc58559fbf7634ba3ca2522756cf78, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe2cb2784a6104458e0dd36ea15fb43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerSr: {fileID: 0}

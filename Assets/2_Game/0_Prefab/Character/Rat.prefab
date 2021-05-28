@@ -125,8 +125,8 @@ GameObject:
   - component: {fileID: 246386126495206514}
   - component: {fileID: 246386126495206515}
   - component: {fileID: 246386126495206512}
-  - component: {fileID: 246386126495206513}
   - component: {fileID: 246386126495206525}
+  - component: {fileID: -4729116768600857261}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Player
@@ -247,46 +247,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 0.96}
   m_EdgeRadius: 0
---- !u!114 &246386126495206513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246386126495206519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27495ceaf3bc2b45ab494213e8e35e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Playertype: 0
-  _PlayerWeaponRating: 0
-  _PlayerWeaponType: 0
-  _PlayerMeleeWeapon: 0
-  _PlayerRangedWeapon: 0
-  _nPlayerHp: 0
-  _nFullHp: 0
-  _nBulletAmount: 0
-  _nFullBulletAmount: 0
-  _nEvasion: 0
-  _nWeaponDmg: 0
-  _fMoveSpeed: 0
-  _fReloadTime: 0
-  _fAttackSpeed: 0
-  _bDmgAccess: 0
-  _bMoveAccess: 0
-  _bAttackAccess: 0
-  _bBulletShooting: 0
-  _bPlayerDie: 0
-  _bBulletReloading: 0
-  _bSkillOn: 0
-  BulletPre: {fileID: 50407560108891461, guid: 93c1c0f5df6dc924fb2108753e84efe0, type: 3}
-  JoyStickTr: {fileID: 0}
-  GunParentTr: {fileID: 246386125131965265}
-  GunTr: {fileID: 246386124716419968}
-  GetMapPlayer: {fileID: 0}
-  PlayerRig: {fileID: 0}
-  MoveVec: {x: 0, y: 0, z: 0}
 --- !u!95 &246386126495206525
 Animator:
   serializedVersion: 3
@@ -306,3 +266,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4729116768600857261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246386126495206519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe2cb2784a6104458e0dd36ea15fb43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PlayerSr: {fileID: 0}
+  _PlayerRig: {fileID: 0}
+  _MoveVec: {x: 0, y: 0, z: 0}
+  _RotVec: {x: 0, y: 0, z: 0}
+  _PlayerWeaponRating: 0
+  _PlayerWeaponType: 0
+  _PlayerMeleeWeapon: 0
+  _PlayerRangedWeapon: 0
+  _nPlayerHp: 0
+  _nFullHp: 0
+  _nBulletAmount: 0
+  _nFullBulletAmount: 0
+  _nWeaponDmg: 0
+  _fMoveSpeed: 0
+  _fReloadTime: 0
+  _fAttackSpeed: 0
+  _bDmgAccess: 0
+  _bMoveAccess: 0
+  _bAttackAccess: 0
+  _bBulletShooting: 0
+  _bPlayerDie: 0
+  _bBulletReloading: 0
+  _bSkillOn: 0
+  BulletPre: {fileID: 0}
+  JoyStickTr: {fileID: 0}
+  GunParentTr: {fileID: 0}
+  GunTr: {fileID: 0}
+  GetMapPlayer: {fileID: 0}

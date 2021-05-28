@@ -79,18 +79,7 @@ public class PlayerMapPosition : MonoBehaviour
 
     void NextStageStopPlayer(PLAYERTYPE type)
     {
-        if (type.Equals(PLAYERTYPE.RAT))
-        {
-            StartCoroutine(SGameMng.I.RatSc.DoorToNextStage());
-        }
-        else if (type.Equals(PLAYERTYPE.TURTLE))
-        {
-            StartCoroutine(SGameMng.I.TurtleSc.DoorToNextStage());
-        }
-        else if (type.Equals(PLAYERTYPE.WOLF))
-        {
-
-        }
+        StartCoroutine(SGameMng.I.PlayerSc.DoorToNextStage());
     }
 
     private void Render_MiniMap_Sprite(Vector2 Vec2)
