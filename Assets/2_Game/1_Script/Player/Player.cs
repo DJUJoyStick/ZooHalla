@@ -19,7 +19,6 @@ public class Player : PlayerMng
     int nSaveHealth;
 
     const float correction = 90f * Mathf.Deg2Rad;   // 모바일
-    //public float fBulletDirect;
     float fRotateDegree;
     float fBulletDelay;
     float fGunRot;
@@ -44,6 +43,7 @@ public class Player : PlayerMng
         }
         _PlayerRig = GetComponent<Rigidbody2D>();
         _PlayerSr = GetComponent<SpriteRenderer>();
+        _PlayerAnime = GetComponent<Animator>();
     }
 
     void Update()
@@ -70,16 +70,36 @@ public class Player : PlayerMng
                 Attack();
             }
         }
-        if (Time.time > fBulletDelay + _fAttackSpeed)                                                                                // 0.1f부분을 변수화해서 총알 딜레이 설정
+        if (Time.time > fBulletDelay + _fAttackSpeed)
         {
             _bBulletShooting = false;
         }
+        if (SGameMng.I.bJoystickDown && !_bPlayerDie)
+        {
+            if (JoyStickTr.localPosition.x < 0)
+            {
+                _PlayerSr.flipX = false;
+                _PlayerWalkAnime(true, false);
+            }
+            else if (JoyStickTr.localPosition.x > 0)
+            {
+                _PlayerSr.flipX = false;
+                _PlayerWalkAnime(false, true);
+            }
+        }
+        else
+            _PlayerWalkAnime(false, false);
+
+        if (_nPlayerHp <= 0)
+        {
+            if (JoyStickTr.localPosition.x > 0)
+                _PlayerSr.flipX = true;
+            _PlayerAnime.SetBool("isDying", true);
+        }
     }
-    void PlayerInit(/*PLAYERTYPE p_type, */WEAPONTYPE w_type, float movespeed, int hp, int fullhp, bool moveaccess, bool dmgacces)
+    void PlayerInit(WEAPONTYPE w_type, float movespeed, int hp, int fullhp, bool moveaccess, bool dmgacces)
     {
-        //SGameMng.I.PlayerType = p_type;
         _PlayerWeaponType = w_type;
-        //direction = PLAYERDIRECT.DONTMOVE;
         _fMoveSpeed = movespeed;
         _nPlayerHp = hp;
         _nFullHp = fullhp;
@@ -98,7 +118,10 @@ public class Player : PlayerMng
         else
         {
             _bPlayerDie = true;
-            Debug.Log("플레이어 사망");
+            _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+            GunParentTr.gameObject.SetActive(false);
+            if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+                StopCoroutine(RatPassiveCor);
         }
 
         if (_bPlayerDie)
@@ -107,10 +130,13 @@ public class Player : PlayerMng
             _bDmgAccess = false;
         }
 
-        if (!bRatPassive && _nPlayerHp <= 3)
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
-            RatPassiveCor = StartCoroutine(AutoHealth());
-            bRatPassive = true;
+            if (!bRatPassive && _nPlayerHp <= 3)
+            {
+                RatPassiveCor = StartCoroutine(AutoHealth());
+                bRatPassive = true;
+            }
         }
     }
 
@@ -122,14 +148,6 @@ public class Player : PlayerMng
         fGunRot = (Mathf.Atan2(_MoveVec.y, _MoveVec.x) - correction) * Mathf.Rad2Deg;
         if (_bMoveAccess)
             GunParentTr.rotation = Quaternion.Euler(0f, 0f, fGunRot - 90f);
-        if (JoyStickTr.localPosition.x < 0)
-        {
-            _PlayerSr.flipX = false;
-        }
-        else if (JoyStickTr.localPosition.x > 0)
-        {
-            _PlayerSr.flipX = true;
-        }
     }
 
     void Move()
@@ -189,10 +207,13 @@ public class Player : PlayerMng
     }
     void PlayerSkill()
     {
-        if (_bSkillOn)
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
-            SGameMng.I.MonsterMngSc.bAreaSkillOn = true;
-            _bSkillOn = false;
+            if (_bSkillOn)
+            {
+                SGameMng.I.MonsterMngSc.bAreaSkillOn = true;
+                _bSkillOn = false;
+            }
         }
     }
 

@@ -209,6 +209,14 @@ namespace CnControls
 
 		public void OnPointerUp(PointerEventData eventData)
 		{
+			if (!SGameMng.I.PlayerSc._bPlayerDie)
+			{
+				if (_stickTransform.localPosition.x < 0.0f)
+					SGameMng.I.PlayerSc._PlayerSr.flipX = false;
+				else if (_stickTransform.localPosition.x > 0.0f)
+					SGameMng.I.PlayerSc._PlayerSr.flipX = true;
+			}
+
 			// When we lift our finger, we reset everything to the initial state
 			_baseTransform.anchoredPosition = _initialBasePosition;
 			_stickTransform.anchoredPosition = _initialStickPosition;
@@ -222,6 +230,7 @@ namespace CnControls
 				Hide(true);
 			}
 			Debug.Log("Up");
+			SGameMng.I.bJoystickDown = false;
 		}
 
 		public void OnPointerDown(PointerEventData eventData)
@@ -242,6 +251,7 @@ namespace CnControls
 				_stickTransform.position = localStickPosition;
 				_intermediateStickPosition = _stickTransform.anchoredPosition;
 				Debug.Log("Down");
+				SGameMng.I.bJoystickDown = true;
 			}
 			else
 			{

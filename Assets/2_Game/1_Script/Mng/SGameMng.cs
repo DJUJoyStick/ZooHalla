@@ -45,6 +45,7 @@ public class SGameMng : MonoBehaviour
     public float fTargetDis;
 
     public bool bMobileOn = false;
+    public bool bJoystickDown = false;
 
     public void log(string msg)
     {

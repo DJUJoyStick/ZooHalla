@@ -24,6 +24,7 @@ public class ItemMng : MonoBehaviour
         MeleeItemList.Add(new Tooth_Pick());
         InitItem(num, "ÀÌ¾¥½Ã°³", WEAPONRATING.NORMAL, 4, 0.3f, 1f, spr[num]);
     }
+
     private void Set_Club(int num)
     {
         MeleeItemList.Add(new Club());

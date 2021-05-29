@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(fBulletDegree - 90f, Vector3.forward);
             }
         }
+
         fBulletSpeed = 15.0f;
         StartCoroutine(DestroyBullet());
     }

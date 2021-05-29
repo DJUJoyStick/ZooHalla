@@ -17,7 +17,6 @@ public class Monster : MonoBehaviour
     public bool bFindMobOn = false;
     public bool bDebuffOn = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         SelfMonsterSc = this;
@@ -26,7 +25,6 @@ public class Monster : MonoBehaviour
         nDotCount = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         MonsterState();
@@ -45,7 +43,9 @@ public class Monster : MonoBehaviour
             bFindMobOn = true;
         }
         else
+        {
             bFindMobOn = false;
+        }
     }
 
     public void Debuffs(PLAYERTYPE Type)

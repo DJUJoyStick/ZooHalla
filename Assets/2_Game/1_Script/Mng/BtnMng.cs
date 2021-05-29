@@ -23,7 +23,8 @@ public class BtnMng : MonoBehaviour
 
     public void AttackBtnDown()
     {
-        SGameMng.I.PlayerSc._bAttackAccess = true;
+        if (!SGameMng.I.PlayerSc._bPlayerDie)
+            SGameMng.I.PlayerSc._bAttackAccess = true;
     }
 
     public void AttackBtnUp()
@@ -33,7 +34,8 @@ public class BtnMng : MonoBehaviour
 
     public void ActiveSkillBtn()
     {
-        SGameMng.I.PlayerSc._bSkillOn = true;
+        if (!SGameMng.I.PlayerSc._bPlayerDie)
+            SGameMng.I.PlayerSc._bSkillOn = true;
     }
 
     public void InvenCtrl()

@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerMng : MonoBehaviour
 {
-
-
     public SpriteRenderer _PlayerSr;
 
     public Rigidbody2D _PlayerRig;
+
+    public Animator _PlayerAnime;
 
     public Vector3 _MoveVec;                        // 모바일
     public Vector3 _RotVec;                         // 모바일
@@ -68,6 +68,12 @@ public class PlayerMng : MonoBehaviour
         _bDmgAccess = true;
     }
 
+    public void _PlayerWalkAnime(bool lwalk, bool rwalk)
+    {
+        _PlayerAnime.SetBool("isLWalking", lwalk);
+        _PlayerAnime.SetBool("isRWalking", rwalk);
+    }
+
     //맵 이동시 맵 스프라이트 알파값 조정
     //맵 이동시 맵 스프라이트 알파값 조정
     public IEnumerator MoveMapAlphaCtrl(Collider2D GetTag)
@@ -101,7 +107,6 @@ public class PlayerMng : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
     }
-
 
     public void WeaponSetting(WEAPONTYPE WeaponType)
     {

@@ -13,7 +13,7 @@ public class CamFollow : MonoBehaviour
     void Start()
     {
         PlayerTr = SGameMng.I.PlayerSc.transform;
-        fCamSpeed = 2.0f;
+        fCamSpeed = 7.0f;
     }
 
     void FixedUpdate()
