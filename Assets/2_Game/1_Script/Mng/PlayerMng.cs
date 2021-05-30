@@ -38,6 +38,7 @@ public class PlayerMng : MonoBehaviour
     public bool _bPlayerDie = false;
     public bool _bBulletReloading = false;
     public bool _bSkillOn = false;
+    public bool _bLookPos = false;
 
     public void getKey()
     {

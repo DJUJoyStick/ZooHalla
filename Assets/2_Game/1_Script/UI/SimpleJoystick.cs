@@ -190,7 +190,7 @@ namespace CnControls
 				}
 				else
 				{
-					_stickTransform.anchoredPosition = _intermediateStickPosition + normalizedDifference * MovementRange;
+					_stickTransform.anchoredPosition = _intermediateStickPosition + normalizedDifference * MovementRange; 
 				}
 			}
 
@@ -211,10 +211,17 @@ namespace CnControls
 		{
 			if (!SGameMng.I.PlayerSc._bPlayerDie)
 			{
-				if (_stickTransform.localPosition.x < 0.0f)
-					SGameMng.I.PlayerSc._PlayerSr.flipX = false;
-				else if (_stickTransform.localPosition.x > 0.0f)
-					SGameMng.I.PlayerSc._PlayerSr.flipX = true;
+				//if (_stickTransform.localPosition.x < 0.0f)
+				//{
+				//	//SGameMng.I.PlayerSc._PlayerSr.flipX = false;
+				//	SGameMng.I.PlayerSc._PlayerAnime.SetBool("isIdle", true);
+				//}
+				//else if (_stickTransform.localPosition.x > 0.0f)
+				//{
+				//	SGameMng.I.PlayerSc._PlayerAnime.SetBool("isIdle", true);
+				//	//SGameMng.I.PlayerSc._PlayerSr.flipX = true;
+				//}
+				SGameMng.I.PlayerSc._PlayerAnime.SetBool("isIdle", true);
 			}
 
 			// When we lift our finger, we reset everything to the initial state
@@ -229,7 +236,6 @@ namespace CnControls
 			{
 				Hide(true);
 			}
-			Debug.Log("Up");
 			SGameMng.I.bJoystickDown = false;
 		}
 
@@ -250,8 +256,9 @@ namespace CnControls
 				_baseTransform.position = localBasePosition;
 				_stickTransform.position = localStickPosition;
 				_intermediateStickPosition = _stickTransform.anchoredPosition;
-				Debug.Log("Down");
+
 				SGameMng.I.bJoystickDown = true;
+				SGameMng.I.PlayerSc._PlayerAnime.SetBool("isIdle", false);
 			}
 			else
 			{

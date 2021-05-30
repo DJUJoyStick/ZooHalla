@@ -34,18 +34,12 @@ public class Monster : MonoBehaviour
     {
         fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.PlayerSc.transform.position);
         if (nMonsterHp <= 0)
-        {
             Destroy(gameObject);
-        }
 
         if (fPlayerDis <= 7.0f)
-        {
             bFindMobOn = true;
-        }
         else
-        {
             bFindMobOn = false;
-        }
     }
 
     public void Debuffs(PLAYERTYPE Type)

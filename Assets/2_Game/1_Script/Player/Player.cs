@@ -18,7 +18,7 @@ public class Player : PlayerMng
 
     int nSaveHealth;
 
-    const float correction = 90f * Mathf.Deg2Rad;   // 모바일
+    const float correction = 90f * Mathf.Deg2Rad;
     float fRotateDegree;
     float fBulletDelay;
     float fGunRot;
@@ -27,7 +27,7 @@ public class Player : PlayerMng
 
     void Start()
     {
-        SGameMng.I.PlayerType = PLAYERTYPE.RAT;
+        SGameMng.I.PlayerType = PLAYERTYPE.WOLF;
         if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
             PlayerInit(WEAPONTYPE.RANGED_WEAPON, 10.0f, 5, 5, true, true);
@@ -39,11 +39,13 @@ public class Player : PlayerMng
         }
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
         {
-
+            PlayerInit(WEAPONTYPE.RANGED_WEAPON, 7.0f, 7, 7, true, true);
         }
         _PlayerRig = GetComponent<Rigidbody2D>();
         _PlayerSr = GetComponent<SpriteRenderer>();
         _PlayerAnime = GetComponent<Animator>();
+        JoyStickTr = GameObject.Find("Stick").transform;
+        GetMapPlayer = GameObject.Find("LevelGenerator").GetComponent<PlayerMapPosition>();
     }
 
     void Update()
@@ -92,7 +94,7 @@ public class Player : PlayerMng
 
         if (_nPlayerHp <= 0)
         {
-            if (JoyStickTr.localPosition.x > 0)
+            if (JoyStickTr.localPosition.x > 0 && !_PlayerAnime.GetBool("isDying"))
                 _PlayerSr.flipX = true;
             _PlayerAnime.SetBool("isDying", true);
         }
@@ -148,6 +150,18 @@ public class Player : PlayerMng
         fGunRot = (Mathf.Atan2(_MoveVec.y, _MoveVec.x) - correction) * Mathf.Rad2Deg;
         if (_bMoveAccess)
             GunParentTr.rotation = Quaternion.Euler(0f, 0f, fGunRot - 90f);
+
+        if (!SGameMng.I.TargetEnemyTr.Equals(null))
+        {
+            if (SGameMng.I.TargetEnemySc.bFindMobOn)
+            {
+                float guny = SGameMng.I.TargetEnemyTr.position.y - transform.position.y;
+                float gunx = SGameMng.I.TargetEnemyTr.position.x - transform.position.x;
+                float fBulletDegree = Mathf.Atan2(guny, gunx) * Mathf.Rad2Deg;
+
+                GunParentTr.rotation = Quaternion.AngleAxis(fBulletDegree - 180f, Vector3.forward);
+            }
+        }
     }
 
     void Move()
@@ -156,24 +170,16 @@ public class Player : PlayerMng
         {
             PlayerMoveVec = Vector2.zero;
             if (Input.GetKey(KeyCode.W))
-            {
-                //direction = PLAYERDIRECT.UP;
                 PlayerMoveVec.y += _fMoveSpeed;
-            }
             if (Input.GetKey(KeyCode.S))
-            {
-                //direction = PLAYERDIRECT.DOWN;
                 PlayerMoveVec.y -= _fMoveSpeed;
-            }
             if (Input.GetKey(KeyCode.A))
             {
-                //direction = PLAYERDIRECT.LEFT;
                 _PlayerSr.flipX = false;
                 PlayerMoveVec.x -= _fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                //direction = PLAYERDIRECT.RIGHT;
                 _PlayerSr.flipX = true;
                 PlayerMoveVec.x += _fMoveSpeed;
             }
@@ -200,11 +206,19 @@ public class Player : PlayerMng
 
         GunParentTr.rotation = Quaternion.Euler(0f, 0f, fRotateDegree - 180f);                                     // 총 위치 회전(마우스 방향) 추후에 고정 몬스터 방향으로 변환
 
-        //if (!bBulletDirect)
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, 0f, _fRotateDegree);
-        //}
+        if (!SGameMng.I.TargetEnemyTr.Equals(null))
+        {
+            if (SGameMng.I.TargetEnemySc.bFindMobOn)
+            {
+                float guny = SGameMng.I.TargetEnemyTr.position.y - transform.position.y;
+                float gunx = SGameMng.I.TargetEnemyTr.position.x - transform.position.x;
+                float fBulletDegree = Mathf.Atan2(guny, gunx) * Mathf.Rad2Deg;
+
+                GunParentTr.rotation = Quaternion.AngleAxis(fBulletDegree - 180f, Vector3.forward);
+            }
+        }
     }
+
     void PlayerSkill()
     {
         if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
@@ -214,6 +228,14 @@ public class Player : PlayerMng
                 SGameMng.I.MonsterMngSc.bAreaSkillOn = true;
                 _bSkillOn = false;
             }
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+        {
+
         }
     }
 
@@ -257,7 +279,7 @@ public class Player : PlayerMng
         }
     }
 
-    IEnumerator AutoHealth()
+    IEnumerator AutoHealth()        // 생쥐 패시브
     {
         yield return new WaitForSeconds(5.0f);
         if (_nPlayerHp.Equals(nSaveHealth))

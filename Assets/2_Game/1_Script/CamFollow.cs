@@ -21,6 +21,5 @@ public class CamFollow : MonoBehaviour
         Vector3 TargetPos = new Vector3(PlayerTr.position.x, PlayerTr.position.y, -10f);
 
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * fCamSpeed);
-
     }
 }
