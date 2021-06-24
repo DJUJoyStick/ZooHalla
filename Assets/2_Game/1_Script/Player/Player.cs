@@ -14,12 +14,13 @@ public class Player : PlayerMng
 
     Coroutine RatPassiveCor;
 
+    public UnityEngine.UI.Image turtleskillimg;
+
     Vector2 PlayerMoveVec;
 
     int nSaveHealth;
 
-    const float correction = 90f * Mathf.Deg2Rad;   // 모바일
-    //public float fBulletDirect;
+    const float correction = 90f * Mathf.Deg2Rad;
     float fRotateDegree;
     float fBulletDelay;
     float fGunRot;
@@ -28,7 +29,7 @@ public class Player : PlayerMng
 
     void Start()
     {
-        SGameMng.I.PlayerType = PLAYERTYPE.RAT;
+        SGameMng.I.PlayerType = PLAYERTYPE.WOLF;
         if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
             PlayerInit(WEAPONTYPE.RANGED_WEAPON, 10.0f, 5, 5, true, true);
@@ -40,10 +41,13 @@ public class Player : PlayerMng
         }
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
         {
-
+            PlayerInit(WEAPONTYPE.RANGED_WEAPON, 7.0f, 7, 7, true, true);
         }
         _PlayerRig = GetComponent<Rigidbody2D>();
         _PlayerSr = GetComponent<SpriteRenderer>();
+        _PlayerAnime = GetComponent<Animator>();
+        JoyStickTr = GameObject.Find("Stick").transform;
+        GetMapPlayer = GameObject.Find("LevelGenerator").GetComponent<PlayerMapPosition>();
     }
 
     void Update()
@@ -70,16 +74,50 @@ public class Player : PlayerMng
                 Attack();
             }
         }
-        if (Time.time > fBulletDelay + _fAttackSpeed)                                                                                // 0.1f부분을 변수화해서 총알 딜레이 설정
+        if (Time.time > fBulletDelay + _fAttackSpeed)
         {
             _bBulletShooting = false;
         }
+        if (SGameMng.I.bJoystickDown && !_bPlayerDie)
+        {
+            if (JoyStickTr.localPosition.x < 0)
+            {
+                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                {
+                    if (!_bSkillOn)
+                        _bLookRight = false;
+                }
+                else
+                    _bLookRight = false;
+                _PlayerSr.flipX = false;
+                _PlayerWalkAnime(true, false);
+            }
+            else if (JoyStickTr.localPosition.x > 0)
+            {
+                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                {
+                    if (!_bSkillOn)
+                        _bLookRight = true;
+                }
+                else
+                    _bLookRight = true;
+                _PlayerSr.flipX = false;
+                _PlayerWalkAnime(false, true);
+            }
+        }
+        else
+            _PlayerWalkAnime(false, false);
+
+        if (_nPlayerHp <= 0)
+        {
+            if (JoyStickTr.localPosition.x > 0 && !_PlayerAnime.GetBool("isDying"))
+                _PlayerSr.flipX = true;
+            _PlayerAnime.SetBool("isDying", true);
+        }
     }
-    void PlayerInit(/*PLAYERTYPE p_type, */WEAPONTYPE w_type, float movespeed, int hp, int fullhp, bool moveaccess, bool dmgacces)
+    void PlayerInit(WEAPONTYPE w_type, float movespeed, int hp, int fullhp, bool moveaccess, bool dmgacces)
     {
-        //SGameMng.I.PlayerType = p_type;
         _PlayerWeaponType = w_type;
-        //direction = PLAYERDIRECT.DONTMOVE;
         _fMoveSpeed = movespeed;
         _nPlayerHp = hp;
         _nFullHp = fullhp;
@@ -98,7 +136,10 @@ public class Player : PlayerMng
         else
         {
             _bPlayerDie = true;
-            Debug.Log("플레이어 사망");
+            _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+            GunParentTr.gameObject.SetActive(false);
+            if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+                StopCoroutine(RatPassiveCor);
         }
 
         if (_bPlayerDie)
@@ -107,10 +148,22 @@ public class Player : PlayerMng
             _bDmgAccess = false;
         }
 
-        if (!bRatPassive && _nPlayerHp <= 3)
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
-            RatPassiveCor = StartCoroutine(AutoHealth());
-            bRatPassive = true;
+            if (!bRatPassive && _nPlayerHp <= 3)
+            {
+                RatPassiveCor = StartCoroutine(AutoHealth());
+                bRatPassive = true;
+            }
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            TurtleSkill();
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+        {
+            DeathHard();
+            WolfSkill();
         }
     }
 
@@ -122,13 +175,17 @@ public class Player : PlayerMng
         fGunRot = (Mathf.Atan2(_MoveVec.y, _MoveVec.x) - correction) * Mathf.Rad2Deg;
         if (_bMoveAccess)
             GunParentTr.rotation = Quaternion.Euler(0f, 0f, fGunRot - 90f);
-        if (JoyStickTr.localPosition.x < 0)
+
+        if (!SGameMng.I.TargetEnemyTr.Equals(null))
         {
-            _PlayerSr.flipX = false;
-        }
-        else if (JoyStickTr.localPosition.x > 0)
-        {
-            _PlayerSr.flipX = true;
+            if (SGameMng.I.TargetEnemySc.bFindMobOn)
+            {
+                float guny = SGameMng.I.TargetEnemyTr.position.y - transform.position.y;
+                float gunx = SGameMng.I.TargetEnemyTr.position.x - transform.position.x;
+                float fBulletDegree = Mathf.Atan2(guny, gunx) * Mathf.Rad2Deg;
+
+                GunParentTr.rotation = Quaternion.AngleAxis(fBulletDegree - 180f, Vector3.forward);
+            }
         }
     }
 
@@ -138,24 +195,16 @@ public class Player : PlayerMng
         {
             PlayerMoveVec = Vector2.zero;
             if (Input.GetKey(KeyCode.W))
-            {
-                //direction = PLAYERDIRECT.UP;
                 PlayerMoveVec.y += _fMoveSpeed;
-            }
             if (Input.GetKey(KeyCode.S))
-            {
-                //direction = PLAYERDIRECT.DOWN;
                 PlayerMoveVec.y -= _fMoveSpeed;
-            }
             if (Input.GetKey(KeyCode.A))
             {
-                //direction = PLAYERDIRECT.LEFT;
                 _PlayerSr.flipX = false;
                 PlayerMoveVec.x -= _fMoveSpeed;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                //direction = PLAYERDIRECT.RIGHT;
                 _PlayerSr.flipX = true;
                 PlayerMoveVec.x += _fMoveSpeed;
             }
@@ -182,17 +231,43 @@ public class Player : PlayerMng
 
         GunParentTr.rotation = Quaternion.Euler(0f, 0f, fRotateDegree - 180f);                                     // 총 위치 회전(마우스 방향) 추후에 고정 몬스터 방향으로 변환
 
-        //if (!bBulletDirect)
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, 0f, _fRotateDegree);
-        //}
+        if (!SGameMng.I.TargetEnemyTr.Equals(null))
+        {
+            if (SGameMng.I.TargetEnemySc.bFindMobOn)
+            {
+                float guny = SGameMng.I.TargetEnemyTr.position.y - transform.position.y;
+                float gunx = SGameMng.I.TargetEnemyTr.position.x - transform.position.x;
+                float fBulletDegree = Mathf.Atan2(guny, gunx) * Mathf.Rad2Deg;
+
+                GunParentTr.rotation = Quaternion.AngleAxis(fBulletDegree - 180f, Vector3.forward);
+            }
+        }
     }
+
     void PlayerSkill()
     {
-        if (_bSkillOn)
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
-            SGameMng.I.MonsterMngSc.bAreaSkillOn = true;
-            _bSkillOn = false;
+            if (_bSkillOn)
+            {
+                SGameMng.I.MonsterMngSc.bAreaSkillOn = true;
+                _bSkillOn = false;
+            }
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            if (_bSkillOn)
+            {
+                _bMoveAccess = false;
+            }
+            else
+            {
+                _bMoveAccess = true;
+            }
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+        {
+
         }
     }
 
@@ -236,7 +311,54 @@ public class Player : PlayerMng
         }
     }
 
-    IEnumerator AutoHealth()
+    void TurtleSkill()              //거북이 액티브
+    {
+
+        if (!_bSkillOn)
+        {
+            if (turtleskillimg.fillAmount < 1)
+                turtleskillimg.fillAmount = turtleskillimg.fillAmount + 0.001f;
+        }
+        else
+        {
+            if (turtleskillimg.fillAmount > 0)
+                turtleskillimg.fillAmount = turtleskillimg.fillAmount - 0.005f;
+        }
+        if (turtleskillimg.fillAmount <= 0)
+        {
+            if (_bLookRight)
+            {
+                _PlayerAnime.SetBool("isRSkill", false);
+                SGameMng.I.PlayerSc._bSkillOn = false;
+                SGameMng.I.PlayerSc._bDmgAccess = true;
+            }
+            else
+            {
+                _PlayerAnime.SetBool("isLSkill", false);
+                SGameMng.I.PlayerSc._bSkillOn = false;
+                SGameMng.I.PlayerSc._bDmgAccess = true;
+            }
+        }
+    }
+
+    void WolfSkill()                // 늑대 스킬
+    {
+        if (_bSkillOn)
+        {
+            StartCoroutine(ICanStopMe());
+            _bSkillOn = false;
+        }
+    }
+
+    IEnumerator WeaponReload()
+    {
+        _bBulletReloading = true;
+        yield return new WaitForSeconds(_fReloadTime);
+        WeaponSetting(_PlayerWeaponType);
+        _bBulletReloading = false;
+    }
+
+    IEnumerator AutoHealth()        // 생쥐 패시브
     {
         yield return new WaitForSeconds(5.0f);
         if (_nPlayerHp.Equals(nSaveHealth))
@@ -250,15 +372,41 @@ public class Player : PlayerMng
         bRatPassive = false;
     }
 
-    IEnumerator WeaponReload()
+    IEnumerator ICanStopMe()
     {
-        _bBulletReloading = true;
-        yield return new WaitForSeconds(_fReloadTime);
-        WeaponSetting(_PlayerWeaponType);
-        _bBulletReloading = false;
+        float fSaveAttackSpeed = _fAttackSpeed;
+        _fAttackSpeed = _fAttackSpeed * 0.5f;
+        yield return new WaitForSeconds(5.0f);
+        _fAttackSpeed = fSaveAttackSpeed;
     }
 
-
+    void DeathHard()                // 늑대 패시브
+    {
+        switch (_nPlayerHp)
+        {
+            case 7:
+                _nFinalDmg = _nWeaponDmg;
+                break;
+            case 6:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 10) / 100);
+                break;
+            case 5:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 20) / 100);
+                break;
+            case 4:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 30) / 100);
+                break;
+            case 3:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 40) / 100);
+                break;
+            case 2:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 50) / 100);
+                break;
+            case 1:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 60) / 100);
+                break;
+        }
+    }
 
     private void OnCollisionStay2D(Collision2D col)
     {
@@ -299,7 +447,8 @@ public class Player : PlayerMng
         //플레이어 캐릭터 이동
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
         //맵 알파값 조정
-        StartCoroutine(MoveMapAlphaCtrl(col));
+        //잠시끄는걸로 형이 계속 켜는걸로 하래
+        //StartCoroutine(MoveMapAlphaCtrl(col));
 
     }
 }

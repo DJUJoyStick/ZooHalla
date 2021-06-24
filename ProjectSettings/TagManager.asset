@@ -13,6 +13,8 @@ TagManager:
   - LeftDoor
   - RightDoor
   - Item
+  - ItemSlot
+  - ItemIcon
   layers:
   - Default
   - TransparentFX

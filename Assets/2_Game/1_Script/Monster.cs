@@ -17,7 +17,6 @@ public class Monster : MonoBehaviour
     public bool bFindMobOn = false;
     public bool bDebuffOn = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         SelfMonsterSc = this;
@@ -26,7 +25,6 @@ public class Monster : MonoBehaviour
         nDotCount = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         MonsterState();
@@ -36,14 +34,10 @@ public class Monster : MonoBehaviour
     {
         fPlayerDis = Vector2.Distance(transform.position, SGameMng.I.PlayerSc.transform.position);
         if (nMonsterHp <= 0)
-        {
             Destroy(gameObject);
-        }
 
         if (fPlayerDis <= 7.0f)
-        {
             bFindMobOn = true;
-        }
         else
             bFindMobOn = false;
     }

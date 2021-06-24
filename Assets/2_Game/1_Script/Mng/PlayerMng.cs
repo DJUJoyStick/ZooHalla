@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerMng : MonoBehaviour
 {
-
-
     public SpriteRenderer _PlayerSr;
 
     public Rigidbody2D _PlayerRig;
+
+    public Animator _PlayerAnime;
 
     public Vector3 _MoveVec;                        // 모바일
     public Vector3 _RotVec;                         // 모바일
@@ -23,6 +23,8 @@ public class PlayerMng : MonoBehaviour
     public int _nBulletAmount;
     public int _nFullBulletAmount;                  // 최대 총알
     public int _nWeaponDmg;
+    public int _nPlusDmg;                           // 추가 데미지
+    public int _nFinalDmg;                          // 최종 데미지
 
     public float _fMoveSpeed;
     public float _fReloadTime;
@@ -38,6 +40,7 @@ public class PlayerMng : MonoBehaviour
     public bool _bPlayerDie = false;
     public bool _bBulletReloading = false;
     public bool _bSkillOn = false;
+    public bool _bLookRight = false;
 
     public void getKey()
     {
@@ -66,6 +69,12 @@ public class PlayerMng : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         _PlayerSr.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
         _bDmgAccess = true;
+    }
+
+    public void _PlayerWalkAnime(bool lwalk, bool rwalk)
+    {
+        _PlayerAnime.SetBool("isLWalking", lwalk);
+        _PlayerAnime.SetBool("isRWalking", rwalk);
     }
 
     //맵 이동시 맵 스프라이트 알파값 조정
@@ -101,7 +110,6 @@ public class PlayerMng : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
     }
-
 
     public void WeaponSetting(WEAPONTYPE WeaponType)
     {

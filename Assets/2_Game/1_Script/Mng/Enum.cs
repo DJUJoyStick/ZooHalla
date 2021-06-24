@@ -10,15 +10,6 @@ public enum DOORPOS
     RIGHT
 }
 
-//public enum PLAYERDIRECT
-//{
-//    DONTMOVE,
-//    LEFT,
-//    RIGHT,
-//    UP,
-//    DOWN
-//}
-
 public enum WEAPONRATING
 {
     NORMAL,

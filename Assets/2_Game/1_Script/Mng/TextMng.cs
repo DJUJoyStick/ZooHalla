@@ -24,8 +24,6 @@ public class TextMng : MonoBehaviour
 
     void AmountState()
     {
-        //if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
-        //{
         if (SGameMng.I.PlayerSc._PlayerWeaponType.Equals(WEAPONTYPE.RANGED_WEAPON))
         {
             AmountText.gameObject.SetActive(true);

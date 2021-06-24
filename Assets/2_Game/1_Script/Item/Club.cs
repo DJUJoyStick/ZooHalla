@@ -15,6 +15,19 @@ public class Club : Item
     //아이템 식별번호
     int num = 1;
 
+    private void Start()
+    {
+        direction = ItemOutInitial();
+    }
+
+    void Update()
+    {
+        if (!b_CollCheck)
+        {
+            ItemOut(direction);
+        }      
+    }
+
     public string s_name
     {
         get
@@ -84,14 +97,14 @@ public class Club : Item
 
     }
 
-    public void OnTriggerEnter2D(Collider2D coll)
+    public void OnCollisionEnter2D(Collision2D coll)
     {
         CollPlayer(coll, num);
     }
 
     protected override void DestroyItem()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 }

@@ -23,7 +23,7 @@ public class SGameMng : MonoBehaviour
     {
         _Instance = this;
         Screen.SetResolution(1280, 720, true);
-        PlayerSc = GameObject.Find("Rat").GetComponent<Player>();
+        PlayerSc = GameObject.Find("Wolf").GetComponent<Player>();
     }
 
     public PLAYERTYPE PlayerType;
@@ -45,6 +45,7 @@ public class SGameMng : MonoBehaviour
     public float fTargetDis;
 
     public bool bMobileOn = false;
+    public bool bJoystickDown = false;
 
     public void log(string msg)
     {
