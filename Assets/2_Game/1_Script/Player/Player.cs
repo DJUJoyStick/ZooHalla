@@ -14,6 +14,8 @@ public class Player : PlayerMng
 
     Coroutine RatPassiveCor;
 
+    public UnityEngine.UI.Image turtleskillimg;
+
     Vector2 PlayerMoveVec;
 
     int nSaveHealth;
@@ -80,11 +82,25 @@ public class Player : PlayerMng
         {
             if (JoyStickTr.localPosition.x < 0)
             {
+                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                {
+                    if (!_bSkillOn)
+                        _bLookRight = false;
+                }
+                else
+                    _bLookRight = false;
                 _PlayerSr.flipX = false;
                 _PlayerWalkAnime(true, false);
             }
             else if (JoyStickTr.localPosition.x > 0)
             {
+                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                {
+                    if (!_bSkillOn)
+                        _bLookRight = true;
+                }
+                else
+                    _bLookRight = true;
                 _PlayerSr.flipX = false;
                 _PlayerWalkAnime(false, true);
             }
@@ -139,6 +155,15 @@ public class Player : PlayerMng
                 RatPassiveCor = StartCoroutine(AutoHealth());
                 bRatPassive = true;
             }
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            TurtleSkill();
+        }
+        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+        {
+            DeathHard();
+            WolfSkill();
         }
     }
 
@@ -231,7 +256,14 @@ public class Player : PlayerMng
         }
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
         {
-
+            if (_bSkillOn)
+            {
+                _bMoveAccess = false;
+            }
+            else
+            {
+                _bMoveAccess = true;
+            }
         }
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
         {
@@ -279,6 +311,53 @@ public class Player : PlayerMng
         }
     }
 
+    void TurtleSkill()              //거북이 액티브
+    {
+
+        if (!_bSkillOn)
+        {
+            if (turtleskillimg.fillAmount < 1)
+                turtleskillimg.fillAmount = turtleskillimg.fillAmount + 0.001f;
+        }
+        else
+        {
+            if (turtleskillimg.fillAmount > 0)
+                turtleskillimg.fillAmount = turtleskillimg.fillAmount - 0.005f;
+        }
+        if (turtleskillimg.fillAmount <= 0)
+        {
+            if (_bLookRight)
+            {
+                _PlayerAnime.SetBool("isRSkill", false);
+                SGameMng.I.PlayerSc._bSkillOn = false;
+                SGameMng.I.PlayerSc._bDmgAccess = true;
+            }
+            else
+            {
+                _PlayerAnime.SetBool("isLSkill", false);
+                SGameMng.I.PlayerSc._bSkillOn = false;
+                SGameMng.I.PlayerSc._bDmgAccess = true;
+            }
+        }
+    }
+
+    void WolfSkill()                // 늑대 스킬
+    {
+        if (_bSkillOn)
+        {
+            StartCoroutine(ICanStopMe());
+            _bSkillOn = false;
+        }
+    }
+
+    IEnumerator WeaponReload()
+    {
+        _bBulletReloading = true;
+        yield return new WaitForSeconds(_fReloadTime);
+        WeaponSetting(_PlayerWeaponType);
+        _bBulletReloading = false;
+    }
+
     IEnumerator AutoHealth()        // 생쥐 패시브
     {
         yield return new WaitForSeconds(5.0f);
@@ -293,15 +372,41 @@ public class Player : PlayerMng
         bRatPassive = false;
     }
 
-    IEnumerator WeaponReload()
+    IEnumerator ICanStopMe()
     {
-        _bBulletReloading = true;
-        yield return new WaitForSeconds(_fReloadTime);
-        WeaponSetting(_PlayerWeaponType);
-        _bBulletReloading = false;
+        float fSaveAttackSpeed = _fAttackSpeed;
+        _fAttackSpeed = _fAttackSpeed * 0.5f;
+        yield return new WaitForSeconds(5.0f);
+        _fAttackSpeed = fSaveAttackSpeed;
     }
 
-
+    void DeathHard()                // 늑대 패시브
+    {
+        switch (_nPlayerHp)
+        {
+            case 7:
+                _nFinalDmg = _nWeaponDmg;
+                break;
+            case 6:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 10) / 100);
+                break;
+            case 5:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 20) / 100);
+                break;
+            case 4:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 30) / 100);
+                break;
+            case 3:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 40) / 100);
+                break;
+            case 2:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 50) / 100);
+                break;
+            case 1:
+                _nFinalDmg = _nWeaponDmg + ((_nWeaponDmg * 60) / 100);
+                break;
+        }
+    }
 
     private void OnCollisionStay2D(Collision2D col)
     {
@@ -342,7 +447,8 @@ public class Player : PlayerMng
         //플레이어 캐릭터 이동
         transform.Translate(GetMapPlayer.GetPlayerMove(col));
         //맵 알파값 조정
-        StartCoroutine(MoveMapAlphaCtrl(col));
+        //잠시끄는걸로 형이 계속 켜는걸로 하래
+        //StartCoroutine(MoveMapAlphaCtrl(col));
 
     }
 }

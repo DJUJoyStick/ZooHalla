@@ -23,6 +23,8 @@ public class PlayerMng : MonoBehaviour
     public int _nBulletAmount;
     public int _nFullBulletAmount;                  // 최대 총알
     public int _nWeaponDmg;
+    public int _nPlusDmg;                           // 추가 데미지
+    public int _nFinalDmg;                          // 최종 데미지
 
     public float _fMoveSpeed;
     public float _fReloadTime;
@@ -38,7 +40,7 @@ public class PlayerMng : MonoBehaviour
     public bool _bPlayerDie = false;
     public bool _bBulletReloading = false;
     public bool _bSkillOn = false;
-    public bool _bLookPos = false;
+    public bool _bLookRight = false;
 
     public void getKey()
     {

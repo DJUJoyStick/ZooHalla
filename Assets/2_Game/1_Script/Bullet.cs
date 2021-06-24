@@ -47,7 +47,10 @@ public class Bullet : MonoBehaviour
         if (col.CompareTag("Monster"))
         {
             Monster HitMonsterSc = col.GetComponent<Monster>();
-            HitMonsterSc.nMonsterHp -= SGameMng.I.PlayerSc._nWeaponDmg;
+            if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+                HitMonsterSc.nMonsterHp -= SGameMng.I.PlayerSc._nFinalDmg;
+            else
+                HitMonsterSc.nMonsterHp -= SGameMng.I.PlayerSc._nWeaponDmg;
             Destroy(gameObject);
         }
         if (col.CompareTag("Wall"))

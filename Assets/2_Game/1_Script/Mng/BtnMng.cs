@@ -23,8 +23,16 @@ public class BtnMng : MonoBehaviour
 
     public void AttackBtnDown()
     {
-        if (!SGameMng.I.PlayerSc._bPlayerDie)
-            SGameMng.I.PlayerSc._bAttackAccess = true;
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            if (!SGameMng.I.PlayerSc._bPlayerDie && !SGameMng.I.PlayerSc._bSkillOn)
+                SGameMng.I.PlayerSc._bAttackAccess = true;
+        }
+        else
+        {
+            if (!SGameMng.I.PlayerSc._bPlayerDie)
+                SGameMng.I.PlayerSc._bAttackAccess = true;
+        }
     }
 
     public void AttackBtnUp()
@@ -34,8 +42,35 @@ public class BtnMng : MonoBehaviour
 
     public void ActiveSkillBtn()
     {
-        if (!SGameMng.I.PlayerSc._bPlayerDie)
-            SGameMng.I.PlayerSc._bSkillOn = true;
+        if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+        {
+            if (!SGameMng.I.PlayerSc._bPlayerDie)
+            {
+                if (!SGameMng.I.PlayerSc._bSkillOn)
+                {
+                    SGameMng.I.PlayerSc._bSkillOn = true;
+                    SGameMng.I.PlayerSc._bDmgAccess = false;
+                    if (!SGameMng.I.PlayerSc._bLookRight)
+                        SGameMng.I.PlayerSc._PlayerAnime.SetBool("isLSkill", true);
+                    else
+                        SGameMng.I.PlayerSc._PlayerAnime.SetBool("isRSkill", true);
+                }
+                else
+                {
+                    SGameMng.I.PlayerSc._bSkillOn = false;
+                    SGameMng.I.PlayerSc._bDmgAccess = true;
+                    if (!SGameMng.I.PlayerSc._bLookRight)
+                        SGameMng.I.PlayerSc._PlayerAnime.SetBool("isLSkill", false);
+                    else
+                        SGameMng.I.PlayerSc._PlayerAnime.SetBool("isRSkill", false);
+                }
+            }
+        }
+        else
+        {
+            if (!SGameMng.I.PlayerSc._bPlayerDie)
+                SGameMng.I.PlayerSc._bSkillOn = true;
+        }
     }
 
     public void InvenCtrl()

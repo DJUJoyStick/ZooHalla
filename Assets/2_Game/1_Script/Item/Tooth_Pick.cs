@@ -13,6 +13,20 @@ public class Tooth_Pick : Item
 
     [SerializeField]
     int num = 0;
+
+    private void Start()
+    {
+        direction = ItemOutInitial();
+    }
+
+    void Update()
+    {
+        if (!b_CollCheck)
+        {
+            ItemOut(direction);
+        }
+    }
+
     public string s_name
     {
         get
@@ -87,14 +101,15 @@ public class Tooth_Pick : Item
 
     }
 
-    public void OnTriggerEnter2D(Collider2D coll)
+    public void OnCollisionEnter2D(Collision2D coll)
     {
         CollPlayer(coll, num);
     }
 
+
     protected override void DestroyItem()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 
