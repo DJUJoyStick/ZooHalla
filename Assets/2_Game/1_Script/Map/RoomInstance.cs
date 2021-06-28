@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 public class RoomInstance : MonoBehaviour
 {
     [HideInInspector]
     public Vector2 gridPos;
+    private TextMeshProUGUI GetRoomInfoTxt;
     private int type; // 0: 보통맵, 1: 시작맵, 2:보스맵 3:이벤트맵
-    private string MapName; //맵 이름
+    private string RoomName; //방 이름
     private static int height = 9;
     private static int width = 17;
     [HideInInspector]
@@ -15,11 +17,19 @@ public class RoomInstance : MonoBehaviour
     [SerializeField]
     GameObject doorU, doorD, doorL, doorR, doorWall, doorWallColl;
     public TilemapRenderer GetMapTileRend;//최적화용
-    public Transform GetWalls;//최적화용 
+    public GameObject GetWalls;//최적화용 
+    public GameObject GetObjs;//최적화용
     private const float tileSize = 1;//타일 크기 건들지 말것
     static int mapsize = 2;
     Vector2 roomSizeInTiles = new Vector2(height * mapsize, width * mapsize);//9,17 가로세로 길이
     private Transform DoorInfoTrans;
+    private Coroutine runningCoroutine = null;
+
+    //알파값조정 변수들
+    private float smoothness = 0.02f;
+    private float duration = 0.5f;
+    private float time = 3f;
+
 
     public void Setup(Vector2 _gridPos, int _type, bool _doorTop, bool _doorBot, bool _doorLeft, bool _doorRight, string str)
     {
@@ -29,7 +39,9 @@ public class RoomInstance : MonoBehaviour
         doorBot = _doorBot;
         doorLeft = _doorLeft;
         doorRight = _doorRight;
-        MapName = str;
+        RoomName = str;
+        GetRoomInfoTxt = SGameMng.I.GetRoomInfoText;
+
         GenerateRoomTiles();
 
 
@@ -61,7 +73,7 @@ public class RoomInstance : MonoBehaviour
         }
         else
         {
-            Instantiate(doorWallColl, spawnPos, Quaternion.identity).transform.parent = GetWalls;
+            Instantiate(doorWallColl, spawnPos, Quaternion.identity).transform.parent = GetWalls.transform;
         }
     }
 
@@ -79,7 +91,7 @@ public class RoomInstance : MonoBehaviour
             }
             else
             {
-                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls;
+                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls.transform;
             }
 
             spawnPos = positionFromTileGrid(x, 17);
@@ -89,7 +101,7 @@ public class RoomInstance : MonoBehaviour
             }
             else
             {
-                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls;
+                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls.transform;
             }
 
         }
@@ -102,7 +114,7 @@ public class RoomInstance : MonoBehaviour
             }
             else
             {
-                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls;
+                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls.transform;
             }
 
             spawnPos = positionFromTileGrid(33, y);
@@ -112,11 +124,12 @@ public class RoomInstance : MonoBehaviour
             }
             else
             {
-                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls;
+                Instantiate(doorWall, spawnPos, Quaternion.identity).transform.parent = GetWalls.transform;
             }
 
         }
-        GetWalls.gameObject.SetActive(false);
+        GetWalls.SetActive(false);
+        GetObjs.SetActive(false);
     }
     //void GenerateTile(int x, int y)
     //{//픽셀 색깔에 맞게 타일이 생성되는 코드
@@ -156,11 +169,22 @@ public class RoomInstance : MonoBehaviour
     //플레이어가 해당맵에 들어온것을 감지
     private void OnTriggerEnter2D(Collider2D coll)
     {
+        
         if (coll.gameObject.CompareTag("Player"))
         {
-            Debug.Log(MapName + "입장");
+            if (type.Equals((int)MapState.Event) || type.Equals((int)MapState.Boss))
+            {
+                GetRoomInfoTxt.SetText(RoomName);
+                if (runningCoroutine != null)
+                {
+                    StopCoroutine("RoomInfoTextAlphaCtrl");
+                }
+                runningCoroutine = StartCoroutine("RoomInfoTextAlphaCtrl");
+            }
+
             GetMapTileRend.enabled = true;
-            GetWalls.gameObject.SetActive(true);
+            GetWalls.SetActive(true);
+            GetObjs.SetActive(true);
         }
     }
 
@@ -169,11 +193,30 @@ public class RoomInstance : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            Debug.Log(MapName + "퇴장");
             GetMapTileRend.enabled = false;
-            GetWalls.gameObject.SetActive(false);
+            GetWalls.SetActive(false);
+            GetObjs.SetActive(false);
         }
     }
 
+    private IEnumerator RoomInfoTextAlphaCtrl()
+    {
+        float f_progress = 0;
+        float increment = smoothness / duration;
+        while (f_progress <= 1)
+        {
+            GetRoomInfoTxt.color = Color.Lerp(Color.clear, Color.white, f_progress);
+            f_progress += increment;
+            yield return new WaitForSeconds(smoothness);
+        }
+        f_progress = 0;
+        yield return new WaitForSeconds(time);
+        while (f_progress <= 1)
+        {
+            GetRoomInfoTxt.color = Color.Lerp(Color.white, Color.clear, f_progress);
+            f_progress += increment;
+            yield return new WaitForSeconds(smoothness);
+        }
+    }
 
 }

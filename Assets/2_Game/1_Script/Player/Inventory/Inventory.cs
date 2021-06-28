@@ -9,11 +9,13 @@ public class Inventory : MonoBehaviour
     //public Item[] InvenItem;
     private bool[] bItemSlotCheck = {false, false, false, false, false, false, false, false, false, false };
     public GameObject ItemIcon;
+    public ItemCraft Getitemcraft;
     [SerializeField]
     //20칸으로 늘릴 아이템이 있답니다 ㅎㅎ; 지금은 생각하지 맙시다
-    private int InvenMax = 10;
+    //private int InvenMax = 10;
     private int InvenNum = 0;
-
+    public bool bCraftMode = false;
+    public List<int> CraftItems;
 
 
     public bool AddItem(Item GetItem)
@@ -40,13 +42,37 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public void ClickCraftEvent()
+    {
+        if (!bCraftMode)
+        {
+            bCraftMode = true;
+            Getitemcraft.gameObject.SetActive(true);
+            GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            bCraftMode = false;
+            Getitemcraft.gameObject.SetActive(false);
+            GetComponent<Image>().color = Color.black;
+        }
+        
+    }
+
+    public void GetItemReciepe()
+    {
+        var getinfo = Getitemcraft.FindItem(CraftItems);
+        Debug.Log(getinfo.Item1+" "+getinfo.Item2);
+
+    }
+
     //외부로부터 슬롯의 참거짓을 설정해주는 함수
     public void SetSlot(int num, bool bcheck)
     {
         bItemSlotCheck[num] = bcheck;
     }
 
-    //슬롯이 빠지면 그 자리에 0을 집어넣자
+    
     private int CheckSlot()
     {
         for(int i = 0; i < bItemSlotCheck.Length; i++)

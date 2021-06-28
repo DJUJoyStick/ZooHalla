@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,12 +40,13 @@ public class SGameMng : MonoBehaviour
     public Monster TargetEnemySc;
     public TextMng TextMngSc;
     public GameObject[] GetItemGams;
+    public TMPro.TextMeshProUGUI GetRoomInfoText;
 
     public float fTargetDis;
 
     public bool bMobileOn = false;
     public bool bJoystickDown = false;
-
+    
     public void log(string msg)
     {
         testLog.text += msg + "\n";

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterMng : MonoBehaviour
 {
-    public bool bAreaSkillOn = false;                                  
+    public bool bAreaSkillOn = false;
 
     void Update()
     {
@@ -38,7 +38,7 @@ public class MonsterMng : MonoBehaviour
         {
             if (!SGameMng.I.FindMobList.Equals(null))
             {
-                SGameMng.I.FindMobList[i].Debuffs(SGameMng.I.PlayerType);
+                SGameMng.I.FindMobList[i].MobDebuffs(SGameMng.I.PlayerType);
             }
         }
     }
