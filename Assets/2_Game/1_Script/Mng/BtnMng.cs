@@ -26,18 +26,25 @@ public class BtnMng : MonoBehaviour
         if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
         {
             if (!SGameMng.I.PlayerSc._bPlayerDie && !SGameMng.I.PlayerSc._bSkillOn)
+            {
                 SGameMng.I.PlayerSc._bAttackAccess = true;
+                SGameMng.I.PlayerSc._PlayerWeaponAnime.SetBool("isAttack", true);
+            }
         }
         else
         {
             if (!SGameMng.I.PlayerSc._bPlayerDie)
+            {
                 SGameMng.I.PlayerSc._bAttackAccess = true;
+                SGameMng.I.PlayerSc._PlayerWeaponAnime.SetBool("isAttack", true);
+            }
         }
     }
 
     public void AttackBtnUp()
     {
         SGameMng.I.PlayerSc._bAttackAccess = false;
+        SGameMng.I.PlayerSc._PlayerWeaponAnime.SetBool("isAttack", false);
     }
 
     public void ActiveSkillBtn()

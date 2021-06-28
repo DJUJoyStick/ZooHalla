@@ -41,22 +41,24 @@ public class ItemMng : MonoBehaviour
 
     private void Set_Tooth_Pick(int num)
     {      
-        MeleeItemList.Add(new Tooth_Pick());
-        InitItem(num, "이쑤시개", WEAPONRATING.NORMAL, 4, 0.3f, 1f, spr[num]);
+        MeleeItemList.Add(gameObject.AddComponent<Tooth_Pick>());//new 대신 addcomponent써야 노란색경고가 안나오더라 ㅋ;
+        InitItem(num, 0, "이쑤시개", WEAPONRATING.NORMAL, 4, 0.3f, 1f, spr[num]);
     }
     private void Set_Club(int num)
     {
-        MeleeItemList.Add(new Club());
-        InitItem(num, "클럽", WEAPONRATING.NORMAL, 5, 0.5f, 1f, spr[num]);
+        MeleeItemList.Add(gameObject.AddComponent<Club>());
+        InitItem(num, 1, "클럽", WEAPONRATING.NORMAL, 5, 0.5f, 1f, spr[num]);
     }
     private void Set_Stone_Spear(int num)
     {
-        MeleeItemList.Add(new Stone_Spear());
-        InitItem(num, "돌창", WEAPONRATING.NORMAL, 7, 0.5f, 1f, spr[num]);
+        MeleeItemList.Add(gameObject.AddComponent<Stone_Spear>());
+        InitItem(num, 2, "돌창", WEAPONRATING.NORMAL, 7, 0.5f, 1f, spr[num]);
     }
 
-    void InitItem(int num, string name, WEAPONRATING rating, int dmg, float attspeed, float range, Sprite icon)
+    void InitItem(int num, int privatenum, string name, WEAPONRATING rating, int dmg, float attspeed, float range, Sprite icon)
     {
+        //MeleeItemList[num].i_privatenum = privatenum;
+        MeleeItemList[num].GetPrivateNum(privatenum);
         MeleeItemList[num].s_name = name;
         MeleeItemList[num].i_rating = rating;
         MeleeItemList[num].i_dmg = dmg;

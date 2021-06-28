@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class Tooth_Pick : Item
 {
-    new string name;
-    int dmg;
-    WEAPONRATING rating;
-    float attspeed;
-    float range;
-    Sprite Icon;
-
-    [SerializeField]
-    int num = 0;
-
+    //static으로 해야 매개변수로 전달할때 지역변수로아닌
+    //힙 메모리에 올라와있는 변수로 넘기기에 정보 공유가 가능하다
+    private static int privatenum;
     private void Start()
     {
         direction = ItemOutInitial();
+        
     }
 
     void Update()
@@ -26,84 +20,20 @@ public class Tooth_Pick : Item
             ItemOut(direction);
         }
     }
-
-    public string s_name
+    public override void GetPrivateNum(int num)
     {
-        get
-        {
-            return name;
-        }
-        set
-        {
-            name = value;
-        }
-
+        
+        privatenum = num;
     }
 
-    public int i_dmg
+    public override int OutPrivateNum()
     {
-        get
-        {
-            return dmg;
-        }
-        set
-        {
-            dmg = value;
-        }
-    }
-
-    public WEAPONRATING i_rating
-    {
-        get
-        {
-            return rating;
-        }
-        set
-        {
-            rating = value;
-        }
-    }
-
-    public float f_attspeed
-    {
-        get
-        {
-            return attspeed;
-        }
-        set
-        {
-            attspeed = value;
-        }
-    }
-
-    public float f_range
-    {
-        get
-        {
-            return range;
-        }
-        set
-        {
-            range = value;
-        }
-    }
-
-    public Sprite S_Icon
-    {
-        get
-        {
-            return Icon;
-        }
-        set
-        {
-            Icon = value;
-        }
-
+        return privatenum;
     }
 
     public void OnCollisionEnter2D(Collision2D coll)
     {
-        CollPlayer(coll, num);
+        CollPlayer(coll, privatenum);
     }
 
 

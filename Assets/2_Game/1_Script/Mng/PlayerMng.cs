@@ -6,13 +6,20 @@ using UnityEngine.UI;
 public class PlayerMng : MonoBehaviour
 {
     public SpriteRenderer _PlayerSr;
+    public SpriteRenderer _PlayerWeaponSr;
 
     public Rigidbody2D _PlayerRig;
 
     public Animator _PlayerAnime;
 
+    public Animator _PlayerWeaponAnime;
+
+    public AnimationClip[] _PlayerWeaponAttackAniClip;
+    public AnimatorOverrideController _animatorOverrideController;
+
     public Vector3 _MoveVec;                        // 모바일
     public Vector3 _RotVec;                         // 모바일
+
     public WEAPONRATING _PlayerWeaponRating;
     public WEAPONTYPE _PlayerWeaponType;
     public MELEEWEAPON _PlayerMeleeWeapon;
@@ -119,45 +126,55 @@ public class PlayerMng : MonoBehaviour
             {
                 case MELEEWEAPON.TOOTH_PICK:
                     MeleeWeaponSetting("현재무기 : 이쑤시개", WEAPONRATING.NORMAL, 4, 0.3f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.TOOTH_PICK];
                     break;
                 case MELEEWEAPON.CLUB:
                     MeleeWeaponSetting("현재무기 : 클럽", WEAPONRATING.NORMAL, 6, 0.5f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.CLUB];
                     break;
                 case MELEEWEAPON.STONE_SPEAR:
                     MeleeWeaponSetting("현재무기 : 돌창", WEAPONRATING.NORMAL, 7, 0.5f);
-                    break;
-                case MELEEWEAPON.VINE_WHIP:
-                    MeleeWeaponSetting("현재무기 : 넝쿨채찍", WEAPONRATING.NORMAL, 6, 0.4f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.STONE_SPEAR];
                     break;
                 case MELEEWEAPON.WOOD_SHIELD:
                     MeleeWeaponSetting("현재무기 : 나무방패", WEAPONRATING.NORMAL, 4, 0.6f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.WOOD_SHIELD];
                     break;
                 case MELEEWEAPON.SPIRAL_SWORD:
                     MeleeWeaponSetting("현재무기 : 나선검", WEAPONRATING.RARE, 9, 0.5f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.SPIRAL_SWORD];
                     break;
                 case MELEEWEAPON.RIGHT_SWORD_LEFT_SHILED:
                     MeleeWeaponSetting("현재무기 : 오른쪽엔 검 왼쪽엔 방패", WEAPONRATING.RARE, 9, 0.5f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.RIGHT_SWORD_LEFT_SHILED];
                     break;
                 case MELEEWEAPON.KOLA:
-                    MeleeWeaponSetting("현재무기 : Kola", WEAPONRATING.RARE, 11, 0.4f);
+                    MeleeWeaponSetting("현재무기 : 콜라", WEAPONRATING.RARE, 11, 0.4f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.KOLA];
                     break;
                 case MELEEWEAPON.RAPIER:
                     MeleeWeaponSetting("현재무기 : 레이피어", WEAPONRATING.RARE, 8, 0.2f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.RAPIER];
                     break;
                 case MELEEWEAPON.FORK:
                     MeleeWeaponSetting("현재무기 : 포크", WEAPONRATING.UNIQUE, 14, 0.4f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.FORK];
                     break;
                 case MELEEWEAPON.SEALED_KEY:
                     MeleeWeaponSetting("현재무기 : 봉인된 열쇠", WEAPONRATING.UNIQUE, 17, 0.3f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.SEALED_KEY];
                     break;
                 case MELEEWEAPON.MASTER_KEY:
                     MeleeWeaponSetting("현재무기 : 마스터키", WEAPONRATING.LEGEND, 35, 0.3f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.MASTER_KEY];
                     break;
                 case MELEEWEAPON.GAUNTLET:
                     MeleeWeaponSetting("현재무기 : ??? 건틀릿", WEAPONRATING.UNKNOWN, 6, 0.4f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.GAUNTLET];
                     break;
                 case MELEEWEAPON.SMALL_KEY:
                     MeleeWeaponSetting("현재무기 : ??? 작은 열쇠", WEAPONRATING.UNKNOWN, 6, 0.5f);
+                    _animatorOverrideController["Weapon_Attack"] = _PlayerWeaponAttackAniClip[(int)MELEEWEAPON.SMALL_KEY];
                     break;
             }
         }
@@ -176,12 +193,6 @@ public class PlayerMng : MonoBehaviour
                     break;
                 case RANGEDWEAPON.STING:
                     RangedWeaponSetting("현재무기 : 독침", WEAPONRATING.NORMAL, 15, 100, 0.8f, 3, 0.4f);
-                    break;
-                case RANGEDWEAPON.BOOMERANG:
-                    RangedWeaponSetting("현재무기 : 부메랑", WEAPONRATING.NORMAL, 1, 1, 1.0f, 5, 1.0f);
-                    break;
-                case RANGEDWEAPON.SEEDING:
-                    RangedWeaponSetting("현재무기 : 씨뿌리기", WEAPONRATING.NORMAL, 15, 80, 1.0f, 4, 0.4f);
                     break;
                 case RANGEDWEAPON.FIRE_BIRD:
                     RangedWeaponSetting("현재무기 : 불새", WEAPONRATING.RARE, 10, 100, 1.2f, 6, 0.6f);

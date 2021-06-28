@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    public string s_name { get; set; }
-    public int i_dmg { get; set; }
-    public WEAPONRATING i_rating { get; set; }
-    public float f_attspeed { get; set; }
-    public float f_range { get; set; }
-    public Sprite S_Icon { get; set; }
+    public string s_name;
+    public int i_dmg;
+    public WEAPONRATING i_rating;
+    public float f_attspeed;
+    public float f_range;
+    public Sprite S_Icon;
 
     public bool b_CollCheck = false;
 
@@ -17,7 +17,11 @@ public abstract class Item : MonoBehaviour
 
     protected abstract void DestroyItem();
 
-    protected virtual void CollPlayer(Collision2D coll,int num)
+    public abstract void GetPrivateNum(int num);
+
+    public abstract int OutPrivateNum();
+
+    protected virtual void CollPlayer(Collision2D coll, int num)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
@@ -29,6 +33,7 @@ public abstract class Item : MonoBehaviour
             
         }
     }
+
 
     protected virtual Vector2 ItemOutInitial()
     {
@@ -47,5 +52,7 @@ public abstract class Item : MonoBehaviour
         //이거 생각해보니 콜라이더 건들면 안됨 나중에 bool로 수정하자
         GetComponent<CircleCollider2D>().enabled = true;
     }
+
+    
     
 }

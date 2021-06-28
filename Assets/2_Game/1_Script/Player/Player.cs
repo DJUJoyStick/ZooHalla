@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : PlayerMng
 {
     public GameObject BulletPre;
+    public GameObject Wolf_AuraGams;
 
     public Transform JoyStickTr;
     public Transform GunParentTr;
@@ -12,9 +13,11 @@ public class Player : PlayerMng
 
     public PlayerMapPosition GetMapPlayer;
 
+    public Animator Wolf_AuraAnime;
+
     Coroutine RatPassiveCor;
 
-    public UnityEngine.UI.Image turtleskillimg;
+    public UnityEngine.UI.Image TurtleSkillImg;
 
     Vector2 PlayerMoveVec;
 
@@ -30,33 +33,42 @@ public class Player : PlayerMng
     void Start()
     {
         SGameMng.I.PlayerType = PLAYERTYPE.WOLF;
+        TurtleSkillImg = GameObject.Find("TurtleSkill").GetComponent<UnityEngine.UI.Image>();
         if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
         {
             PlayerInit(WEAPONTYPE.RANGED_WEAPON, 10.0f, 5, 5, true, true);
             RatPassiveCor = StartCoroutine(AutoHealth());
+            TurtleSkillImg.gameObject.SetActive(false);
         }
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
         {
             PlayerInit(WEAPONTYPE.RANGED_WEAPON, 5.0f, 10, 10, true, true);
+            TurtleSkillImg.gameObject.SetActive(true);
         }
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
         {
             PlayerInit(WEAPONTYPE.RANGED_WEAPON, 7.0f, 7, 7, true, true);
+            TurtleSkillImg.gameObject.SetActive(false);
         }
         _PlayerRig = GetComponent<Rigidbody2D>();
         _PlayerSr = GetComponent<SpriteRenderer>();
+        _PlayerWeaponSr = GameObject.Find("Weapon").GetComponent<SpriteRenderer>();
         _PlayerAnime = GetComponent<Animator>();
+        _PlayerWeaponAnime = GameObject.Find("Weapon").GetComponent<Animator>();
         JoyStickTr = GameObject.Find("Stick").transform;
         GetMapPlayer = GameObject.Find("LevelGenerator").GetComponent<PlayerMapPosition>();
+
+        _animatorOverrideController = new AnimatorOverrideController(_PlayerWeaponAnime.runtimeAnimatorController);
+        _PlayerWeaponAnime.runtimeAnimatorController = _animatorOverrideController;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
-        {
             WeaponSetting(_PlayerWeaponType);
-        }
+
         PlayerState();
+
         if (!SGameMng.I.bMobileOn)
         {
             Move();
@@ -70,9 +82,8 @@ public class Player : PlayerMng
             PlayerSkill();
 
             if (_bAttackAccess)
-            {
                 Attack();
-            }
+
         }
         if (Time.time > fBulletDelay + _fAttackSpeed)
         {
@@ -82,27 +93,74 @@ public class Player : PlayerMng
         {
             if (JoyStickTr.localPosition.x < 0)
             {
-                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+                    _bLookRight = false;
+                else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
                 {
                     if (!_bSkillOn)
                         _bLookRight = false;
                 }
-                else
+                else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+                {
                     _bLookRight = false;
+                    if (Wolf_AuraGams.activeSelf)
+                    {
+                        Wolf_AuraAnime.SetBool("LWalking", true);
+                        Wolf_AuraAnime.SetBool("RWalking", false);
+                    }
+                }
                 _PlayerSr.flipX = false;
                 _PlayerWalkAnime(true, false);
+                if (SGameMng.I.fTargetDis > 7.0f)
+                    _PlayerWeaponSr.flipY = false;
+                else if (SGameMng.I.fTargetDis <= 7.0f)
+                {
+                    if (SGameMng.I.TargetEnemyTr.position.x < transform.position.x)
+                        _PlayerWeaponSr.flipY = false;
+                    else if (SGameMng.I.TargetEnemyTr.position.x > transform.position.x)
+                        _PlayerWeaponSr.flipY = true;
+                }
             }
             else if (JoyStickTr.localPosition.x > 0)
             {
-                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
+                    _bLookRight = true;
+                else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
                 {
                     if (!_bSkillOn)
                         _bLookRight = true;
                 }
-                else
+                else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+                {
                     _bLookRight = true;
+                    if (Wolf_AuraGams.activeSelf)
+                    {
+                        Wolf_AuraAnime.SetBool("LWalking", false);
+                        Wolf_AuraAnime.SetBool("RWalking", true);
+                    }
+                }
                 _PlayerSr.flipX = false;
                 _PlayerWalkAnime(false, true);
+                if (SGameMng.I.fTargetDis > 7.0f)
+                    _PlayerWeaponSr.flipY = true;
+                else if (SGameMng.I.fTargetDis <= 7.0f)
+                {
+                    if (SGameMng.I.TargetEnemyTr.position.x < transform.position.x)
+                        _PlayerWeaponSr.flipY = false;
+                    else if (SGameMng.I.TargetEnemyTr.position.x > transform.position.x)
+                        _PlayerWeaponSr.flipY = true;
+                }
+            }
+        }
+        else if (!SGameMng.I.bJoystickDown)
+        {
+            _PlayerAnime.SetBool("isIdle", true);
+            _PlayerWalkAnime(false, false);
+            if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
+            {
+                Wolf_AuraAnime.SetBool("Idle", true);
+                Wolf_AuraAnime.SetBool("LWalking", false);
+                Wolf_AuraAnime.SetBool("RWalking", false);
             }
         }
         else
@@ -146,6 +204,7 @@ public class Player : PlayerMng
         {
             _bMoveAccess = false;
             _bDmgAccess = false;
+            _PlayerRig.constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
         if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
@@ -229,7 +288,7 @@ public class Player : PlayerMng
         float dx = target.x - oPosition.x;
         fRotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
 
-        GunParentTr.rotation = Quaternion.Euler(0f, 0f, fRotateDegree - 180f);                                     // 총 위치 회전(마우스 방향) 추후에 고정 몬스터 방향으로 변환
+        GunParentTr.rotation = Quaternion.Euler(0f, 0f, fRotateDegree - 180f);
 
         if (!SGameMng.I.TargetEnemyTr.Equals(null))
         {
@@ -257,17 +316,9 @@ public class Player : PlayerMng
         else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
         {
             if (_bSkillOn)
-            {
                 _bMoveAccess = false;
-            }
             else
-            {
                 _bMoveAccess = true;
-            }
-        }
-        else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.WOLF))
-        {
-
         }
     }
 
@@ -288,23 +339,26 @@ public class Player : PlayerMng
                     }
                 }
                 if (_nBulletAmount <= 0 && !_bBulletReloading)
-                {
                     StartCoroutine(WeaponReload());
-                }
             }
             else
             {
-                if (_nBulletAmount > 0)
+                if (_PlayerWeaponType.Equals(WEAPONTYPE.RANGED_WEAPON))
                 {
-                    if (!_bBulletReloading)
+                    if (_nBulletAmount > 0)
                     {
-                        Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, fGunRot));
-                        _nBulletAmount--;
+                        if (!_bBulletReloading)
+                        {
+                            Instantiate(BulletPre, GunTr.position, Quaternion.Euler(0f, 0f, fGunRot));
+                            _nBulletAmount--;
+                        }
                     }
+                    if (_nBulletAmount <= 0 && !_bBulletReloading)
+                        StartCoroutine(WeaponReload());
                 }
-                if (_nBulletAmount <= 0 && !_bBulletReloading)
+                else if (_PlayerWeaponType.Equals(WEAPONTYPE.MELEE_WEAPON))
                 {
-                    StartCoroutine(WeaponReload());
+                    //_PlayerWeaponAnime.SetBool("isAttack", true);
                 }
             }
             _bBulletShooting = true;
@@ -316,15 +370,15 @@ public class Player : PlayerMng
 
         if (!_bSkillOn)
         {
-            if (turtleskillimg.fillAmount < 1)
-                turtleskillimg.fillAmount = turtleskillimg.fillAmount + 0.001f;
+            if (TurtleSkillImg.fillAmount < 1)
+                TurtleSkillImg.fillAmount = TurtleSkillImg.fillAmount + 0.001f;
         }
         else
         {
-            if (turtleskillimg.fillAmount > 0)
-                turtleskillimg.fillAmount = turtleskillimg.fillAmount - 0.005f;
+            if (TurtleSkillImg.fillAmount > 0)
+                TurtleSkillImg.fillAmount = TurtleSkillImg.fillAmount - 0.0015f;
         }
-        if (turtleskillimg.fillAmount <= 0)
+        if (TurtleSkillImg.fillAmount <= 0)
         {
             if (_bLookRight)
             {
@@ -372,11 +426,12 @@ public class Player : PlayerMng
         bRatPassive = false;
     }
 
-    IEnumerator ICanStopMe()
+    IEnumerator ICanStopMe()        // 늑대 액티브 코루틴
     {
         float fSaveAttackSpeed = _fAttackSpeed;
         _fAttackSpeed = _fAttackSpeed * 0.5f;
         yield return new WaitForSeconds(5.0f);
+        Wolf_AuraGams.SetActive(false);
         _fAttackSpeed = fSaveAttackSpeed;
     }
 
@@ -417,24 +472,28 @@ public class Player : PlayerMng
                 StartCoroutine(_DamageCtrl());
                 if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.RAT))
                 {
-                    int nRand = Random.Range(1, 100);
-                    if (nRand > 30)
-                    {
-                        _nPlayerHp -= 1;
-                        nSaveHealth = _nPlayerHp;
-
-                        StopCoroutine(RatPassiveCor);
-                        if (bRatPassive)
-                        {
-                            bRatPassive = false;
-                        }
-                    }
-                }
-                else
-                {
                     _nPlayerHp -= 1;
                     nSaveHealth = _nPlayerHp;
+
+                    StopCoroutine(RatPassiveCor);
+
+                    if (bRatPassive)
+                        bRatPassive = false;
                 }
+                else if (SGameMng.I.PlayerType.Equals(PLAYERTYPE.TURTLE))
+                {
+                    int nRand = Random.Range(1, 3);
+                    if (nRand == 1)
+                    {
+                        Monster colmon = col.transform.GetComponent<Monster>();
+                        colmon.nMonsterHp -= colmon.nMonsterDmg * 2;
+                        _nPlayerHp -= 1;
+                    }
+                    else if (nRand == 2)
+                        _nPlayerHp -= 1;
+                }
+                else
+                    _nPlayerHp -= 1;
             }
         }
     }

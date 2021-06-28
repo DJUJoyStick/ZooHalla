@@ -9,10 +9,12 @@ public class ItemBtn : MonoBehaviour
 {
     public int nSlotNum;
     private RectTransform ItemTrans;
+    private int nItemNum;
     //private Item GetItemInfo;
     public GameObject GetItemInfoGam;
     public Text GetItemInfoText;
     private Inventory GetInven;
+    public GameObject GetCraftSelectImg;
 
     private void Start()
     {
@@ -28,6 +30,7 @@ public class ItemBtn : MonoBehaviour
 
     public void GetInfo(Item item, int nSlot)
     {
+        nItemNum = item.OutPrivateNum();
         //번째 수 기입
         nSlotNum = nSlot;
         //GetItemInfo = item;
@@ -42,6 +45,31 @@ public class ItemBtn : MonoBehaviour
             + item.f_attspeed
             + "\n\n";
 
+    }
+
+    //이 아이템버튼일 눌렸을경우
+    public void Craft_Selected()
+    {
+        int listcount = 0;
+        if (GetInven.bCraftMode.Equals(true))
+        {
+            if (GetCraftSelectImg.activeInHierarchy.Equals(false))
+            {
+                GetCraftSelectImg.SetActive(true);
+                GetInven.CraftItems.Add(nItemNum);
+                listcount = GetInven.CraftItems.Count;
+            }
+            else
+            {
+                GetCraftSelectImg.SetActive(false);
+                GetInven.CraftItems.RemoveAt(listcount);
+            }
+
+        }
+        else
+        {
+            GetCraftSelectImg.SetActive(false);
+        }
     }
 
     public void ShowItemInfo()
