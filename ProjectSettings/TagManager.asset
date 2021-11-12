@@ -15,6 +15,15 @@ TagManager:
   - Item
   - ItemSlot
   - ItemIcon
+  - Weapon
+  - Boss
+  - SlowBullet
+  - BossBullet
+  - EnemyBullet
+  - LobbyGate
+  - Unimplemented
+  - Selecting
+  - StrongBullet
   layers:
   - Default
   - TransparentFX

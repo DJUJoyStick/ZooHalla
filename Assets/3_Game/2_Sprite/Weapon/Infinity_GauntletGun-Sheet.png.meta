@@ -1,0 +1,708 @@
+fileFormatVersion: 2
+guid: daacd1cdf8751734c8ffdcab1fd456fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6800503599395579377
+    second: Infinity_GauntletGun-Sheet_0
+  - first:
+      213: 3732248709754485035
+    second: Infinity_GauntletGun-Sheet_1
+  - first:
+      213: 5163295087877624678
+    second: Infinity_GauntletGun-Sheet_2
+  - first:
+      213: -6431482008219173247
+    second: Infinity_GauntletGun-Sheet_3
+  - first:
+      213: 176711286425115865
+    second: Infinity_GauntletGun-Sheet_4
+  - first:
+      213: -1471083024308526820
+    second: Infinity_GauntletGun-Sheet_5
+  - first:
+      213: 9121359315212870132
+    second: Infinity_GauntletGun-Sheet_6
+  - first:
+      213: 979726204175286622
+    second: Infinity_GauntletGun-Sheet_7
+  - first:
+      213: 8416946550445600167
+    second: Infinity_GauntletGun-Sheet_8
+  - first:
+      213: 6998690964292031505
+    second: Infinity_GauntletGun-Sheet_9
+  - first:
+      213: 619461830278755121
+    second: Infinity_GauntletGun-Sheet_10
+  - first:
+      213: -7592049823658802201
+    second: Infinity_GauntletGun-Sheet_11
+  - first:
+      213: 6708376042158728866
+    second: Infinity_GauntletGun-Sheet_12
+  - first:
+      213: -926243202452790461
+    second: Infinity_GauntletGun-Sheet_13
+  - first:
+      213: 5999686328559684965
+    second: Infinity_GauntletGun-Sheet_14
+  - first:
+      213: 2371759007625912237
+    second: Infinity_GauntletGun-Sheet_15
+  - first:
+      213: 2840470148536861957
+    second: Infinity_GauntletGun-Sheet_16
+  - first:
+      213: -1307287595176967320
+    second: Infinity_GauntletGun-Sheet_17
+  - first:
+      213: -5912174055145277102
+    second: Infinity_GauntletGun-Sheet_18
+  - first:
+      213: 8747731511053006517
+    second: Infinity_GauntletGun-Sheet_19
+  - first:
+      213: -153912295204866502
+    second: Infinity_GauntletGun-Sheet_20
+  - first:
+      213: 8018122428907420120
+    second: Infinity_GauntletGun-Sheet_21
+  - first:
+      213: 2355523146830074541
+    second: Infinity_GauntletGun-Sheet_22
+  - first:
+      213: -7402167209629559797
+    second: Infinity_GauntletGun-Sheet_23
+  - first:
+      213: -6059015819812897817
+    second: Infinity_GauntletGun-Sheet_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 408
+        width: 63
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f52db73efd306e50800000000000000
+      internalID: 6800503599395579377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 408
+        width: 63
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29735e5d6c9bc330800000000000000
+      internalID: 3732248709754485035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 411
+        width: 128
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663177fa685b7a740800000000000000
+      internalID: 5163295087877624678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 408
+        width: 131
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18eb7c06039ceb6a0800000000000000
+      internalID: -6431482008219173247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 408
+        width: 129
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dcdb2f8afdc37200800000000000000
+      internalID: 176711286425115865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 312
+        width: 63
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11abf498c9a59be0800000000000000
+      internalID: -1471083024308526820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 315
+        width: 128
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1a6fb58f3959e70800000000000000
+      internalID: 9121359315212870132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 312
+        width: 131
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e518209bacfa89d00800000000000000
+      internalID: 979726204175286622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 312
+        width: 128
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad62c0fa400fc470800000000000000
+      internalID: 8416946550445600167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 312
+        width: 63
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114dc53f958502160800000000000000
+      internalID: 6998690964292031505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 219
+        width: 128
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 133bda9a045c89800800000000000000
+      internalID: 619461830278755121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 216
+        width: 131
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e300c7e8ee93a690800000000000000
+      internalID: -7592049823658802201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 216
+        width: 128
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6ac94c770f81d50800000000000000
+      internalID: 6708376042158728866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 216
+        width: 63
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3436e2ef6b25523f0800000000000000
+      internalID: -926243202452790461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 219
+        width: 128
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d41999dea234350800000000000000
+      internalID: 5999686328559684965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 120
+        width: 131
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf1066504e2ae020800000000000000
+      internalID: 2371759007625912237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 120
+        width: 128
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50504a6fc806b6720800000000000000
+      internalID: 2840470148536861957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 120
+        width: 63
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863c336cbd49bdde0800000000000000
+      internalID: -1307287595176967320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 120
+        width: 66
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259f8c8550db3fda0800000000000000
+      internalID: -5912174055145277102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 117
+        width: 66
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b63eca367f266970800000000000000
+      internalID: 8747731511053006517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 24
+        width: 72
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36bfbd35913dddf0800000000000000
+      internalID: -153912295204866502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 30
+        width: 63
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d97e940ed7164f60800000000000000
+      internalID: 8018122428907420120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 30
+        width: 63
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2540b62df70b020800000000000000
+      internalID: 2355523146830074541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 21
+        width: 66
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b045cf52428364990800000000000000
+      internalID: -7402167209629559797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity_GauntletGun-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 21
+        width: 66
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb7493c63d0aeba0800000000000000
+      internalID: -6059015819812897817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
